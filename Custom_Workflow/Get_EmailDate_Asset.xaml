@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>726.4,2429.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>869.6,2432.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetGlobalVariable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -81,7 +81,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_EmailDate_Asset" sap:VirtualizedContainerService.HintSize="703.2,2364.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_EmailDate_Asset" sap:VirtualizedContainerService.HintSize="703.2,2368" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strAssetValue" />
       <Variable x:TypeArguments="s:String[]" Name="arrDate" />
@@ -155,19 +155,19 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="640.8,1714.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[arrDate]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="640.8,1717.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[arrDate]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="dateItem" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="605.6,1589.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="605.6,1592" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="543.2,1477.6" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+            <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="543.2,1480" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
               <ui:IfElseIf.ConditionBlocks>
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[dateItem.Contains(&quot;dateStartPeriod&quot;)]">
@@ -292,7 +292,7 @@
                             </scg:List>
                           </ui:MultipleAssign.AssignOperations>
                         </ui:MultipleAssign>
-                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="List&lt;DateTime&gt; dateList = new List&lt;DateTime&gt;();&#xA;&#xA;foreach (string dateString in in_arrListStartEndRange)&#xA;{&#xA;    if (DateTime.TryParseExact(dateString, &quot;dd/MM/yyyy&quot;, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))&#xA;    {&#xA;        dateList.Add(date);&#xA;    }&#xA;    else&#xA;    {&#xA;        Console.WriteLine($&quot;Invalid date format: {dateString}&quot;);&#xA;    }&#xA;}&#xA;&#xA;out_listStartEndRange = dateList;&#xA;&#xA;foreach (DateTime date in dateList)&#xA;{&#xA;    Console.WriteLine($&quot;WriteLogReport... {date.ToString(&quot;dd/MM/yyyy&quot;)}&quot;);&#xA;}" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="430.4,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="List&lt;DateTime&gt; dateList = new List&lt;DateTime&gt;();&#xD;&#xA;foreach (string dateString in in_arrListStartEndRange)&#xD;&#xA;{&#xD;&#xA;    if (DateTime.TryParseExact(dateString, &quot;dd/MM/yyyy&quot;, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))&#xD;&#xA;    {&#xD;&#xA;        dateList.Add(date);&#xD;&#xA;    }&#xD;&#xA;    else&#xD;&#xA;    {&#xD;&#xA;        Console.WriteLine($&quot;Invalid date format: {dateString}&quot;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;out_listStartEndRange = dateList;&#xD;&#xA;foreach (DateTime date in dateList)&#xD;&#xA;{&#xD;&#xA;    Console.WriteLine($&quot;WriteLogReport... {date.ToString(&quot;dd/MM/yyyy&quot;)}&quot;);&#xD;&#xA;}" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="430.4,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
                           <ui:InvokeCode.Arguments>
                             <InArgument x:TypeArguments="s:String[]" x:Key="in_arrListStartEndRange">[arrListStartEndRange]</InArgument>
                             <OutArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="out_listStartEndRange">[out_listStartEndRange]</OutArgument>
