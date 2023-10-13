@@ -21741,15 +21741,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HansDavinChristian\\.nuget\\packages\\": {}
+    "C:\\Users\\John Suryajaya\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Traveloka_DataAutomation_Email_S2",
       "projectName": "Traveloka_DataAutomation_Email_S2",
-      "projectPath": "C:\\Users\\HansDavinChristian\\#Hans\\Projects\\Traveloka\\UiPath\\Sprint 2\\Traveloka_DataAutomation_Email_S2\\Traveloka_DataAutomation_Email_S2\\.local",
-      "packagesPath": "C:\\Users\\HansDavinChristian\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HansDavinChristian\\#Hans\\Projects\\Traveloka\\UiPath\\Sprint 2\\Traveloka_DataAutomation_Email_S2\\Traveloka_DataAutomation_Email_S2\\.local"
+      "projectPath": "C:\\tvlk\\EmailSprint2Phase1\\Traveloka_DataAutomation_Performer_Email_S2\\.local",
+      "packagesPath": "C:\\Users\\John Suryajaya\\.nuget\\packages\\",
+      "outputPath": "C:\\tvlk\\EmailSprint2Phase1\\Traveloka_DataAutomation_Performer_Email_S2\\.local"
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -21790,7 +21790,7 @@
             "version": "[22.10.5, 22.10.5]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\HansDavinChristian\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\John Suryajaya\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
