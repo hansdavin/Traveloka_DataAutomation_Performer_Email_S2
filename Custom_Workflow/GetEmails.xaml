@@ -103,11 +103,9 @@
   <Sequence DisplayName="GetEmails" sap:VirtualizedContainerService.HintSize="572.8,1344" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strEmailFilter" />
-      <Variable x:TypeArguments="s:Char[]" Name="arrSymbolToRemove" />
       <Variable x:TypeArguments="x:String" Name="strSenderDomain" />
       <Variable x:TypeArguments="x:String" Name="strUsername" />
-      <Variable x:TypeArguments="ss:SecureString" Name="strPassword" />
-      <Variable x:TypeArguments="s:DateTime" Name="datePeriod" />
+      <Variable x:TypeArguments="ss:SecureString" Name="strSecPassword" />
       <Variable x:TypeArguments="x:String" Name="strSenderDomainConfig" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -169,8 +167,8 @@
         <InArgument x:TypeArguments="x:String">[String.Format("SINCE {0} FROM {1}", in_datePeriod.ToString("dd-MMM-yyyy"), strSenderDomain)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Gmail_Credentials&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="510.4,142.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strPassword]" Username="[strUsername]" />
-    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[strUsername]" EnableSSL="True" FilterExpression="[strEmailFilter]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="510.4,24.8" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_3" IgnoreCRL="False" MailFolder="Inbox" MarkAsRead="False" Messages="[out_listMailMessages]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[strPassword]" Server="imap.gmail.com" TimeoutMS="60000" Top="100" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;GetEmails done - {0} emails...&quot;, out_listMailMessages.Count())]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Gmail_Credentials&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="510.4,142.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strSecPassword]" Username="[strUsername]" />
+    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[strUsername]" EnableSSL="True" FilterExpression="[strEmailFilter]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="510.4,24.8" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_3" IgnoreCRL="False" MailFolder="Inbox" MarkAsRead="False" Messages="[out_listMailMessages]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[strSecPassword]" Server="imap.gmail.com" TimeoutMS="60000" Top="100" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;GetEmails done - {0} emails...&quot;, out_listMailMessages.Count)]" />
   </Sequence>
 </Activity>
