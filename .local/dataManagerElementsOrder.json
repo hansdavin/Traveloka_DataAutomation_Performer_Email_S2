@@ -375,6 +375,26 @@
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
+    },
+    {
+      "Path": "BP_Workflow/directdebitbca.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strFilePath&Sequence_1",
+        "isFileExist&Sequence_1",
+        "strFolderPath&Sequence_1",
+        "strFileNameWithoutExtension&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_listMailMessages",
+        "in_datePeriod",
+        "in_isRerun",
+        "in_TransactionItem",
+        "in_Config",
+        "in_dicPath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
     }
   ]
 }
