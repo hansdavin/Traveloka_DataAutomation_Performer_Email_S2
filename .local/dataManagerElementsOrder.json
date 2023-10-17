@@ -204,15 +204,8 @@
         "ienAttachment&Sequence_1",
         "strRawFileName&Sequence_1",
         "strFilePath&Sequence_1",
-        "strNewName&Sequence_1",
         "strRawFilePath&Sequence_1",
         "isFilePathExists&Sequence_1",
-        "strCell&Sequence_1",
-        "arrExtensionToCheck&Sequence_1",
-        "strCommand&Sequence_1",
-        "arrRawFileNames&Sequence_1",
-        "listSheets&Sequence_1",
-        "strFileExtension&Sequence_1",
         "dateEndPeriodLocal&Sequence_1",
         "strRawFileNameQueue&Sequence_1"
       ],
@@ -380,10 +373,12 @@
       "Path": "BP_Workflow/directdebitbca.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "strFileNamePattern&Sequence_6",
+        "isFolderNotRerunExist&Sequence_1",
+        "isFileNotRerunExist&Sequence_1",
         "strFilePath&Sequence_1",
         "isFileExist&Sequence_1",
-        "strFolderPath&Sequence_1",
-        "strFileNameWithoutExtension&Sequence_1"
+        "strFolderPath&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_listMailMessages",
