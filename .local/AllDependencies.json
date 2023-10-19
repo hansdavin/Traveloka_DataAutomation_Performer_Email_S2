@@ -11038,7 +11038,6 @@
       "path": "closedxml/0.95.4",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "closedxml.0.95.4.nupkg.sha512",
         "closedxml.nuspec",
         "lib/net40/ClosedXML.dll",
@@ -11059,7 +11058,6 @@
       "path": "csvhelper/16.0.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "Icon.png",
         "csvhelper.16.0.0.nupkg.sha512",
         "csvhelper.nuspec",
@@ -11188,7 +11186,6 @@
       "path": "google.apis.calendar.v3/1.55.0.2554",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
         "google.apis.calendar.v3.1.55.0.2554.nupkg.sha512",
@@ -11322,7 +11319,6 @@
       "path": "google.apis.peopleservice.v1/1.55.0.2567",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
         "google.apis.peopleservice.v1.1.55.0.2567.nupkg.sha512",
@@ -11454,7 +11450,6 @@
       "path": "mailkit/3.1.1",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icons/mailkit-50.png",
         "lib/net452/MailKit.dll",
         "lib/net452/MailKit.pdb",
@@ -13251,7 +13246,6 @@
       "path": "nito.asyncex/5.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "nito.asyncex.5.1.0.nupkg.sha512",
         "nito.asyncex.nuspec"
@@ -13263,7 +13257,6 @@
       "path": "nito.asyncex.context/5.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "lib/netstandard1.3/Nito.AsyncEx.Context.dll",
         "lib/netstandard1.3/Nito.AsyncEx.Context.xml",
@@ -13279,7 +13272,6 @@
       "path": "nito.asyncex.coordination/5.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "lib/netstandard1.3/Nito.AsyncEx.Coordination.dll",
         "lib/netstandard1.3/Nito.AsyncEx.Coordination.xml",
@@ -13295,7 +13287,6 @@
       "path": "nito.asyncex.interop.waithandles/5.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "lib/netstandard1.3/Nito.AsyncEx.Interop.WaitHandles.dll",
         "lib/netstandard1.3/Nito.AsyncEx.Interop.WaitHandles.xml",
@@ -13311,7 +13302,6 @@
       "path": "nito.asyncex.oop/5.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "lib/netstandard1.3/Nito.AsyncEx.Oop.dll",
         "lib/netstandard1.3/Nito.AsyncEx.Oop.xml",
@@ -13327,7 +13317,6 @@
       "path": "nito.asyncex.tasks/5.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "lib/netstandard1.3/Nito.AsyncEx.Tasks.dll",
         "lib/netstandard1.3/Nito.AsyncEx.Tasks.xml",
@@ -13343,7 +13332,6 @@
       "path": "nito.cancellation/1.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "lib/netstandard1.0/Nito.Cancellation.dll",
         "lib/netstandard1.0/Nito.Cancellation.xml",
@@ -13359,7 +13347,6 @@
       "path": "nito.collections.deque/1.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "lib/netstandard1.0/Nito.Collections.Deque.dll",
         "lib/netstandard1.0/Nito.Collections.Deque.xml",
@@ -13375,7 +13362,6 @@
       "path": "nito.disposables/2.2.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "icon.png",
         "lib/net461/Nito.Disposables.dll",
         "lib/net461/Nito.Disposables.xml",
@@ -13414,7 +13400,6 @@
       "path": "nlog/4.5.11",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "lib/monoandroid44/NLog.dll",
         "lib/monoandroid44/NLog.xml",
         "lib/net35/NLog.dll",
@@ -13447,7 +13432,6 @@
       "path": "nodatime/2.4.7",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "lib/net45/NodaTime.dll",
         "lib/net45/NodaTime.pdb",
         "lib/net45/NodaTime.xml",
@@ -13467,7 +13451,6 @@
       "path": "npoi/2.5.5",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "LICENSE",
         "Read Me.txt",
         "lib/net45/NPOI.OOXML.XML",
@@ -13514,7 +13497,6 @@
       "path": "polly/7.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "lib/netstandard1.1/Polly.dll",
         "lib/netstandard1.1/Polly.xml",
         "lib/netstandard2.0/Polly.dll",
@@ -13544,7 +13526,6 @@
       "path": "runtime.any.system.collections/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13624,7 +13605,6 @@
       "path": "runtime.any.system.globalization/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13651,7 +13631,6 @@
       "path": "runtime.any.system.globalization.calendars/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13675,7 +13654,6 @@
       "path": "runtime.any.system.io/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13702,7 +13680,6 @@
       "path": "runtime.any.system.reflection/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13756,7 +13733,6 @@
       "path": "runtime.any.system.reflection.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13783,7 +13759,6 @@
       "path": "runtime.any.system.resources.resourcemanager/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13810,7 +13785,6 @@
       "path": "runtime.any.system.runtime/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13837,7 +13811,6 @@
       "path": "runtime.any.system.runtime.handles/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13860,7 +13833,6 @@
       "path": "runtime.any.system.runtime.interopservices/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13887,7 +13859,6 @@
       "path": "runtime.any.system.text.encoding/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13913,7 +13884,6 @@
       "path": "runtime.any.system.text.encoding.extensions/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13939,7 +13909,6 @@
       "path": "runtime.any.system.threading.tasks/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13966,7 +13935,6 @@
       "path": "runtime.any.system.threading.timer/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -14363,7 +14331,6 @@
       "path": "runtime.win.microsoft.win32.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard/_._",
@@ -14396,7 +14363,6 @@
       "path": "runtime.win.system.diagnostics.debug/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard/_._",
@@ -14436,7 +14402,6 @@
       "path": "runtime.win.system.net.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard/_._",
@@ -14470,7 +14435,6 @@
       "path": "runtime.win.system.runtime.extensions/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard/_._",
@@ -14502,7 +14466,6 @@
       "path": "runtime.win7.system.private.uri/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard/_._",
@@ -14519,7 +14482,6 @@
       "path": "sharpziplib/1.3.3",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "images/sharpziplib-nuget-256x256.png",
         "lib/net45/ICSharpCode.SharpZipLib.dll",
         "lib/net45/ICSharpCode.SharpZipLib.pdb",
@@ -16846,7 +16808,6 @@
       "path": "system.private.uri/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard/_._",
@@ -19300,7 +19261,6 @@
       "path": "system.threading.overlapped/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/net46/System.Threading.Overlapped.dll",
@@ -21741,15 +21701,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\John Suryajaya\\.nuget\\packages\\": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Traveloka_DataAutomation_Email_S2",
       "projectName": "Traveloka_DataAutomation_Email_S2",
-      "projectPath": "C:\\tvlk\\EmailSprint2Phase1\\Traveloka_DataAutomation_Performer_Email_S2\\.local",
-      "packagesPath": "C:\\Users\\John Suryajaya\\.nuget\\packages\\",
-      "outputPath": "C:\\tvlk\\EmailSprint2Phase1\\Traveloka_DataAutomation_Performer_Email_S2\\.local"
+      "projectPath": "C:\\Users\\Administrator\\Documents\\Kalyana\\Sprint 2\\Traveloka_DataAutomation_Performer_Email_S2\\.local",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administrator\\Documents\\Kalyana\\Sprint 2\\Traveloka_DataAutomation_Performer_Email_S2\\.local"
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -21790,7 +21750,7 @@
             "version": "[22.10.5, 22.10.5]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\John Suryajaya\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
