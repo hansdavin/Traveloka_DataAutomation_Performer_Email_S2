@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992.6037735849056,542.4905660377358</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>991.6981132075471,728.1509433962264</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GenerateRegexPattern_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -70,6 +70,15 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Generate regex pattern from file name in config sheet" DisplayName="Generate_Regex_Pattern" sap:VirtualizedContainerService.HintSize="450.1132075471698,305.2075471698113" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -79,7 +88,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Escape any special regex characters In the input String&#xA;String escapedInput = System.Text.RegularExpressions.Regex.Escape(in_strFileName);&#xA;// Replace digits With \d+ To match one Or more digits&#xA;String pattern = System.Text.RegularExpressions.Regex.Replace(escapedInput, @&quot;\d+&quot;, @&quot;\d+&quot;);&#xA;// Add anchors To match the whole String&#xA;out_strRegexPattern = $&quot;^{pattern}$&quot;;&#xA;Console.WriteLine(&quot;pattern: &quot; + out_strRegexPattern);&#xA;" DisplayName="Invoke Code - Generate Regex Pattern" sap:VirtualizedContainerService.HintSize="388.5283018867924,164.83018867924528" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="//MSR_40010_GID_20008375_412_20230906_1_008.csv&#xD;&#xA;// Escape any special regex characters In the input String&#xD;&#xA;String escapedInput = System.Text.RegularExpressions.Regex.Escape(in_strFileName);&#xD;&#xA;// Replace digits With \d+ To match one Or more digits&#xD;&#xA;String pattern = System.Text.RegularExpressions.Regex.Replace(escapedInput, @&quot;\d+&quot;, @&quot;\d+&quot;);&#xD;&#xA;// Add anchors To match the whole String&#xD;&#xA;var monthPattern = new[]&#xD;&#xA;{&#xD;&#xA;    @&quot;\b(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)&quot;,&#xD;&#xA;    @&quot;\b(?:januari|februari|maret|april|mei|juni|juli|agustus|september|oktober|november|desember|ags|agt|agu|okt)&quot;&#xD;&#xA;};&#xD;&#xA;&#xD;&#xA;foreach (var pat in monthPattern) {&#xD;&#xA;&#x9;if (System.Text.RegularExpressions.Regex.IsMatch(pattern, pat, System.Text.RegularExpressions.RegexOptions.IgnoreCase)) {&#xD;&#xA;&#x9;&#x9;pattern = System.Text.RegularExpressions.Regex.Replace(pattern, pat, pat, System.Text.RegularExpressions.RegexOptions.IgnoreCase);&#x9;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;out_strRegexPattern = $&quot;^{pattern}$&quot;;&#xD;&#xA;Console.WriteLine(&quot;pattern: &quot; + out_strRegexPattern);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" DisplayName="Invoke Code - Generate Regex Pattern" sap:VirtualizedContainerService.HintSize="388.5283018867924,164.83018867924528" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
       <ui:InvokeCode.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_strFileName">[in_strFileName]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_strRegexPattern">[out_strRegexPattern]</OutArgument>
