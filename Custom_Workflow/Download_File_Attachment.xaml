@@ -12,7 +12,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>991.6981132075471,2039.5471698113206</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>985.3584905660377,2305.8113207547167</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFileAttachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="41">
@@ -134,7 +134,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Download_File_Attachment" sap:VirtualizedContainerService.HintSize="594.1132075471697,1974.3396226415093" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Download_File_Attachment" sap:VirtualizedContainerService.HintSize="614.0377358490566,2240.6037735849054" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="ienAttachment" />
       <Variable x:TypeArguments="x:String" Name="strRawFileName" />
@@ -149,13 +149,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each attachment" sap:VirtualizedContainerService.HintSize="532.5283018867924,1864.7547169811319" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_mailMessage.Attachments]">
+    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each attachment" sap:VirtualizedContainerService.HintSize="552.4528301886792,2131.018867924528" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_mailMessage.Attachments]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="attachment" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496.3018867924528,1740.6792452830186" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="516.2264150943396,2006.943396226415" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strFolderPath" />
             </Sequence.Variables>
@@ -164,8 +164,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434.71698113207543,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot;: Downloading attachment...&quot;]" />
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434.71698113207543,162.1132075471698" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="454.64150943396226,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot;: Downloading attachment...&quot;]" />
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="454.64150943396226,162.1132075471698" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -195,16 +195,30 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434.71698113207543,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[DateTime.MinValue]</InArgument>
-                <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">[in_datePeriod]</InArgument>
-                <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange" />
-                <InArgument x:TypeArguments="x:String" x:Key="in_assetName">[in_Config("GlobalVarAsset").ToString]</InArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <ui:SaveMailAttachments Attachments="[ienAttachment]" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[strRawFilePath]" sap:VirtualizedContainerService.HintSize="434.71698113207543,91.47169811320754" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[in_mailMessage]" OverwriteExisting="True" />
-            <Assign DisplayName="Assign - Get raw file name .ext" sap:VirtualizedContainerService.HintSize="434.71698113207543,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <If Condition="[Not in_TransactionItem.SpecificContent(&quot;Schedule&quot;).ToString.ToLower = &quot;monthly&quot;]" sap:VirtualizedContainerService.HintSize="454.64150943396226,377.66037735849056" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="420.2264150943396,197.43396226415092" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379.47169811320754,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[DateTime.MinValue]</InArgument>
+                      <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">[in_datePeriod]</InArgument>
+                      <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange" />
+                      <InArgument x:TypeArguments="x:String" x:Key="in_assetName">[in_Config("GlobalVarAsset").ToString]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6" />
+              </If.Else>
+            </If>
+            <ui:SaveMailAttachments Attachments="[ienAttachment]" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[strRawFilePath]" sap:VirtualizedContainerService.HintSize="454.64150943396226,91.47169811320754" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[in_mailMessage]" OverwriteExisting="True" />
+            <Assign DisplayName="Assign - Get raw file name .ext" sap:VirtualizedContainerService.HintSize="454.64150943396226,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strRawFileName]</OutArgument>
               </Assign.To>
@@ -212,7 +226,7 @@
                 <InArgument x:TypeArguments="x:String">[ienAttachment.First]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFolderPathExists]" sap:VirtualizedContainerService.HintSize="434.71698113207543,88.75471698113206" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[strFolderPath]" PathType="Folder" />
+            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFolderPathExists]" sap:VirtualizedContainerService.HintSize="454.64150943396226,88.75471698113206" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[strFolderPath]" PathType="Folder" />
             <If Condition="[isFolderPathExists = False]" DisplayName="If - isFolderPathExist = false, create first" sap:VirtualizedContainerService.HintSize="434.71698113207543,345.05660377358487" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
