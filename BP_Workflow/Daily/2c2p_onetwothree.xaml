@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1523,8429</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1682,8429</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>_2c2p_onetwothree_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -116,7 +116,7 @@
       <Variable x:TypeArguments="x:String" Name="strFileNamePattern" />
       <Variable x:TypeArguments="x:String" Name="strEmailSubject" />
       <Variable x:TypeArguments="s:String[]" Name="arrPattern" />
-      <Variable x:TypeArguments="x:String" Name="strRawFilePath" />
+      <Variable x:TypeArguments="x:String" Name="strRawFolderPath" />
       <Variable x:TypeArguments="x:String" Name="strEmailSubjectConfig" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -147,10 +147,10 @@
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
             <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[strRawFilePath]</OutArgument>
+              <OutArgument x:TypeArguments="x:String">[strRawFolderPath]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[Path.Combine(in_dicPath("strRawFilePath"), in_TransactionItem.SpecificContent("Key").ToString(), in_datePeriod.Year.ToString, in_datePeriod.ToString("yyyy-MM-dd"))]</InArgument>
+              <InArgument x:TypeArguments="x:String">[Path.Combine(in_dicPath("strRawFolderPath"), in_TransactionItem.SpecificContent("Key").ToString(), in_datePeriod.Year.ToString, in_datePeriod.ToString("yyyy-MM-dd"))]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -452,7 +452,7 @@
 }]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove unnecessary characters in email's subject" Code="out_strEmailSubject = in_email.Subject;&#xD;&#xA;foreach (string pattern in in_arrPattern)&#xD;&#xA;{&#xD;&#xA;&#x9;out_strEmailSubject = System.Text.RegularExpressions.Regex.Replace(out_strEmailSubject, pattern, string.Empty, RegexOptions.IgnoreCase);&#xD;&#xA;}&#xD;&#xA;Console.WriteLine(out_strEmailSubject);" DisplayName="Invoke Code - remove date, fwd, etc. from subject" sap:VirtualizedContainerService.HintSize="760,196" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+                        <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove unnecessary characters in email's subject" Code="out_strEmailSubject = in_email.Subject;&#xA;foreach (string pattern in in_arrPattern)&#xA;{&#xA;&#x9;out_strEmailSubject = System.Text.RegularExpressions.Regex.Replace(out_strEmailSubject, pattern, string.Empty, RegexOptions.IgnoreCase);&#xA;}&#xA;Console.WriteLine(out_strEmailSubject);" DisplayName="Invoke Code - remove date, fwd, etc. from subject" sap:VirtualizedContainerService.HintSize="760,196" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
                           <ui:InvokeCode.Arguments>
                             <OutArgument x:TypeArguments="x:String" x:Key="out_strEmailSubject">[strEmailSubject]</OutArgument>
                             <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_email">[email]</InArgument>
@@ -520,11 +520,11 @@
                                         <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
                                           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
                                         </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
-                                        </InArgument>
                                         <InArgument x:TypeArguments="x:String" x:Key="in_strFolderPath">
                                           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFolderPath" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">
+                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFolderPath" />
                                         </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
@@ -561,11 +561,11 @@
                                         <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
                                           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
                                         </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
-                                        </InArgument>
                                         <InArgument x:TypeArguments="x:String" x:Key="in_strFolderPath">
                                           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFolderPath" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">
+                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFolderPath" />
                                         </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
