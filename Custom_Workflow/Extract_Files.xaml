@@ -1,13 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ExtractFiles" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ExtractFiles" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_strRawFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="io_strRawFilePath" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_strZipPassword" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1682,3179</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>992.6037735849056,2858.264150943396</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ExtractFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -44,7 +45,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="120">
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
@@ -104,14 +105,14 @@
       <AssemblyReference>System.Net.Requests</AssemblyReference>
       <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
       <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>Traveloka_DataAutomation_Email_S2.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Extract_Files" sap:VirtualizedContainerService.HintSize="746,3114" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Extract_Files" sap:VirtualizedContainerService.HintSize="744.4528301886792,2793.056603773585" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arrExtensionToCheck" />
       <Variable x:TypeArguments="x:String" Name="strCommand" />
       <Variable x:TypeArguments="s:String[]" Name="arrRawFileNames" />
-      <Variable x:TypeArguments="ss:SecureString" Name="secstrPassword" />
       <Variable x:TypeArguments="x:String" Name="strUsername" />
       <Variable x:TypeArguments="x:String" Name="strAssetName" />
     </Sequence.Variables>
@@ -120,7 +121,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - Archived file ext" sap:VirtualizedContainerService.HintSize="684,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - Archived file ext" sap:VirtualizedContainerService.HintSize="682.8679245283018,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[arrExtensionToCheck]</OutArgument>
       </Assign.To>
@@ -128,7 +129,7 @@
         <InArgument x:TypeArguments="s:String[]">[{".zip", ".rar", ".7z"}]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[arrExtensionToCheck.Any(Function(ext) io_strRawFilePath.Contains(ext))]" DisplayName="If - raw file name contains archived file ext, extract first" sap:VirtualizedContainerService.HintSize="684,2881" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[arrExtensionToCheck.Any(Function(ext) io_strRawFilePath.Contains(ext))]" DisplayName="If - raw file name contains archived file ext, extract first" sap:VirtualizedContainerService.HintSize="682.8679245283018,2563.018867924528" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,7 +137,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="650,2397" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence sap:VirtualizedContainerService.HintSize="648.4528301886792,2081.2075471698113" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <Sequence.Variables>
             <Variable x:TypeArguments="sco:Collection(sma:PSObject)" Name="out7z" />
           </Sequence.Variables>
@@ -145,7 +146,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[Not String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;Credential&quot;).ToString)]" DisplayName="If credential field not empty in config, then extract with password" sap:VirtualizedContainerService.HintSize="608,825" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[Not String.IsNullOrEmpty(in_strZipPassword)]" DisplayName="If zip password found, then extract with password" sap:VirtualizedContainerService.HintSize="607.6981132075472,513.5094339622641" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -153,39 +154,30 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="476,473" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence sap:VirtualizedContainerService.HintSize="475.47169811320754,166.64150943396226" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[strAssetName]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Credential").ToString]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[strAssetName]" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secstrPassword]" Username="[strUsername]" />
-                <Assign DisplayName="Assign - command line with pass" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign DisplayName="Assign - command line with pass" sap:VirtualizedContainerService.HintSize="434.71698113207543,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_2">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strCommand]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[String.Format("7z x ""{0}"" -o""{1}"" -p""{2}"" -y", Path.Combine(in_strRawFolderPath, io_strRawFilePath), in_strRawFolderPath, New System.Net.NetworkCredential("", secstrPassword).Password)]</InArgument>
+                    <InArgument x:TypeArguments="x:String">[String.Format("7z x ""{0}"" -o""{1}"" -p""{2}"" -y", Path.Combine(in_strRawFolderPath, io_strRawFilePath), in_strRawFolderPath, in_strZipPassword)]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence sap:VirtualizedContainerService.HintSize="475.47169811320754,166.64150943396226" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign - without pass" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign DisplayName="Assign - without pass" sap:VirtualizedContainerService.HintSize="434.71698113207543,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_6">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[strCommand]</OutArgument>
                   </Assign.To>
@@ -196,12 +188,12 @@
               </Sequence>
             </If.Else>
           </If>
-          <ui:InvokePowerShell x:TypeArguments="sma:PSObject" CommandText="[strCommand]" ContinueOnError="True" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="608,60" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_1" IsScript="True" Output="[out7z]">
+          <ui:InvokePowerShell x:TypeArguments="sma:PSObject" CommandText="[strCommand]" ContinueOnError="True" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="607.6981132075472,59.77358490566037" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_1" IsScript="True" Output="[out7z]">
             <ui:InvokePowerShell.PowerShellVariables>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:InvokePowerShell.PowerShellVariables>
           </ui:InvokePowerShell>
-          <Assign DisplayName="Assign - get all files inside raw file folder" sap:VirtualizedContainerService.HintSize="608,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign DisplayName="Assign - get all files inside raw file folder" sap:VirtualizedContainerService.HintSize="607.6981132075472,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="s:String[]">[arrRawFileNames]</OutArgument>
             </Assign.To>

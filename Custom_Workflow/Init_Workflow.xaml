@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992.6037735849056,1657.3584905660375</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>992.6037735849056,1104</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CallWorkflow_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -93,7 +93,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Init_Workflow" sap:VirtualizedContainerService.HintSize="571.4716981132075,1592.1509433962262" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Init_Workflow" sap:VirtualizedContainerService.HintSize="554.2641509433962,1038.7924528301887" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isRerun" />
       <Variable x:TypeArguments="s:DateTime" Name="datePeriod" />
@@ -104,7 +104,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - isRerun from config" sap:VirtualizedContainerService.HintSize="509.88679245283015,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Assign - isRerun from config" sap:VirtualizedContainerService.HintSize="492.6792452830188,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[isRerun]</OutArgument>
       </Assign.To>
@@ -112,49 +112,7 @@
         <InArgument x:TypeArguments="x:Boolean">[Boolean.Parse(in_TransactionItem.SpecificContent("Rerun").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[isRerun]" DisplayName="If - isRerun" sap:VirtualizedContainerService.HintSize="509.88679245283015,513.5094339622641" sap2010:WorkflowViewState.IdRef="If_1">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="475.47169811320754,166.64150943396226" sap2010:WorkflowViewState.IdRef="Sequence_3">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign - Get rerun date from config file" sap:VirtualizedContainerService.HintSize="434.71698113207543,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_2">
-            <Assign.To>
-              <OutArgument x:TypeArguments="s:DateTime">[datePeriod]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_TransactionItem.SpecificContent("Period").ToString(), "MM/dd/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="475.47169811320754,166.64150943396226" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign - Get rerun date from current datetime" sap:VirtualizedContainerService.HintSize="434.71698113207543,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_3">
-            <Assign.To>
-              <OutArgument x:TypeArguments="s:DateTime">[datePeriod]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="s:DateTime">[DateTime.Now]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </If.Else>
-    </If>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="509.88679245283015,331.47169811320754" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="492.6792452830188,331.47169811320754" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetEmails.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="336.90566037735846,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Get_Emails.xaml">
           <ui:InvokeWorkflowFile.Arguments>
@@ -199,7 +157,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString.ToLower]" sap:VirtualizedContainerService.HintSize="509.88679245283015,437.4339622641509" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString.ToLower]" sap:VirtualizedContainerService.HintSize="492.6792452830188,437.4339622641509" sap2010:WorkflowViewState.IdRef="Switch`1_2">
       <Switch.Default>
         <Sequence DisplayName="Sequence - Throw if BP Key not found" sap:VirtualizedContainerService.HintSize="450.1132075471698,79.69811320754717" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
