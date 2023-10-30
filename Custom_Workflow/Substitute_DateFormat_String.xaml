@@ -43,9 +43,14 @@
     <sco:Collection x:TypeArguments="AssemblyReference">
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.Common</AssemblyReference>
@@ -54,32 +59,28 @@
       <AssemblyReference>System.Drawing.Common</AssemblyReference>
       <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Net.Mail</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
-      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>UiPath.Workflow</AssemblyReference>
-      <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
-      <AssemblyReference>System.Console</AssemblyReference>
-      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
-      <AssemblyReference>System.Security.Permissions</AssemblyReference>
-      <AssemblyReference>System.ComponentModel</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Substitute_DateFormat_String" sap:VirtualizedContainerService.HintSize="450.1132075471698,456.45283018867923" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -89,14 +90,10 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start of substitute dateformat process" sap:VirtualizedContainerService.HintSize="388.5283018867924,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} - Substitute Date Format in String&quot;, in_strPID)]" />
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="replace any date format found in string, the string should look like this -&gt; &quot;foo {yyyMM}&quot; (date format should be in between { })" Code="string pattern = &quot;{(.*?)}&quot;;&#xD;&#xA;System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern);&#xD;&#xA;string res = regex.Replace(io_strResult, match =&gt;&#xD;&#xA;{&#xD;&#xA;    string format = match.Groups[1].Value;&#xD;&#xA;    return in_dtPeriod.ToString(format);&#xD;&#xA;});&#xD;&#xA;io_strResult = res;" DisplayName="Invoke code -  replace any date format in string" sap:VirtualizedContainerService.HintSize="388.5283018867924,217.35849056603772" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="replace any date format found in string, the string should look like this -&gt; &quot;foo {yyyMM}&quot; (date format should be in between { })" Code="string pattern = &quot;{(.*?)}&quot;;&#xA;System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern);&#xA;string res = regex.Replace(io_strResult, match =&gt;&#xA;{&#xA;    string format = match.Groups[1].Value;&#xA;    return in_dtPeriod.ToString(format);&#xA;});&#xA;io_strResult = res;" DisplayName="Invoke code -  replace any date format in string" sap:VirtualizedContainerService.HintSize="388.5283018867924,217.35849056603772" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
       <ui:InvokeCode.Arguments>
-        <InOutArgument x:TypeArguments="x:String" x:Key="io_strResult">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_strToSubs" />
-        </InOutArgument>
-        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">
-          <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_dtPeriod" />
-        </InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_strResult">[io_strToSubs]</InOutArgument>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">[in_dtPeriod]</InArgument>
       </ui:InvokeCode.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

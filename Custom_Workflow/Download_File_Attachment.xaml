@@ -65,33 +65,72 @@
   <TextExpression.ReferencesForImplementation>
     <scg:List x:TypeArguments="AssemblyReference" Capacity="144">
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
       <AssemblyReference>System.Drawing.Common</AssemblyReference>
       <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
       <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Net.Requests</AssemblyReference>
+      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
+      <AssemblyReference>System.Net.WebClient</AssemblyReference>
+      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
@@ -99,55 +138,15 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
-      <AssemblyReference>System.IO.Packaging</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
-      <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
-      <AssemblyReference>System.Console</AssemblyReference>
-      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
-      <AssemblyReference>System.Security.Permissions</AssemblyReference>
-      <AssemblyReference>System.ComponentModel</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
-      <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
-      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
-      <AssemblyReference>System.Private.Xml</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
-      <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Linq.Async</AssemblyReference>
-      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
-      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
-      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
-      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
-      <AssemblyReference>System.Management.Automation</AssemblyReference>
-      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
-      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
-      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
-      <AssemblyReference>Traveloka_DataAutomation_Email_S2.Core</AssemblyReference>
-      <AssemblyReference>System.Net.Primitives</AssemblyReference>
-      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
-      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
-      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
-      <AssemblyReference>System.Net.WebClient</AssemblyReference>
-      <AssemblyReference>System.Net.Requests</AssemblyReference>
-      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
-      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow is functioned to download file attachment from email, and process it. &#xD;&#xA;1. If it's an archive file, then extract&#xD;&#xA;2. If it's an protected excel file then unprotect&#xD;&#xA;3. Convert file if the extension is invalid&#xD;&#xA;4. Copy the raw files to the destination folder" DisplayName="Download_File_Attachment" sap:VirtualizedContainerService.HintSize="669.2830188679245,4595.32075471698" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow is functioned to download file attachment from email, and process it. &#xA;1. If it's an archive file, then extract&#xA;2. If it's an protected excel file then unprotect&#xA;3. Convert file if the extension is invalid&#xA;4. Copy the raw files to the destination folder" DisplayName="Download_File_Attachment" sap:VirtualizedContainerService.HintSize="669.2830188679245,4595.32075471698" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="ienAttachment" />
       <Variable x:TypeArguments="x:String" Name="strRawFilePath" />
@@ -318,15 +317,9 @@
                   </Assign>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Substitute_DateFormat_String.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434.71698113207543,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Workflow\Substitute_DateFormat_String.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">
-                        <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
-                      </InArgument>
-                      <InOutArgument x:TypeArguments="x:String" x:Key="io_strToSubs">
-                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strZipPassword" />
-                      </InOutArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_strPID">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString" />
-                      </InArgument>
+                      <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">[in_datePeriod]</InArgument>
+                      <InOutArgument x:TypeArguments="x:String" x:Key="io_strToSubs">[strZipPassword]</InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_strPID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </Sequence>
@@ -337,18 +330,10 @@
             </If>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Extract_Files.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="509.88679245283015,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Extract_Files.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                  <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFolderPath" />
-                </InArgument>
-                <InOutArgument x:TypeArguments="x:String" x:Key="io_strRawFilePath">
-                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
-                </InOutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strZipPassword" />
-                </InArgument>
+                <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">[strRawFolderPath]</InArgument>
+                <InOutArgument x:TypeArguments="x:String" x:Key="io_strRawFilePath">[strRawFilePath]</InOutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">[strZipPassword]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <If Condition="[Not String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;Credential File&quot;).ToString)]" DisplayName="If credential for file in config is not null" sap:VirtualizedContainerService.HintSize="509.88679245283015,825.9622641509434" sap2010:WorkflowViewState.IdRef="If_9">
@@ -374,31 +359,17 @@
                   </Assign>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Substitute_DateFormat_String.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434.71698113207543,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom_Workflow\Substitute_DateFormat_String.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">
-                        <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
-                      </InArgument>
-                      <InOutArgument x:TypeArguments="x:String" x:Key="io_strToSubs">
-                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strFilePassword" />
-                      </InOutArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_strPID">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString" />
-                      </InArgument>
+                      <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">[in_datePeriod]</InArgument>
+                      <InOutArgument x:TypeArguments="x:String" x:Key="io_strToSubs">[strFilePassword]</InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_strPID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Excel_RemovePasswordProtection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434.71698113207543,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Custom_Workflow\Excel_RemovePasswordProtection.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_strRawFileName">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_strPID">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">
-                        <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_strFilePassword">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePassword" />
-                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_strRawFileName">[strRawFilePath]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_strPID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
+                      <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">[in_datePeriod]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_strFilePassword">[strFilePassword]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </Sequence>
