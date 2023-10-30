@@ -9,11 +9,13 @@
     <x:Property Name="in_strFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_strRawFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_strAttachmentId" Type="InArgument(x:String)" />
+    <x:Property Name="out_strRawFilePathQueue" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strRawFilePath" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992.6037735849056,4660.528301886792</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>869.6,4760</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFileAttachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="82">
@@ -146,7 +148,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow is functioned to download file attachment from email, and process it. &#xA;1. If it's an archive file, then extract&#xA;2. If it's an protected excel file then unprotect&#xA;3. Convert file if the extension is invalid&#xA;4. Copy the raw files to the destination folder" DisplayName="Download_File_Attachment" sap:VirtualizedContainerService.HintSize="669.2830188679245,4595.32075471698" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow is functioned to download file attachment from email, and process it. &#xA;1. If it's an archive file, then extract&#xA;2. If it's an protected excel file then unprotect&#xA;3. Convert file if the extension is invalid&#xA;4. Copy the raw files to the destination folder" DisplayName="Download_File_Attachment" sap:VirtualizedContainerService.HintSize="670.4,4695.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="ienAttachment" />
       <Variable x:TypeArguments="x:String" Name="strRawFilePath" />
@@ -164,13 +166,13 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEach x:TypeArguments="snm:Attachment" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="607.6981132075472,4406.037735849056" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_mailMessage.Attachments]">
+    <ui:ForEach x:TypeArguments="snm:Attachment" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="608,4491.2" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_mailMessage.Attachments]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:Attachment">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:Attachment" Name="attachment" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="571.4716981132075,4281.962264150943" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572.8,4365.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strFolderPath" />
             </Sequence.Variables>
@@ -179,24 +181,24 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Not attachment.ContentId = in_strAttachmentId]" sap:VirtualizedContainerService.HintSize="509.88679245283015,421.1320754716981" sap2010:WorkflowViewState.IdRef="If_5">
+            <If Condition="[Not attachment.ContentId = in_strAttachmentId]" sap:VirtualizedContainerService.HintSize="510.4,430.4" sap2010:WorkflowViewState.IdRef="If_5">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,240.9056603773585" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence sap:VirtualizedContainerService.HintSize="377.6,247.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.18867924528297,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;{0} Skip attachment: {1}...&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, attachment.Name)]" />
-                  <ui:Continue sap:VirtualizedContainerService.HintSize="334.18867924528297,25.358490566037734" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;{0} Skip attachment: {1}...&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, attachment.Name)]" />
+                  <ui:Continue sap:VirtualizedContainerService.HintSize="334.4,24.8" sap2010:WorkflowViewState.IdRef="Continue_1" />
                 </Sequence>
               </If.Then>
               <If.Else>
                 <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10" />
               </If.Else>
             </If>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="509.88679245283015,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot;: Downloading attachment...&quot;]" />
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="509.88679245283015,162.1132075471698" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot;: Downloading attachment...&quot;]" />
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="510.4,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -226,20 +228,20 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <If sap2010:Annotation.AnnotationText="This will be used if an email has multiple dates in its content, so the log will be correct (e.g 1 email has report for dates 29,30,31 october)" Condition="[Not in_TransactionItem.SpecificContent(&quot;Schedule&quot;).ToString.ToLower = &quot;monthly&quot;]" DisplayName="If email's content consists of multiple dates" sap:VirtualizedContainerService.HintSize="509.88679245283015,416.60377358490564" sap2010:WorkflowViewState.IdRef="If_2">
+            <If sap2010:Annotation.AnnotationText="This will be used if an email has multiple dates in its content, so the log will be correct (e.g 1 email has report for dates 29,30,31 october)" Condition="[Not in_TransactionItem.SpecificContent(&quot;Schedule&quot;).ToString.ToLower = &quot;monthly&quot;]" DisplayName="If email's content consists of multiple dates" sap:VirtualizedContainerService.HintSize="510.4,430.4" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="420.2264150943396,197.43396226415092" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence sap:VirtualizedContainerService.HintSize="421.6,203.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379.47169811320754,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[DateTime.MinValue]</InArgument>
                       <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">[in_datePeriod]</InArgument>
@@ -253,8 +255,8 @@
                 <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6" />
               </If.Else>
             </If>
-            <ui:SaveMailAttachments Attachments="[ienAttachment]" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[strRawFolderPath]" sap:VirtualizedContainerService.HintSize="509.88679245283015,91.47169811320754" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[in_mailMessage]" OverwriteExisting="True" />
-            <Assign DisplayName="Assign - Get raw file name .ext" sap:VirtualizedContainerService.HintSize="509.88679245283015,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <ui:SaveMailAttachments Attachments="[ienAttachment]" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[strRawFolderPath]" sap:VirtualizedContainerService.HintSize="510.4,89.6" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[in_mailMessage]" OverwriteExisting="True" />
+            <Assign DisplayName="Assign - Get raw file name .ext" sap:VirtualizedContainerService.HintSize="510.4,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strRawFilePath]</OutArgument>
               </Assign.To>
@@ -262,8 +264,8 @@
                 <InArgument x:TypeArguments="x:String">[ienAttachment.First]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFolderPathExists]" sap:VirtualizedContainerService.HintSize="509.88679245283015,88.75471698113206" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[strFolderPath]" PathType="Folder" />
-            <If Condition="[isFolderPathExists = False]" DisplayName="If - isFolderPathExist = false, create first" sap:VirtualizedContainerService.HintSize="509.88679245283015,345.05660377358487" sap2010:WorkflowViewState.IdRef="If_1">
+            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFolderPathExists]" sap:VirtualizedContainerService.HintSize="510.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[strFolderPath]" PathType="Folder" />
+            <If Condition="[isFolderPathExists = False]" DisplayName="If - isFolderPathExist = false, create first" sap:VirtualizedContainerService.HintSize="510.4,353.6" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -271,13 +273,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,164.83018867924528" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="376.8,170.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder - Destination folder" sap:VirtualizedContainerService.HintSize="334.18867924528297,78.79245283018868" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[strFolderPath]" />
+                  <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder - Destination folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[strFolderPath]" />
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -290,7 +292,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <Assign sap:VirtualizedContainerService.HintSize="509.88679245283015,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign sap:VirtualizedContainerService.HintSize="510.4,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strRawFilePathQueue]</OutArgument>
               </Assign.To>
@@ -298,16 +300,16 @@
                 <InArgument x:TypeArguments="x:String">[strRawFilePath]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[Not String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;Credential Zip&quot;).ToString)]" DisplayName="If credential for zip in config is not null" sap:VirtualizedContainerService.HintSize="509.88679245283015,674.7169811320754" sap2010:WorkflowViewState.IdRef="If_8">
+            <If Condition="[Not String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;Credential Zip&quot;).ToString)]" DisplayName="If credential for zip in config is not null" sap:VirtualizedContainerService.HintSize="510.4,690.4" sap2010:WorkflowViewState.IdRef="If_8">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="475.47169811320754,494.4905660377358" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <Sequence sap:VirtualizedContainerService.HintSize="476.8,507.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="[in_TransactionItem.SpecificContent(&quot;Credential Zip&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential for zip password" sap:VirtualizedContainerService.HintSize="434.71698113207543,136.75471698113208" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3" Password="[secstrZipPassword]" />
-                  <Assign DisplayName="Assign secure string from credential to string" sap:VirtualizedContainerService.HintSize="434.71698113207543,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="[in_TransactionItem.SpecificContent(&quot;Credential Zip&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential for zip password" sap:VirtualizedContainerService.HintSize="433.6,142.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3" Password="[secstrZipPassword]" />
+                  <Assign DisplayName="Assign secure string from credential to string" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[strZipPassword]</OutArgument>
                     </Assign.To>
@@ -315,7 +317,7 @@
                       <InArgument x:TypeArguments="x:String">[new System.Net.NetworkCredential(string.Empty, secstrZipPassword).Password]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Substitute_DateFormat_String.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434.71698113207543,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Workflow\Substitute_DateFormat_String.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Substitute_DateFormat_String.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Workflow\Substitute_DateFormat_String.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">[in_datePeriod]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_strToSubs">[strZipPassword]</InOutArgument>
@@ -328,7 +330,7 @@
                 <Sequence sap2010:WorkflowViewState.IdRef="Sequence_16" />
               </If.Else>
             </If>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Extract_Files.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="509.88679245283015,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Extract_Files.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Extract_Files.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Extract_Files.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">[strRawFolderPath]</InArgument>
@@ -336,9 +338,9 @@
                 <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">[strZipPassword]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <If Condition="[Not String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;Credential File&quot;).ToString)]" DisplayName="If credential for file in config is not null" sap:VirtualizedContainerService.HintSize="509.88679245283015,825.9622641509434" sap2010:WorkflowViewState.IdRef="If_9">
+            <If Condition="[Not String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;Credential File&quot;).ToString)]" DisplayName="If credential for file in config is not null" sap:VirtualizedContainerService.HintSize="510.4,844" sap2010:WorkflowViewState.IdRef="If_9">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="475.47169811320754,645.7358490566037" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence sap:VirtualizedContainerService.HintSize="476.8,660.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="ss:SecureString" Name="secStrFilePassword" />
                     <Variable x:TypeArguments="x:String" Name="strFilePassword" />
@@ -348,8 +350,8 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="[in_TransactionItem.SpecificContent(&quot;Credential File&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential for the file password" sap:VirtualizedContainerService.HintSize="434.71698113207543,136.75471698113208" sap2010:WorkflowViewState.IdRef="GetRobotCredential_4" Password="[secStrFilePassword]" />
-                  <Assign DisplayName="Assign secure string from credential to string" sap:VirtualizedContainerService.HintSize="434.71698113207543,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="[in_TransactionItem.SpecificContent(&quot;Credential File&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential for the file password" sap:VirtualizedContainerService.HintSize="433.6,142.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_4" Password="[secStrFilePassword]" />
+                  <Assign DisplayName="Assign secure string from credential to string" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[strFilePassword]</OutArgument>
                     </Assign.To>
@@ -357,14 +359,14 @@
                       <InArgument x:TypeArguments="x:String">[new System.Net.NetworkCredential(string.Empty, secStrFilePassword).Password]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Substitute_DateFormat_String.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434.71698113207543,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom_Workflow\Substitute_DateFormat_String.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Substitute_DateFormat_String.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom_Workflow\Substitute_DateFormat_String.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtPeriod">[in_datePeriod]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_strToSubs">[strFilePassword]</InOutArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_strPID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Excel_RemovePasswordProtection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434.71698113207543,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Custom_Workflow\Excel_RemovePasswordProtection.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Excel_RemovePasswordProtection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Custom_Workflow\Excel_RemovePasswordProtection.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_strRawFileName">[strRawFilePath]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_strPID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
@@ -378,19 +380,30 @@
                 <Sequence sap2010:WorkflowViewState.IdRef="Sequence_18" />
               </If.Else>
             </If>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert_Copy_Files.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="509.88679245283015,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Custom_Workflow\Convert_Copy_Files.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Convert_Copy_Files.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Custom_Workflow\Convert_Copy_Files.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePath]</InArgument>
-                <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
-                <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePathQueue">[strRawFilePathQueue]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">[strRawFolderPath]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">[strRawFilePath]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
+                </InArgument>
+                <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">
+                  <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
+                </InArgument>
+                <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                  <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                </InArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                  <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFolderPath" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
+                </InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:LogMessage DisplayName="Log Message - End of process download file" sap:VirtualizedContainerService.HintSize="509.88679245283015,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot; Break...&quot;]" />
-            <ui:Break sap:VirtualizedContainerService.HintSize="509.88679245283015,25.358490566037734" sap2010:WorkflowViewState.IdRef="Break_2" />
+            <ui:LogMessage DisplayName="Log Message - End of process download file" sap:VirtualizedContainerService.HintSize="510.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot; Break...&quot;]" />
+            <ui:Break sap:VirtualizedContainerService.HintSize="510.4,24.8" sap2010:WorkflowViewState.IdRef="Break_2" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
