@@ -1,12 +1,13 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SplitTxtFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SplitTxtFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_listHeader" Type="InArgument(scg:List(x:String))" />
     <x:Property Name="in_strRawFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_listDateRange" Type="InArgument(scg:List(s:DateTime))" />
     <x:Property Name="in_strFilename" Type="InArgument(x:String)" />
-    <x:Property Name="in_strDateFormat" Type="InArgument(x:String)" />
     <x:Property Name="in_strFolderPath" Type="InArgument(x:String)" />
-    <x:Property Name="out_listFilePath" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="out_listFilePath" Type="OutArgument(scg:List(x:String))" />
+    <x:Property Name="in_strDateFilterFormat" Type="InArgument(x:String)" />
+    <x:Property Name="in_strFileRegexPattern" Type="InArgument(x:String)" />
   </x:Members>
   <this:SplitTxtFile.in_listDateRange>
     <InArgument x:TypeArguments="scg:List(s:DateTime)" />
@@ -14,7 +15,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>869.6,2513.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1682,3155</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SplitTxtFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -47,6 +48,8 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>UiPath.Activities.System.Collections</x:String>
       <x:String>UiPath.Activities.System.Arrays</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -102,23 +105,30 @@
       <AssemblyReference>System.IO.Packaging</AssemblyReference>
       <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SplitTxtFile" sap:VirtualizedContainerService.HintSize="768,2448.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SplitTxtFile" sap:VirtualizedContainerService.HintSize="866,3090" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strRawTxtFile" />
       <Variable x:TypeArguments="s:String[]" Name="arrLines" />
       <Variable x:TypeArguments="x:String" Name="strFilename" />
       <Variable x:TypeArguments="x:Int32" Name="counter" />
       <Variable x:TypeArguments="x:String" Name="strHeader" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listFilePath">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String)" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="strFilePath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile File="{x:Null}" Content="[strRawTxtFile]" DisplayName="Read Text File" FileName="[in_strRawFilePath]" sap:VirtualizedContainerService.HintSize="705.6,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <Assign sap:VirtualizedContainerService.HintSize="705.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:ReadTextFile File="{x:Null}" Content="[strRawTxtFile]" DisplayName="Read Text File" FileName="[in_strRawFilePath]" sap:VirtualizedContainerService.HintSize="804,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <Assign sap:VirtualizedContainerService.HintSize="804,81" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[arrLines]</OutArgument>
       </Assign.To>
@@ -126,38 +136,40 @@
         <InArgument x:TypeArguments="s:String[]">[strRawTxtFile.Split(Environment.NewLine.ToArray())]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="705.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="804,81" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strFilename]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[Path.GetFileName(in_strRawFilePath)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_strFilename]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="s:DateTime" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="705.6,1972.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_listDateRange]">
+    <ui:ForEach x:TypeArguments="s:DateTime" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="804,2617" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_listDateRange]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="s:DateTime">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="s:DateTime" Name="date_" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="670.4,1847.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="768,2491" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="strFilePath" />
+              <Variable x:TypeArguments="x:Int32" Name="intHeaderIndex" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="608,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign DisplayName="Multiple Assign - counter for writing header" sap:VirtualizedContainerService.HintSize="706,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
                     <ui:AssignOperation.To>
-                      <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[strHeader]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -165,7 +177,7 @@
                       <OutArgument x:TypeArguments="x:String">[strFilename]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">[strFilename.Replace(in_listDateRange.Last.ToString("ddMMMyy"), date_.ToString("ddMMMyy"))]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(strFilename, in_strFileRegexPattern, date_.ToString("ddMMMyy"), RegexOptions.IgnoreCase)]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -179,40 +191,79 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="608,135.2" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_2" ItemToAppend="[strFilePath]" List="[out_listFilePath]" />
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="608,1356" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[arrLines]">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="706,393" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+              <TryCatch.Try>
+                <ui:InvokeCode ContinueOnError="{x:Null}" Code="io_listFilePath.Add(in_strFilePath);&#xD;&#xA;&#xD;&#xA;out_listFilePath = io_listFilePath;&#xD;&#xA;Console.WriteLine(String.Join(&quot;,&quot;, out_listFilePath));" DisplayName="Invoke Code - Append strFilePath to listFilePath" sap:VirtualizedContainerService.HintSize="334,165" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+                  <ui:InvokeCode.Arguments>
+                    <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_listFilePath">
+                      <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="listFilePath" />
+                    </InOutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
+                    </InArgument>
+                    <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_listFilePath">
+                      <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="out_listFilePath" />
+                    </OutArgument>
+                  </ui:InvokeCode.Arguments>
+                </ui:InvokeCode>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <Throw Exception="[New Exception(exception.InnerException.ToString)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[intHeaderIndex]" DisplayName="For Each - Create header" sap:VirtualizedContainerService.HintSize="706,891" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[in_listHeader]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="x:String" Name="line" />
+                    <DelegateInArgument x:TypeArguments="x:String" Name="header" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572.8,1230.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="670,765" sap2010:WorkflowViewState.IdRef="Sequence_18">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - Add header" sap:VirtualizedContainerService.HintSize="510.4,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[in_listHeader]">
+                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each -  line in arrLines" sap:VirtualizedContainerService.HintSize="608,654" sap2010:WorkflowViewState.IdRef="ForEach`1_11" Values="[arrLines]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="x:String">
                           <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="x:String" Name="header" />
+                            <DelegateInArgument x:TypeArguments="x:String" Name="line" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572.8,531.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,528" sap2010:WorkflowViewState.IdRef="Sequence_19">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <If Condition="[line.ToString.ToUpper.Contains(header.ToUpper)]" DisplayName="If - line matched with header, then store the line into strHeader" sap:VirtualizedContainerService.HintSize="510.4,419.2" sap2010:WorkflowViewState.IdRef="If_1">
+                            <If Condition="[line.ToString.ToUpper.Contains(header.ToUpper)]" DisplayName="If - line matched with header, then store the line into strHeader" sap:VirtualizedContainerService.HintSize="510,417" sap2010:WorkflowViewState.IdRef="If_5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
                               <If.Then>
-                                <Sequence sap:VirtualizedContainerService.HintSize="476.8,236" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                <Sequence sap:VirtualizedContainerService.HintSize="476,235" sap2010:WorkflowViewState.IdRef="Sequence_16">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">[strHeader]</OutArgument>
                                     </Assign.To>
@@ -220,11 +271,11 @@
                                       <InArgument x:TypeArguments="x:String">[strHeader + line + Environment.NewLine]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <ui:Break sap:VirtualizedContainerService.HintSize="433.6,24.8" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                  <ui:Break sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="Break_3" />
                                 </Sequence>
                               </If.Then>
                               <If.Else>
-                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6" />
+                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_17" />
                               </If.Else>
                             </If>
                           </Sequence>
@@ -232,55 +283,43 @@
                       </ui:ForEach.Body>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ForEach>
-                    <If Condition="[line.ToString.Contains(date_.ToString(in_strDateFormat))]" DisplayName="If - line matched with date" sap:VirtualizedContainerService.HintSize="510.4,1025.6" sap2010:WorkflowViewState.IdRef="If_2">
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+            <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[strFilePath]" sap:VirtualizedContainerService.HintSize="706,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strHeader]" />
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="706,640" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[arrLines]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="line" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="472,514" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[line.ToString.Contains(date_.ToString(in_strDateFilterFormat))]" DisplayName="If - line matched with date" sap:VirtualizedContainerService.HintSize="410,403" sap2010:WorkflowViewState.IdRef="If_2">
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,842.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <Sequence sap:VirtualizedContainerService.HintSize="376,221" sap2010:WorkflowViewState.IdRef="Sequence_9">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <If Condition="[counter = 0]" sap:VirtualizedContainerService.HintSize="433.6,631.2" sap2010:WorkflowViewState.IdRef="If_3">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="376.8,224" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[strFilePath]" sap:VirtualizedContainerService.HintSize="333.6,134.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[line]" />
-                              </Sequence>
-                            </If.Then>
-                            <If.Else>
-                              <Sequence sap:VirtualizedContainerService.HintSize="376.8,224" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="[strFilePath]" sap:VirtualizedContainerService.HintSize="333.6,134.4" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[line]" UseDefaultEncoding="False" />
-                              </Sequence>
-                            </If.Else>
-                          </If>
-                          <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_7">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:Int32">[counter]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:Int32">[counter + 1]</InArgument>
-                            </Assign.Value>
-                          </Assign>
+                          <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="[strFilePath]" sap:VirtualizedContainerService.HintSize="334,133" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[line]" UseDefaultEncoding="False" />
                         </Sequence>
                       </If.Then>
                       <If.Else>
@@ -290,10 +329,22 @@
                   </Sequence>
                 </ActivityAction>
               </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
   </Sequence>
 </Activity>
