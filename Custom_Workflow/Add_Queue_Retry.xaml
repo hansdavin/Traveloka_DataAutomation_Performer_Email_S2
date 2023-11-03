@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>784.8,1328</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>784.8,1460.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Add_Queue_Retry_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -86,9 +86,12 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Queue_Retry" sap:VirtualizedContainerService.HintSize="517.6,1263.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add_Queue_Retry" sap:VirtualizedContainerService.HintSize="517.6,1396" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strQueueReference" />
       <Variable x:TypeArguments="x:Int32" Name="intAutoRetryMax" />
@@ -102,6 +105,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="455.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} [{1}]&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, &quot;STEP : Add Queue Retry&quot;)]" />
     <ui:MultipleAssign sap2010:Annotation.AnnotationText="Get Queue Reference Name, Max Retry, Postpone" DisplayName="Multiple Assign - Queue reference, max retry, postpone" sap:VirtualizedContainerService.HintSize="455.2,195.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -137,14 +141,10 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="replace any date format found in string, the string should look like this -&gt; &quot;foo {yyyMM}&quot; (date format should be in between { })" Code="string pattern = @&quot;\{(\d+)\}&quot;;&#xD;&#xA;int incrementedInteger = 1;&#xD;&#xA;&#xD;&#xA;if (System.Text.RegularExpressions.Regex.IsMatch(io_strQueueReference, pattern))&#xD;&#xA;{&#xD;&#xA;    // Use Regex.Replace with a MatchEvaluator function to increment&#xD;&#xA;    io_strQueueReference =  System.Text.RegularExpressions.Regex.Replace(io_strQueueReference, pattern, match =&gt;&#xD;&#xA;    {&#xD;&#xA;        int originalInteger = int.Parse(match.Groups[1].Value);&#xD;&#xA;&#x9;&#x9;incrementedInteger = originalInteger + 1;&#xD;&#xA;        return &quot;{&quot; + incrementedInteger + &quot;}&quot;;&#xD;&#xA;    });&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;    // If the pattern is not matched, add {1} in front of the string&#xD;&#xA;    io_strQueueReference =  &quot;{1}_&quot; + io_strQueueReference;&#xD;&#xA;}&#xD;&#xA;out_intRetried = incrementedInteger;" DisplayName="Invoke code -  replace any date format in string" sap:VirtualizedContainerService.HintSize="455.2,224.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="replace any date format found in string, the string should look like this -&gt; &quot;foo {yyyMM}&quot; (date format should be in between { })" Code="string pattern = @&quot;\{(\d+)\}&quot;;&#xA;int incrementedInteger = 1;&#xA;&#xA;if (System.Text.RegularExpressions.Regex.IsMatch(io_strQueueReference, pattern))&#xA;{&#xA;    // Use Regex.Replace with a MatchEvaluator function to increment&#xA;    io_strQueueReference =  System.Text.RegularExpressions.Regex.Replace(io_strQueueReference, pattern, match =&gt;&#xA;    {&#xA;        int originalInteger = int.Parse(match.Groups[1].Value);&#xA;&#x9;&#x9;incrementedInteger = originalInteger + 1;&#xA;        return &quot;{&quot; + incrementedInteger + &quot;}&quot;;&#xA;    });&#xA;}&#xA;else&#xA;{&#xA;    // If the pattern is not matched, add {1} in front of the string&#xA;    io_strQueueReference =  &quot;{1}_&quot; + io_strQueueReference;&#xA;}&#xA;out_intRetried = incrementedInteger;" DisplayName="Invoke code -  replace any date format in string" sap:VirtualizedContainerService.HintSize="455.2,224.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
       <ui:InvokeCode.Arguments>
-        <InOutArgument x:TypeArguments="x:String" x:Key="io_strQueueReference">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strQueueReference" />
-        </InOutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="out_intRetried">
-          <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intRetried" />
-        </OutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_strQueueReference">[strQueueReference]</InOutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_intRetried">[intRetried]</OutArgument>
       </ui:InvokeCode.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -165,21 +165,13 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Get_EmailDate_Asset.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strAssetName">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;GlobalVarAsset&quot;).ToString" />
-              </InArgument>
-              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dateStartPeriod">
-                <VisualBasicReference x:TypeArguments="s:DateTime" ExpressionText="dateStartPeriod" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dateEndPeriod">
-                <VisualBasicReference x:TypeArguments="s:DateTime" ExpressionText="dateEndPeriod" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="out_listStartEndRange">
-                <VisualBasicReference x:TypeArguments="scg:List(s:DateTime)" ExpressionText="listStartEndRange" />
-              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strAssetName">[in_Config("GlobalVarAsset").ToString]</InArgument>
+              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dateStartPeriod">[dateStartPeriod]</OutArgument>
+              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dateEndPeriod">[dateEndPeriod]</OutArgument>
+              <OutArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="out_listStartEndRange">[listStartEndRange]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" DeferDate="[dateEndPeriod.AddHours(intAutoRetryPostpone)]" DisplayName="Add Queue Item For Current BP" sap:VirtualizedContainerService.HintSize="378.4,224.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[strQueueReference]">
+          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" DeferDate="[Now.AddHours(intAutoRetryPostpone)]" DisplayName="Add Queue Item For Current BP" sap:VirtualizedContainerService.HintSize="378.4,224.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[strQueueReference]">
             <ui:AddQueueItem.ItemInformation>
               <InArgument x:TypeArguments="x:String" x:Key="BPID">[in_TransactionItem.SpecificContent("BPID").ToString]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="Key">[in_TransactionItem.SpecificContent("Key").ToString]</InArgument>
