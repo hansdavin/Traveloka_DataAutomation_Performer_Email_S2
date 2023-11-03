@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>784.8,1460.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>784.8,995.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Add_Queue_Retry_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -91,7 +91,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Queue_Retry" sap:VirtualizedContainerService.HintSize="517.6,1396" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add_Queue_Retry" sap:VirtualizedContainerService.HintSize="492.8,930.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strQueueReference" />
       <Variable x:TypeArguments="x:Int32" Name="intAutoRetryMax" />
@@ -105,8 +105,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="455.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} [{1}]&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, &quot;STEP : Add Queue Retry&quot;)]" />
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Get Queue Reference Name, Max Retry, Postpone" DisplayName="Multiple Assign - Queue reference, max retry, postpone" sap:VirtualizedContainerService.HintSize="455.2,195.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="430.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} {1}&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, &quot;STEP : Add Queue Retry&quot;)]" />
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Get Queue Reference Name, Max Retry, Postpone" DisplayName="Multiple Assign - Queue reference, max retry, postpone" sap:VirtualizedContainerService.HintSize="430.4,195.2" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -141,7 +141,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="replace any date format found in string, the string should look like this -&gt; &quot;foo {yyyMM}&quot; (date format should be in between { })" Code="string pattern = @&quot;\{(\d+)\}&quot;;&#xD;&#xA;int incrementedInteger = 0;&#xD;&#xA;&#xD;&#xA;if (System.Text.RegularExpressions.Regex.IsMatch(io_strQueueReference, pattern))&#xD;&#xA;{&#xD;&#xA;    // Use Regex.Replace with a MatchEvaluator function to increment&#xD;&#xA;    io_strQueueReference =  System.Text.RegularExpressions.Regex.Replace(io_strQueueReference, pattern, match =&gt;&#xD;&#xA;    {&#xD;&#xA;        int originalInteger = int.Parse(match.Groups[1].Value);&#xD;&#xA;&#x9;&#x9;incrementedInteger = originalInteger + 1;&#xD;&#xA;        return &quot;{&quot; + incrementedInteger + &quot;}&quot;;&#xD;&#xA;    });&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;    // If the pattern is not matched, add {1} in front of the string&#xD;&#xA;    io_strQueueReference =  &quot;{1}_&quot; + io_strQueueReference;&#xD;&#xA;}&#xD;&#xA;out_intRetried = incrementedInteger;" DisplayName="Invoke code -  replace any date format in string" sap:VirtualizedContainerService.HintSize="455.2,224.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="replace any date format found in string, the string should look like this -&gt; &quot;foo {yyyMM}&quot; (date format should be in between { })" Code="string pattern = @&quot;\{(\d+)\}&quot;;&#xD;&#xA;int incrementedInteger = 1;&#xD;&#xA;&#xD;&#xA;if (System.Text.RegularExpressions.Regex.IsMatch(io_strQueueReference, pattern))&#xD;&#xA;{&#xD;&#xA;    // Use Regex.Replace with a MatchEvaluator function to increment&#xD;&#xA;    io_strQueueReference =  System.Text.RegularExpressions.Regex.Replace(io_strQueueReference, pattern, match =&gt;&#xD;&#xA;    {&#xD;&#xA;        int originalInteger = int.Parse(match.Groups[1].Value);&#xD;&#xA;&#x9;&#x9;incrementedInteger = originalInteger + 1;&#xD;&#xA;        return &quot;{&quot; + incrementedInteger + &quot;}&quot;;&#xD;&#xA;    });&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;    // If the pattern is not matched, add {1} in front of the string&#xD;&#xA;    io_strQueueReference =  &quot;{1}_&quot; + io_strQueueReference;&#xD;&#xA;}&#xD;&#xA;out_intRetried = incrementedInteger;" DisplayName="Invoke code -  replace any date format in string" sap:VirtualizedContainerService.HintSize="430.4,224.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
       <ui:InvokeCode.Arguments>
         <InOutArgument x:TypeArguments="x:String" x:Key="io_strQueueReference">[strQueueReference]</InOutArgument>
         <OutArgument x:TypeArguments="x:Int32" x:Key="out_intRetried">[intRetried]</OutArgument>
@@ -152,7 +152,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeCode>
-    <If Condition="[intRetried &lt; intAutoRetryMax]" sap:VirtualizedContainerService.HintSize="455.2,651.2" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[intRetried &lt;= intAutoRetryMax]" sap:VirtualizedContainerService.HintSize="430.4,52.8" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="421.6,468" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
@@ -207,5 +213,6 @@
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4" />
       </If.Else>
     </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="430.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Retried: {0}, Max: {1}&quot;, intRetried, intAutoRetryMax)]" />
   </Sequence>
 </Activity>
