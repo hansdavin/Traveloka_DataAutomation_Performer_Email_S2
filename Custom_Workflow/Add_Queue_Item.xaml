@@ -4,12 +4,12 @@
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_datePeriod" Type="InArgument(s:DateTime)" />
     <x:Property Name="in_strFilePath" Type="InArgument(x:String)" />
-    <x:Property Name="in_strRawFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_strRawFilePath" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>869.6,620</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>784.8,620</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AddQueueItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -105,7 +105,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="PID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Email User CC">[in_TransactionItem.SpecificContent("Email User CC").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Email Technical CC">[in_TransactionItem.SpecificContent("Email Technical CC").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="PathRawFile">[in_strRawFileName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="PathRawFile">[in_strRawFilePath]</InArgument>
       </ui:AddQueueItem.ItemInformation>
       <ui:AddQueueItem.TimeoutMS>
         <InArgument x:TypeArguments="x:Int32" />
