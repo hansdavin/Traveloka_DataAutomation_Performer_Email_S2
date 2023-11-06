@@ -580,14 +580,14 @@
                             <InArgument x:TypeArguments="x:String">["Pass\s*:\s*(.*?)(?:\r\n|\n|$)"]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Match the pattern in the input string&#xD;&#xA;Match match = Regex.Match(in_strEmailBody, in_strPattern, RegexOptions.Singleline);&#xD;&#xA;&#xD;&#xA;// Check if the pattern was matched&#xD;&#xA;if (match.Success)&#xD;&#xA;{&#xD;&#xA;    // Extract &quot;Password&quot; value&#xD;&#xA;    out_strZipPassword = match.Groups[1].Value.Trim();&#xD;&#xA;&#x9;out_isExtractedFromBody = true;&#xD;&#xA;    Console.WriteLine(&quot;Password value: &quot; + out_strZipPassword);&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;&#x9;out_isExtractedFromBody = false;&#xD;&#xA;    Console.WriteLine(&quot;Password value not found.&quot;);&#xD;&#xA;}" DisplayName="Invoke Code - Get password from email body" sap:VirtualizedContainerService.HintSize="761.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
+                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Match the pattern in the input string&#xD;&#xA;Match match = Regex.Match(in_strEmailBody, in_strPattern, RegexOptions.Singleline);&#xD;&#xA;&#xD;&#xA;// Check if the pattern was matched&#xD;&#xA;if (match.Success)&#xD;&#xA;{&#xD;&#xA;    // Extract &quot;Password&quot; value&#xD;&#xA;    io_strZipPassword = match.Groups[1].Value.Trim();&#xD;&#xA;&#x9;out_isExtractedFromBody = true;&#xD;&#xA;    Console.WriteLine(&quot;Password value: &quot; + io_strZipPassword);&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;&#x9;out_isExtractedFromBody = false;&#xD;&#xA;    Console.WriteLine(&quot;Password value not found.&quot;);&#xD;&#xA;}" DisplayName="Invoke Code - Get password from email body" sap:VirtualizedContainerService.HintSize="761.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
                           <ui:InvokeCode.Arguments>
                             <InArgument x:TypeArguments="x:String" x:Key="in_strEmailBody">
                               <VisualBasicValue x:TypeArguments="x:String" ExpressionText="email.Body" />
                             </InArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_strZipPassword">
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_strZipPassword">
                               <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strZipPassword" />
-                            </OutArgument>
+                            </InOutArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_strPattern">
                               <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strPasswordPattern" />
                             </InArgument>
