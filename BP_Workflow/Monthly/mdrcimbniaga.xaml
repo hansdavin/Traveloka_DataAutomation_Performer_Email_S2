@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1064.8,8672.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1064.8,8897.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>mdrcimbniaga_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -45,6 +45,7 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>FuzzierSharp</x:String>
+      <x:String>System.Globalization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -105,7 +106,7 @@
       <AssemblyReference>FuzzierSharp</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not&#xA;5. M - 1&#xA;6. Check body email for password" DisplayName="mdrcimbniaga" sap:VirtualizedContainerService.HintSize="1075.2,8608" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not&#xA;5. M - 1&#xA;6. Check body email for password" DisplayName="mdrcimbniaga" sap:VirtualizedContainerService.HintSize="1075.2,8832.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
       <Variable x:TypeArguments="x:String" Name="strFolderPath" />
@@ -122,6 +123,9 @@
       <Variable x:TypeArguments="x:String" Name="strEmailSubjectConfig" />
       <Variable x:TypeArguments="x:String" Name="strEmailSubject" />
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
+      <Variable x:TypeArguments="x:String" Name="strZipPassword" />
+      <Variable x:TypeArguments="x:String" Name="strPasswordPattern" />
+      <Variable x:TypeArguments="x:Boolean" Name="isExtractedFromBody" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -174,7 +178,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="476.8,1068.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence sap:VirtualizedContainerService.HintSize="476.8,898.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -190,7 +194,7 @@
           </Assign>
           <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - Destination folder path" Exists="[isFolderNotRerunExist]" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[strFolderPath]" PathType="Folder" />
           <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - Destination file path" Exists="[isFileNotRerunExist]" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[strFilePath]" PathType="File" />
-          <If Condition="[isFolderNotRerunExist AndAlso Not isFileNotRerunExist]" DisplayName="If file in folder path today does not exist, then delete the folder" sap:VirtualizedContainerService.HintSize="433.6,353.6" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[isFolderNotRerunExist AndAlso Not isFileNotRerunExist]" DisplayName="If file in folder path today does not exist, then delete the folder" sap:VirtualizedContainerService.HintSize="433.6,183.2" sap2010:WorkflowViewState.IdRef="If_3">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="376.8,170.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
@@ -239,6 +243,14 @@
         </Sequence>
       </If.Else>
     </If>
+    <Assign sap:VirtualizedContainerService.HintSize="1012.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strZipPassword]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Format("cimbniaga{0}", in_datePeriod.Year.ToString("yyyy"))]</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1012.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[New Date(in_datePeriod.Year, in_datePeriod.Month, 1)]</InArgument>
@@ -248,7 +260,7 @@
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFileExist]" sap:VirtualizedContainerService.HintSize="1012.8,90.4" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[strFilePath]" PathType="File" />
-    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="1012.8,7364" sap2010:WorkflowViewState.IdRef="If_2">
+    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="1012.8,7467.2" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -257,7 +269,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="979.2,6967.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="979.2,7070.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -304,7 +316,7 @@
               <OutArgument x:TypeArguments="x:String" x:Key="out_strRegexPattern">[strFileNamePattern]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <If Condition="[listMailMessages.Count &gt; 0]" DisplayName="If - in_listMailMessages.Count &gt; 0" sap:VirtualizedContainerService.HintSize="936,6032" sap2010:WorkflowViewState.IdRef="If_4">
+          <If Condition="[listMailMessages.Count &gt; 0]" DisplayName="If - in_listMailMessages.Count &gt; 0" sap:VirtualizedContainerService.HintSize="936,6135.2" sap2010:WorkflowViewState.IdRef="If_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -312,7 +324,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="902.4,5668.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence sap:VirtualizedContainerService.HintSize="902.4,5772" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Int32" Name="intListMailIndex" />
                 </Sequence.Variables>
@@ -321,37 +333,13 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="859.2,316" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                  <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,237.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <Assign sap2010:Annotation.AnnotationText="remove unnecessary symbol from sender domain, might remove later&#xA;" DisplayName="Assign - Unnecessary symbol" sap:VirtualizedContainerService.HintSize="433.6,125.6" sap2010:WorkflowViewState.IdRef="Assign_4">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="s:Char[]">[arrSymbolToRemove]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="s:Char[]">[{"&lt;"c, "&gt;"c}]</InArgument>
-                        </Assign.Value>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Assign>
-                    </Sequence>
-                  </ui:CommentOut.Body>
-                </ui:CommentOut>
-                <ui:ForEach x:TypeArguments="snm:MailMessage" sap2010:Annotation.AnnotationText="Loop through the list of emails" CurrentIndex="[intListMailIndex]" DisplayName="For Each - Email in in_listMailMessages" sap:VirtualizedContainerService.HintSize="859.2,4820" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[listMailMessages]">
+                <ui:ForEach x:TypeArguments="snm:MailMessage" sap2010:Annotation.AnnotationText="Loop through the list of emails" CurrentIndex="[intListMailIndex]" DisplayName="For Each - Email in in_listMailMessages" sap:VirtualizedContainerService.HintSize="859.2,5279.2" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[listMailMessages]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="snm:MailMessage">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="email" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="824,4664" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="824,5123.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -400,7 +388,7 @@
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <If Condition="[attachment.Name.Contains(in_datePeriod.ToString(&quot;yyyyMMdd&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;dd-MM-yy&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;dd MMM yyyy&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;yyyy-MM-dd&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;ddMMyy&quot;)) Or&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMMM&quot;).ToLower) Or&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMM&quot;).ToLower) Or&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMMM&quot;, New CultureInfo(&quot;id-ID&quot;)).ToLower) Or&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMM&quot;, New CultureInfo(&quot;id-ID&quot;)).ToLower) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;MM.yyyy&quot;))]" DisplayName="If - File attachment name contains datePeriod" sap:VirtualizedContainerService.HintSize="510.4,540.8" sap2010:WorkflowViewState.IdRef="If_5">
+                                            <If Condition="[attachment.Name.Contains(in_datePeriod.ToString(&quot;yyyyMMdd&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;dd-MM-yy&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;dd MMM yyyy&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;yyyy-MM-dd&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;ddMMyy&quot;)) Or&#xD;&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMMM&quot;).ToLower) Or&#xD;&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMM&quot;).ToLower) Or&#xD;&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMMM&quot;, New CultureInfo(&quot;id-ID&quot;)).ToLower) Or&#xD;&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMM&quot;, New CultureInfo(&quot;id-ID&quot;)).ToLower) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;MM.yyyy&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;MMyy&quot;))]" DisplayName="If - File attachment name contains datePeriod" sap:VirtualizedContainerService.HintSize="510.4,540.8" sap2010:WorkflowViewState.IdRef="If_5">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -537,6 +525,7 @@
 	"\b\d{4}-\d{2}-\d{2}\b",
 	"\b\d{4}/\d{2}/\d{2}\b",
 	"\b\d{2}-[A-Za-z]{3}-\d{4}\b",
+	"\b(0[1-9]|1[0-2])\d{2}\b",
 	"\[WARNING: ATTACHMENT UNSCANNED\]\s*",
 	"^Fwd:\s*",
 	"^Fw:\s*",
@@ -583,6 +572,31 @@
                             <InArgument x:TypeArguments="x:String">[Path.GetDirectoryName(strFilePath)]</InArgument>
                           </Assign.Value>
                         </Assign>
+                        <Assign DisplayName="Assign - Password pattern" sap:VirtualizedContainerService.HintSize="761.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strPasswordPattern]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["Pass\s*:\s*(.*?)(?:\r\n|\n|$)"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Match the pattern in the input string&#xD;&#xA;Match match = Regex.Match(in_strEmailBody, in_strPattern, RegexOptions.Singleline);&#xD;&#xA;&#xD;&#xA;// Check if the pattern was matched&#xD;&#xA;if (match.Success)&#xD;&#xA;{&#xD;&#xA;    // Extract &quot;Password&quot; value&#xD;&#xA;    out_strZipPassword = match.Groups[1].Value.Trim();&#xD;&#xA;&#x9;out_isExtractedFromBody = true;&#xD;&#xA;    Console.WriteLine(&quot;Password value: &quot; + out_strZipPassword);&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;&#x9;out_isExtractedFromBody = false;&#xD;&#xA;    Console.WriteLine(&quot;Password value not found.&quot;);&#xD;&#xA;}" DisplayName="Invoke Code - Get password from email body" sap:VirtualizedContainerService.HintSize="761.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
+                          <ui:InvokeCode.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strEmailBody">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="email.Body" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_strZipPassword">
+                              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strZipPassword" />
+                            </OutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strPattern">
+                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strPasswordPattern" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_isExtractedFromBody">
+                              <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="isExtractedFromBody" />
+                            </OutArgument>
+                          </ui:InvokeCode.Arguments>
+                        </ui:InvokeCode>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="761.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[String.Format(&quot;{0} - Zip Password: {1} | Extracted from body email: {2}&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, strZipPassword, isExtractedFromBody)]" />
                         <ui:IfElseIf sap2010:Annotation.AnnotationText="Filter email by subjects,&#xA;1. Filter by comparing from sheet config with String.Contains&#xA;2. Filter by using fuzzy (acc rate 90%)&#xA;" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="761.6,1464" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
                           <ui:IfElseIf.ConditionBlocks>
                             <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
@@ -630,6 +644,9 @@
                                         <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePath">
                                           <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
                                         </OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">
+                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strZipPassword" />
+                                        </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:Break sap:VirtualizedContainerService.HintSize="387.2,24.8" sap2010:WorkflowViewState.IdRef="Break_2" />
@@ -680,6 +697,9 @@
                                         <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePath">
                                           <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
                                         </OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">
+                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strZipPassword" />
+                                        </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:Break sap:VirtualizedContainerService.HintSize="387.2,24.8" sap2010:WorkflowViewState.IdRef="Break_3" />
