@@ -248,7 +248,7 @@
         <OutArgument x:TypeArguments="x:String">[strZipPassword]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[String.Format("cimbniaga{0}", in_datePeriod.Year.ToString("yyyy"))]</InArgument>
+        <InArgument x:TypeArguments="x:String">[String.Format("cimbniaga{0}", in_datePeriod.ToString("yyyy"))]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1012.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
@@ -388,7 +388,7 @@
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <If Condition="[attachment.Name.Contains(in_datePeriod.ToString(&quot;yyyyMMdd&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;dd-MM-yy&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;dd MMM yyyy&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;yyyy-MM-dd&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;ddMMyy&quot;)) Or&#xD;&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMMM&quot;).ToLower) Or&#xD;&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMM&quot;).ToLower) Or&#xD;&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMMM&quot;, New CultureInfo(&quot;id-ID&quot;)).ToLower) Or&#xD;&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMM&quot;, New CultureInfo(&quot;id-ID&quot;)).ToLower) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;MM.yyyy&quot;)) Or&#xD;&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;MMyy&quot;))]" DisplayName="If - File attachment name contains datePeriod" sap:VirtualizedContainerService.HintSize="510.4,540.8" sap2010:WorkflowViewState.IdRef="If_5">
+                                            <If Condition="[attachment.Name.Contains(in_datePeriod.ToString(&quot;yyyyMMdd&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;dd-MM-yy&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;dd MMM yyyy&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;yyyy-MM-dd&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;ddMMyy&quot;)) Or&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMMM&quot;).ToLower) Or&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMM&quot;).ToLower) Or&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMMM&quot;, New CultureInfo(&quot;id-ID&quot;)).ToLower) Or&#xA;attachment.Name.ToLower.Contains(in_datePeriod.ToString(&quot;MMM&quot;, New CultureInfo(&quot;id-ID&quot;)).ToLower) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;MM.yyyy&quot;)) Or&#xA;attachment.Name.Contains(in_datePeriod.ToString(&quot;MMyy&quot;))]" DisplayName="If - File attachment name contains datePeriod" sap:VirtualizedContainerService.HintSize="510.4,540.8" sap2010:WorkflowViewState.IdRef="If_5">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -580,20 +580,12 @@
                             <InArgument x:TypeArguments="x:String">["Pass\s*:\s*(.*?)(?:\r\n|\n|$)"]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Match the pattern in the input string&#xD;&#xA;Match match = Regex.Match(in_strEmailBody, in_strPattern, RegexOptions.Singleline);&#xD;&#xA;&#xD;&#xA;// Check if the pattern was matched&#xD;&#xA;if (match.Success)&#xD;&#xA;{&#xD;&#xA;    // Extract &quot;Password&quot; value&#xD;&#xA;    io_strZipPassword = match.Groups[1].Value.Trim();&#xD;&#xA;&#x9;out_isExtractedFromBody = true;&#xD;&#xA;    Console.WriteLine(&quot;Password value: &quot; + io_strZipPassword);&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;&#x9;out_isExtractedFromBody = false;&#xD;&#xA;    Console.WriteLine(&quot;Password value not found.&quot;);&#xD;&#xA;}" DisplayName="Invoke Code - Get password from email body" sap:VirtualizedContainerService.HintSize="761.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
+                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Match the pattern in the input string&#xA;Match match = Regex.Match(in_strEmailBody, in_strPattern, RegexOptions.Singleline);&#xA;&#xA;// Check if the pattern was matched&#xA;if (match.Success)&#xA;{&#xA;    // Extract &quot;Password&quot; value&#xA;    io_strZipPassword = match.Groups[1].Value.Trim();&#xA;&#x9;out_isExtractedFromBody = true;&#xA;    Console.WriteLine(&quot;Password value: &quot; + io_strZipPassword);&#xA;}&#xA;else&#xA;{&#xA;&#x9;out_isExtractedFromBody = false;&#xA;    Console.WriteLine(&quot;Password value not found.&quot;);&#xA;}" DisplayName="Invoke Code - Get password from email body" sap:VirtualizedContainerService.HintSize="761.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
                           <ui:InvokeCode.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_strEmailBody">
-                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="email.Body" />
-                            </InArgument>
-                            <InOutArgument x:TypeArguments="x:String" x:Key="io_strZipPassword">
-                              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strZipPassword" />
-                            </InOutArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_strPattern">
-                              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strPasswordPattern" />
-                            </InArgument>
-                            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_isExtractedFromBody">
-                              <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="isExtractedFromBody" />
-                            </OutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strEmailBody">[email.Body]</InArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_strZipPassword">[strZipPassword]</InOutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_strPattern">[strPasswordPattern]</InArgument>
+                            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_isExtractedFromBody">[isExtractedFromBody]</OutArgument>
                           </ui:InvokeCode.Arguments>
                         </ui:InvokeCode>
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="761.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[String.Format(&quot;{0} - Zip Password: {1} | Extracted from body email: {2}&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, strZipPassword, isExtractedFromBody)]" />
@@ -611,42 +603,18 @@
                                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;Subject email found with Contains - Queue: {0}, {1}; Email: {2}&quot;, in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString, in_TransactionItem.SpecificContent(&quot;Subject Email&quot;).ToString, email.Subject)]" />
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Download_File_Attachment.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="387.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Workflow\Download_File_Attachment.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_mailMessage">
-                                          <VisualBasicValue x:TypeArguments="snm:MailMessage" ExpressionText="email" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">
-                                          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="in_dicPath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">
-                                          <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                                          <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strFolderPath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFolderPath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFolderPath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strAttachmentId">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAttachmentId" />
-                                        </InArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePathQueue">
-                                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
-                                        </OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePath">
-                                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
-                                        </OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strZipPassword" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_mailMessage">[email]</InArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[in_dicPath]</InArgument>
+                                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
+                                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePath]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strFolderPath">[strFolderPath]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">[strRawFolderPath]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strAttachmentId">[strAttachmentId]</InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePathQueue">[strRawFilePathQueue]</OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePath">[strRawFilePath]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">[strZipPassword]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:Break sap:VirtualizedContainerService.HintSize="387.2,24.8" sap2010:WorkflowViewState.IdRef="Break_2" />
@@ -664,42 +632,18 @@
                                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Subject email found with Fuzzy - Queue: {0}, {1}; Email: {2}&quot;, in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString, in_TransactionItem.SpecificContent(&quot;Subject Email&quot;).ToString, email.Subject)]" />
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Download_File_Attachment.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="387.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom_Workflow\Download_File_Attachment.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_mailMessage">
-                                          <VisualBasicValue x:TypeArguments="snm:MailMessage" ExpressionText="email" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">
-                                          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="in_dicPath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">
-                                          <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                                          <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strFolderPath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFolderPath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFolderPath" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strAttachmentId">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAttachmentId" />
-                                        </InArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePathQueue">
-                                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
-                                        </OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePath">
-                                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strRawFilePath" />
-                                        </OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">
-                                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strZipPassword" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="snm:MailMessage" x:Key="in_mailMessage">[email]</InArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[in_dicPath]</InArgument>
+                                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
+                                        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePath]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strFolderPath">[strFolderPath]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strRawFolderPath">[strRawFolderPath]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strAttachmentId">[strAttachmentId]</InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePathQueue">[strRawFilePathQueue]</OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_strRawFilePath">[strRawFilePath]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_strZipPassword">[strZipPassword]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:Break sap:VirtualizedContainerService.HintSize="387.2,24.8" sap2010:WorkflowViewState.IdRef="Break_3" />
