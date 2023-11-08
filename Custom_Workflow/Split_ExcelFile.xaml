@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Split_ExcelFile" this:Split_ExcelFile.in_strFolderPath="C:\Traveloka_DataAutomation\Traveloka_DataAutomation\cybersourcebni\2023\2023-10-18" this:Split_ExcelFile.in_strFilename="Traveloka_PC0062_28Oct23.xlsx" this:Split_ExcelFile.in_strFileRegexPattern="\d{2}[A-Za-z]{3}\d{2}" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Split_ExcelFile" this:Split_ExcelFile.in_strFileRegexPattern="\d{2}[A-Za-z]{3}\d{2}" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_strRawFilePath" Type="InArgument(x:String)" />
     <x:Property Name="out_listFilePath" Type="OutArgument(scg:List(x:String))" />
@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1130.4,4296.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1130.4,3968.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Split_ExcelFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -120,9 +120,10 @@
       <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Split_ExcelFile" sap:VirtualizedContainerService.HintSize="864,4232" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Split_ExcelFile" sap:VirtualizedContainerService.HintSize="864,3904" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="listDistinctValue" />
       <Variable x:TypeArguments="x:String" Name="strFolderPath" />
@@ -132,16 +133,9 @@
       <Variable x:TypeArguments="scg:List(x:String)" Name="listSheet" />
       <Variable x:TypeArguments="s:DateTime" Name="datePeriod" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtRawFile" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="listFilePath">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(Of String)" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="scg:List(s:DateTime)" Name="listDateRange">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(s:DateTime)" ExpressionText="New List(Of DateTime)" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(Of String)]" Name="listFilePath" />
+      <Variable x:TypeArguments="scg:List(s:DateTime)" Default="[New List(Of DateTime)]" Name="listDateRange" />
+      <Variable x:TypeArguments="x:String" Name="strFolderPathDelete" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -149,45 +143,62 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Split_ExcelFile" sap:VirtualizedContainerService.HintSize="801.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Split_ExcelFile&quot;]" />
-    <Sequence DisplayName="Sequence Testing Data" sap:VirtualizedContainerService.HintSize="801.6,517.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <Assign sap2010:Annotation.AnnotationText="Contains sheet that will be splitted.&#xA;If value not null then will be splitted, &#xA;null value won't be splitted&#xA;&#xA;New Dictionary(Of Int, String) From&#xA;{&#xA;    {0, &quot;Created_at&quot;},&#xA;    {1, &quot;&quot;}&#xA;}" DisplayName="Assign Dict Split" sap:VirtualizedContainerService.HintSize="433.6,240.8" sap2010:WorkflowViewState.IdRef="Assign_1">
-        <Assign.To>
-          <OutArgument x:TypeArguments="scg:Dictionary(x:Int32, x:String)">[in_dictSplit]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="scg:Dictionary(x:Int32, x:String)" xml:space="preserve">[New Dictionary(Of Int32, String) From
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="801.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,195.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Sequence Testing Data" sap:VirtualizedContainerService.HintSize="449.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap2010:Annotation.AnnotationText="Contains sheet that will be splitted.&#xA;If value not null then will be splitted, &#xA;null value won't be splitted&#xA;&#xA;New Dictionary(Of Int, String) From&#xA;{&#xA;    {0, &quot;Created_at&quot;},&#xA;    {1, &quot;&quot;}&#xA;}" DisplayName="Assign Dict Split" sap:VirtualizedContainerService.HintSize="433.6,239.2" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:Int32, x:String)">[in_dictSplit]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:Int32, x:String)" xml:space="preserve">[New Dictionary(Of Int32, String) From
 {
     {0, "PROC DATE TRAVELOKA"},
 	{1, ""}
 }]</InArgument>
-        </Assign.Value>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </Assign>
-      <Assign sap2010:Annotation.AnnotationText="Multiple : Traveloka_1028.xlsx&#xA;Single : Traveloka_0831.xlsx" DisplayName="Assign Raw File Path" sap:VirtualizedContainerService.HintSize="433.6,124.8" sap2010:WorkflowViewState.IdRef="Assign_2">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[in_strRawFilePath]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:String">["C:\Users\Rifqi Pinasthika\Downloads\Traveloka_DataAutomation_Email\Cycbersource BNI\Traveloka_0831.xlsx"]</InArgument>
-        </Assign.Value>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </Assign>
-    </Sequence>
-    <ui:MultipleAssign DisplayName="Multiple Assign Path" sap:VirtualizedContainerService.HintSize="801.6,101.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <Assign sap2010:Annotation.AnnotationText="Multiple : Traveloka_1028.xlsx&#xA;Single : Traveloka_0831.xlsx" DisplayName="Assign Raw File Path" sap:VirtualizedContainerService.HintSize="433.6,125.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[in_strRawFilePath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["C:\Users\Rifqi Pinasthika\Downloads\Traveloka_DataAutomation_Email\Cycbersource BNI\Traveloka_0831.xlsx"]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:MultipleAssign DisplayName="Multiple Assign Path" sap:VirtualizedContainerService.HintSize="801.6,101.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -200,27 +211,33 @@
           </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Read downloaded file content" sap:VirtualizedContainerService.HintSize="801.6,3045.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_strRawFilePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - Read downloaded file content" sap:VirtualizedContainerService.HintSize="801.6,3182.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_strRawFilePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="768,2936" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="768,3072.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="705.6,24.8" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_1" Sheets="[listSheet]" />
-            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:Int32, x:String)" CurrentIndex="{x:Null}" DisplayName="For Each Sheet Split" sap:VirtualizedContainerService.HintSize="705.6,2759.2" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_dictSplit]">
+            <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:Int32, x:String)" CurrentIndex="{x:Null}" DisplayName="For Each Sheet Split" sap:VirtualizedContainerService.HintSize="705.6,2896" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_dictSplit]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="scg:KeyValuePair(x:Int32, x:String)">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:Int32, x:String)" Name="currentItem" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="670.4,2634.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="670.4,2771.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -228,7 +245,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtRawFile]" DisplayName="Read Range Sheet" sap:VirtualizedContainerService.HintSize="608,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[listSheet(currentItem.Key)]" />
-                    <If Condition="[Not String.IsNullOrEmpty(currentItem.Value)]" DisplayName="If Split Data" sap:VirtualizedContainerService.HintSize="608,2422.4" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If Condition="[Not String.IsNullOrEmpty(currentItem.Value)]" DisplayName="If Split Data" sap:VirtualizedContainerService.HintSize="608,2559.2" sap2010:WorkflowViewState.IdRef="If_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -236,13 +253,13 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="574.4,1796.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence sap:VirtualizedContainerService.HintSize="574.4,1933.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign sap2010:Annotation.AnnotationText="dtRawFile.AsEnumerable.Select(Function(r) r(currentItem.Value).ToString).Distinct.ToList" DisplayName="Assign List Date | Distinct value from a column" sap:VirtualizedContainerService.HintSize="531.2,124.8" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign sap2010:Annotation.AnnotationText="dtRawFile.AsEnumerable.Select(Function(r) r(currentItem.Value).ToString).Distinct.ToList" DisplayName="Assign List Date | Distinct value from a column" sap:VirtualizedContainerService.HintSize="531.2,125.6" sap2010:WorkflowViewState.IdRef="Assign_3">
                             <Assign.To>
                               <OutArgument x:TypeArguments="scg:List(x:String)">[listDistinctValue]</OutArgument>
                             </Assign.To>
@@ -255,19 +272,20 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </Assign>
-                          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="531.2,1542.4" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[listDistinctValue]">
+                          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="531.2,1678.4" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[listDistinctValue]">
                             <ui:ForEach.Body>
                               <ActivityAction x:TypeArguments="x:String">
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="x:String" Name="currentdate" />
                                 </ActivityAction.Argument>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,1417.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,1553.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Assign DisplayName="Assign Convert Date Format" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <ui:LogMessage DisplayName="Log Message Current Date" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[String.Format(&quot;Split for date {0}&quot;, currentdate)]" />
+                                  <Assign DisplayName="Assign Convert Date Format" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="s:DateTime">[datePeriod]</OutArgument>
                                     </Assign.To>
@@ -275,7 +293,7 @@
                                       <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(currentdate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <Assign DisplayName="Assign New File Name" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                  <Assign DisplayName="Assign New File Name" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">[strFileName]</OutArgument>
                                     </Assign.To>
@@ -283,17 +301,17 @@
                                       <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(in_strFilename, in_strFileRegexPattern, datePeriod.ToString("ddMMMyy"), RegexOptions.IgnoreCase)]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <Assign DisplayName="Assign Current File Path" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign DisplayName="Assign Current File Path" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_6">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">[strFilePath]</OutArgument>
                                     </Assign.To>
                                     <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">[Path.Combine(strFolderPath, datePeriod.ToString("yyyy"), datePeriod.ToString("dd-MM-yyyy"),strFileName)]</InArgument>
+                                      <InArgument x:TypeArguments="x:String">[Path.Combine(strFolderPath, datePeriod.ToString("yyyy"), datePeriod.ToString("yyyy-MM-dd"), strFileName)]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <Assign DisplayName="Assign Current Folder Path" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                  <Assign DisplayName="Assign Current Folder Path" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_10">
                                     <Assign.To>
-                                      <OutArgument x:TypeArguments="x:String">[strFolderPath]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String">[strFolderPathDelete]</OutArgument>
                                     </Assign.To>
                                     <Assign.Value>
                                       <InArgument x:TypeArguments="x:String">[Path.GetDirectoryName(strFilePath)]</InArgument>
@@ -301,7 +319,9 @@
                                   </Assign>
                                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Delete_Folder.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Delete_Folder.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_strFolderPath">[strFolderPath]</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_strFolderPath">
+                                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFolderPathDelete" />
+                                      </InArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
                                   <uasa:AppendItemToList x:TypeArguments="s:DateTime" ItemIndex="{x:Null}" DisplayName="Append Item to List Date" sap:VirtualizedContainerService.HintSize="433.6,135.2" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_3" ItemToAppend="[datePeriod]" List="[listDateRange]" />
