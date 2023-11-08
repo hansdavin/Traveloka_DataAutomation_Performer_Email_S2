@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992.6037735849056,1708.9811320754716</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845.6,1808</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CallWorkflow_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -98,7 +98,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Init_Workflow" sap:VirtualizedContainerService.HintSize="554.2641509433962,1643.7735849056603" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Init_Workflow" sap:VirtualizedContainerService.HintSize="559.2,1743.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isRerun" />
       <Variable x:TypeArguments="s:DateTime" Name="datePeriod" />
@@ -111,7 +111,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign path to Dictionary" sap:VirtualizedContainerService.HintSize="492.6792452830188,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign DisplayName="Assign path to Dictionary" sap:VirtualizedContainerService.HintSize="496.8,83.2" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dicPath]</OutArgument>
       </Assign.To>
@@ -124,16 +124,16 @@
 }]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - Raw File Folder" Exists="[isRawFolderPathExist]" sap:VirtualizedContainerService.HintSize="492.6792452830188,88.75471698113206" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[dicPath(&quot;strRawFolderPath&quot;)]" PathType="Folder" />
-    <If Condition="[Not isRawFolderPathExist]" DisplayName="If - Raw file folder doesnt exist, then create" sap:VirtualizedContainerService.HintSize="492.6792452830188,345.05660377358487" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - Raw File Folder" Exists="[isRawFolderPathExist]" sap:VirtualizedContainerService.HintSize="496.8,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[dicPath(&quot;strRawFolderPath&quot;)]" PathType="Folder" />
+    <If Condition="[Not isRawFolderPathExist]" DisplayName="If - Raw file folder doesnt exist, then create" sap:VirtualizedContainerService.HintSize="496.8,353.6" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,164.83018867924528" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence sap:VirtualizedContainerService.HintSize="376.8,170.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334.18867924528297,78.79245283018868" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[dicPath(&quot;strRawFolderPath&quot;)]" />
+          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[dicPath(&quot;strRawFolderPath&quot;)]" />
         </Sequence>
       </If.Then>
       <If.Else>
@@ -146,7 +146,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:MultipleAssign DisplayName="Multiple Assign - datePeriod &amp; isRerun" sap:VirtualizedContainerService.HintSize="492.6792452830188,131.32075471698113" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign - datePeriod &amp; isRerun" sap:VirtualizedContainerService.HintSize="496.8,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -168,7 +168,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString.ToLower]" sap:VirtualizedContainerService.HintSize="492.6792452830188,729.0566037735848" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString.ToLower]" sap:VirtualizedContainerService.HintSize="496.8,812" sap2010:WorkflowViewState.IdRef="Switch`1_2">
       <Switch.Default>
         <Sequence DisplayName="Sequence - Throw if BP Key not found" sap:VirtualizedContainerService.HintSize="449.6,590.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
@@ -195,7 +195,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="xenditmandiri" DisplayName="xenditmandiri.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="355.01886792452825,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\xenditmandiri.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="xenditmandiri" DisplayName="xenditmandiri.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="373.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\xenditmandiri.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -204,7 +204,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="directdebitbca" DisplayName="directdebitbca.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8301886792453,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\directdebitbca.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="directdebitbca" DisplayName="directdebitbca.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="377.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\directdebitbca.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -213,7 +213,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="indomaret(paymentpoint)" DisplayName="indomaret.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="337.811320754717,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\indomaret.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="indomaret(paymentpoint)" DisplayName="indomaret.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="355.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\indomaret.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -222,7 +222,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2c2p_onetwothree" DisplayName="2c2p_onetwothree.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="375.84905660377353,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\2c2p_onetwothree.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2c2p_onetwothree" DisplayName="2c2p_onetwothree.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="336,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\2c2p_onetwothree.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -231,7 +231,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="bukopin" DisplayName="bukopin.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="345.05660377358487,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\bukopin.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="bukopin" DisplayName="bukopin.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="359.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\bukopin.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -240,7 +240,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="panin" DisplayName="panin.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334.18867924528297,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\panin.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="panin" DisplayName="panin.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="345.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\panin.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -249,7 +249,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mega" DisplayName="mega.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334.18867924528297,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mega.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mega" DisplayName="mega.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="346.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mega.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -258,7 +258,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="permata" DisplayName="permata.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="345.05660377358487,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\permata.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="permata" DisplayName="permata.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="360.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\permata.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -267,7 +267,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="citibank" DisplayName="citibank.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="343.2452830188679,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\citibank.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="citibank" DisplayName="citibank.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="357.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\citibank.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -276,7 +276,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="vn-vpnganluong" DisplayName="vn-vpnganluong.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379.47169811320754,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\vn-vpnganluong.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="vn-vpnganluong" DisplayName="vn-vpnganluong.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="340.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\vn-vpnganluong.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -285,7 +285,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="standardchartered(scb)" DisplayName="standardchartered(scb).xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="374.03773584905656,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\standardchartered(scb).xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="standardchartered(scb)" DisplayName="standardchartered(scb).xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\standardchartered(scb).xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -294,7 +294,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="uob" DisplayName="uob.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334.18867924528297,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\uob.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="uob" DisplayName="uob.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="336.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\uob.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -303,7 +303,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mandiri" DisplayName="mandiri.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="342.33962264150944,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mandiri.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mandiri" DisplayName="mandiri.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mandiri.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -312,7 +312,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="alfamart" DisplayName="alfamart.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334.18867924528297,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\alfamart.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="alfamart" DisplayName="alfamart.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="344.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\alfamart.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -321,7 +321,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="cimbclicks" DisplayName="cimbclicks.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338.71698113207543,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\cimbclicks.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="cimbclicks" DisplayName="cimbclicks.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="354.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\cimbclicks.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -330,7 +330,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="ktc(thai)" DisplayName="ktc(thai).xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="345.05660377358487,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\ktc(thai).xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="ktc(thai)" DisplayName="ktc(thai).xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="359.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\ktc(thai).xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -339,7 +339,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="coins" DisplayName="coins.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334.18867924528297,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\coins.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="coins" DisplayName="coins.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\coins.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -348,7 +348,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrdanamon" DisplayName="mdrdanamon.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="371.3207547169811,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrdanamon.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrdanamon" DisplayName="mdrdanamon.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrdanamon.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -357,7 +357,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrdbs" DisplayName="mdrdbs.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="342.33962264150944,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrdbs.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrdbs" DisplayName="mdrdbs.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrdbs.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -366,7 +366,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="cybersourcebni" DisplayName="cybersourcebni.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="361.3584905660377,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\cybersourcebni.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="cybersourcebni" DisplayName="cybersourcebni.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="BP_Workflow\Daily\cybersourcebni.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -375,7 +375,7 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrcimbniaga" DisplayName="mdrcimbniaga.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="375.84905660377353,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrcimbniaga.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrcimbniaga" DisplayName="mdrcimbniaga.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrcimbniaga.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
@@ -384,7 +384,16 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrhsbc" DisplayName="mdrhsbc.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="347.77358490566036,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrhsbc.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrhsbc" DisplayName="mdrhsbc.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="361.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrhsbc.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
+          <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
+          <InArgument x:TypeArguments="x:Boolean" x:Key="in_isRerun">[isRerun]</InArgument>
+          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="mdrmaybank" DisplayName="mdrmaybank.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="BP_Workflow\Monthly\mdrmaybank.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_dicPath">[dicPath]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[datePeriod]</InArgument>
