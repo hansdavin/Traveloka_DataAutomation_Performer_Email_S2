@@ -790,9 +790,6 @@
               <InArgument x:TypeArguments="x:String" x:Key="in_strFilename">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.GetFileName(strFilePath)" />
               </InArgument>
-              <OutArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="out_listDateRange">
-                <VisualBasicReference x:TypeArguments="scg:List(s:DateTime)" ExpressionText="listDateRange" />
-              </OutArgument>
               <InArgument x:TypeArguments="scg:Dictionary(x:Int32, x:String)" x:Key="in_dictSplit">
                 <VisualBasicValue x:TypeArguments="scg:Dictionary(x:Int32, x:String)" ExpressionText="dictSplit" />
               </InArgument>
