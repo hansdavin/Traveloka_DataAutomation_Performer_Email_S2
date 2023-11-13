@@ -1,15 +1,21 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AddQueueItem" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AddQueueItem" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_datePeriod" Type="InArgument(s:DateTime)" />
     <x:Property Name="in_strFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_strRawFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strDateRange" Type="InArgument(x:String)" />
   </x:Members>
+  <this:AddQueueItem.in_strDateRange>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:AddQueueItem.in_strDateRange>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>784.8,620</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>788.8,620</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AddQueueItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -106,6 +112,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="Email User CC">[in_TransactionItem.SpecificContent("Email User CC").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="Email Technical CC">[in_TransactionItem.SpecificContent("Email Technical CC").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="PathRawFile">[in_strRawFilePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Date Range">[in_strDateRange]</InArgument>
       </ui:AddQueueItem.ItemInformation>
       <ui:AddQueueItem.TimeoutMS>
         <InArgument x:TypeArguments="x:Int32" />

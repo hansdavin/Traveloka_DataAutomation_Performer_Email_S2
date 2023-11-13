@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>784.8,3861.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>788.8,3861.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>alfamart_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -264,7 +264,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence sap:VirtualizedContainerService.HintSize="451.2,200" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence sap:VirtualizedContainerService.HintSize="449.6,202.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -323,6 +323,9 @@
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strDateRange">
+                <Literal x:TypeArguments="x:String" Value="" />
               </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>

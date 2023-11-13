@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>784.8,2822.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>788.8,2822.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>xenditmandiri_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -301,6 +301,9 @@
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strDateRange">
+                <Literal x:TypeArguments="x:String" Value="" />
               </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
