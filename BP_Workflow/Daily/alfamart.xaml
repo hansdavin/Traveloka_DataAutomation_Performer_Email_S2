@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1682,8101</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1682,8109</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>alfamart_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -45,6 +45,7 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>FuzzierSharp</x:String>
+      <x:String>System.Globalization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -105,7 +106,7 @@
       <AssemblyReference>FuzzierSharp</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Main takeaways:&#xA;1. Set global datetime in orchestrator asset to default (;)&#xA;2. Set global date end period in orchestrator&#xA;3. Check local folder path if file already exists or not&#xA;4. H-1" DisplayName="alfamart" sap:VirtualizedContainerService.HintSize="1072,8036" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Main takeaways:&#xA;1. Set global datetime in orchestrator asset to default (;)&#xA;2. Set global date end period in orchestrator&#xA;3. Check local folder path if file already exists or not&#xA;4. H-1" DisplayName="alfamart" sap:VirtualizedContainerService.HintSize="1072,8044" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -243,14 +244,14 @@
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFileExist]" sap:VirtualizedContainerService.HintSize="1010,90" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[strFilePath]" PathType="File" />
-    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="1010,6896" sap2010:WorkflowViewState.IdRef="If_3">
+    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="1010,6904" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="976,6501" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="976,6511" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -297,7 +298,7 @@
               <OutArgument x:TypeArguments="x:String" x:Key="out_strRegexPattern">[strFileNamePattern]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <If Condition="[listMailMessages.Count &gt; 0]" DisplayName="If - in_listMailMessages.Count &gt; 0" sap:VirtualizedContainerService.HintSize="934,5573" sap2010:WorkflowViewState.IdRef="If_4">
+          <If Condition="[listMailMessages.Count &gt; 0]" DisplayName="If - in_listMailMessages.Count &gt; 0" sap:VirtualizedContainerService.HintSize="934,5583" sap2010:WorkflowViewState.IdRef="If_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -305,7 +306,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="900,5217" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence sap:VirtualizedContainerService.HintSize="900,5223" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Int32" Name="intListMailIndex" />
                 </Sequence.Variables>
@@ -569,6 +570,7 @@
 	"\b\d{4}-\d{2}-\d{2}\b",
 	"\b\d{4}/\d{2}/\d{2}\b",
 	"\b\d{2}-[A-Za-z]{3}-\d{4}\b",
+	"\b(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[0-2])\d{4}\b",
 	"\[WARNING: ATTACHMENT UNSCANNED\]\s*",
 	"^Fwd:\s*",
 	"^Fw:\s*",
@@ -732,7 +734,7 @@
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_10">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:Boolean">[isEmailFound]</OutArgument>
                                       </Assign.To>
@@ -764,15 +766,15 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
-                <If Condition="[Not isEmailFound]" DisplayName="If - Email not found throw" sap:VirtualizedContainerService.HintSize="855.8490566037735,354.1132075471698" sap2010:WorkflowViewState.IdRef="If_10">
+                <If Condition="[Not isEmailFound]" DisplayName="If - Email not found throw" sap:VirtualizedContainerService.HintSize="858,360" sap2010:WorkflowViewState.IdRef="If_10">
                   <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,173.88679245283018" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_27">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Throw Exception="[new BusinessRuleException(String.Format(&quot;Report for current period: {0} possibly have different format from current rules. Please check manually in email inbox.&quot;, in_datePeriod.ToString(&quot;dd-MMM-yy&quot;)))]" sap:VirtualizedContainerService.HintSize="334.18867924528297,87.84905660377358" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                      <Throw Exception="[new BusinessRuleException(String.Format(&quot;Report for current period: {0} possibly have different format from current rules. Please check manually in email inbox.&quot;, in_datePeriod.ToString(&quot;dd-MMM-yy&quot;)))]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_3" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
@@ -788,13 +790,13 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,173.88679245283018" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_29">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Throw Exception="[new BusinessRuleException(String.Format(&quot;Report for current period: {0} not found. Please check manually in email inbox.&quot;, in_datePeriod.ToString(&quot;dd-MMM-yy&quot;)))]" sap:VirtualizedContainerService.HintSize="334.18867924528297,87.84905660377358" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                <Throw Exception="[new BusinessRuleException(String.Format(&quot;Report for current period: {0} not found. Please check manually in email inbox.&quot;, in_datePeriod.ToString(&quot;dd-MMM-yy&quot;)))]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_4" />
               </Sequence>
             </If.Else>
           </If>
@@ -823,13 +825,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="376.8,182.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[$&quot;File Traveloka_{in_TransactionItem.SpecificContent(&quot;BPID&quot;).ToString()}_{in_datePeriod.ToString(&quot;ddMMMyy&quot;)}.{in_TransactionItem.SpecificContent(&quot;File Type&quot;).ToString} already exists...&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[$&quot;File Traveloka_{in_TransactionItem.SpecificContent(&quot;BPID&quot;).ToString()}_{in_datePeriod.ToString(&quot;ddMMMyy&quot;)}.{in_TransactionItem.SpecificContent(&quot;File Type&quot;).ToString} already exists...&quot;]" />
         </Sequence>
       </If.Else>
     </If>
