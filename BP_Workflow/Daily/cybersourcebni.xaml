@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>788.8,3518.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845.6,3518.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>cybersourcebni_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -802,7 +802,7 @@
                         <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="listDateRange(intFilePathIndex)" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="filePath" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
                         <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
