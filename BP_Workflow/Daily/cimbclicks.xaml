@@ -905,7 +905,7 @@
                         <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="listDateRange(intFilePathIndex)" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="filePath" />
                       </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
                         <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
