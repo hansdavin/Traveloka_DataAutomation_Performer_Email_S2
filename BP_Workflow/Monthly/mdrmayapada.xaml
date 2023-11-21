@@ -657,7 +657,7 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                           <ui:ExcelGetWorkbookSheet DisplayName="Get Workbook Sheet from excel" sap:VirtualizedContainerService.HintSize="532.5283018867924,78.79245283018868" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheet_2" Index="0" Sheet="[sheetName]" />
-                                          <ui:ExcelReadRange AddHeaders="True" DataTable="[dtExcel]" DisplayName="Read Range - read start from A3 as header" sap:VirtualizedContainerService.HintSize="532.5283018867924,59.77358490566037" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" Range="A3" SheetName="[sheetName]" />
+                                          <ui:ExcelReadRange AddHeaders="True" DataTable="[dtExcel]" DisplayName="Read Range - read start from A3 as header" sap:VirtualizedContainerService.HintSize="532.5283018867924,59.77358490566037" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" PreserveFormat="True" Range="A3" SheetName="[sheetName]" />
                                           <ui:ForEach x:TypeArguments="s:DateTime" CurrentIndex="{x:Null}" DisplayName="For Each date from range of months invoke code" sap:VirtualizedContainerService.HintSize="532.5283018867924,988.0754716981131" sap2010:WorkflowViewState.IdRef="ForEach`1_29" Values="[listOfDates]">
                                             <ui:ForEach.Body>
                                               <ActivityAction x:TypeArguments="s:DateTime">
