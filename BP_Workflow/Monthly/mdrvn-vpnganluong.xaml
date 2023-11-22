@@ -186,7 +186,7 @@
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch DisplayName="Try Catch - Get email using IMAP (since 01/period.Month/period.Year)" sap:VirtualizedContainerService.HintSize="436.8,344.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetEmails.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="352,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom_Workflow\Get_Emails.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetEmails.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Custom_Workflow\Get_Emails.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_listMailMessages">[listMailMessages]</OutArgument>
                   <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[New Date(in_datePeriod.Year, in_datePeriod.Month, 1)]</InArgument>
@@ -253,10 +253,10 @@
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Delete_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Workflow\Delete_Sheets.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">
-                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String) from {&quot;Report&quot;}" />
+                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String)" />
               </InArgument>
               <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">
-                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String)" />
+                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String) from {&quot;Report&quot;}" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
