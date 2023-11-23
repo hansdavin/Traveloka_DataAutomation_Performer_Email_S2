@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Delete_Sheets" this:Delete_Sheets.in_listSheetToRemove="[New List(of String)]" this:Delete_Sheets.in_listSheetToKeep="[New List(of String)]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Delete_Sheets" this:Delete_Sheets.in_listSheetToRemove="[New List(of String)]" this:Delete_Sheets.in_listSheetToKeep="[New List(of String)]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_listSheetToRemove" Type="InArgument(scg:List(x:String))" />
     <x:Property Name="in_listSheetToKeep" Type="InArgument(scg:List(x:String))" />
@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>845.6,620</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>485.6,502.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Delete_Sheets_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -52,6 +52,7 @@
       <x:String>UiPath.GSuite.Activities.Sheets</x:String>
       <x:String>UiPath.GSuite.Activities.Contracts</x:String>
       <x:String>Microsoft.Office.Interop.Excel</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -116,7 +117,7 @@
       <AssemblyReference>Microsoft.Office.Interop.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Delete_Sheets" sap:VirtualizedContainerService.HintSize="449.6,352.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Delete_Sheets" sap:VirtualizedContainerService.HintSize="496,437.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="listSheet" />
     </Sequence.Variables>
@@ -125,17 +126,37 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If in_listSheetToKeep.Count &gt; 0, remove all sheets other than in_listSheetToKeep.&#xA;If in_listSheetToRemove.Count &gt; 0, remove all sheets stated .in_listSheetToRemove." Code="Application xlApp = new Application();&#xD;&#xA;&#xD;&#xA;try&#xD;&#xA;{&#xD;&#xA;    Microsoft.Office.Interop.Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(in_strFilePath);&#xD;&#xA;&#xD;&#xA;&#x9;xlApp.DisplayAlerts = false;&#xD;&#xA;&#xD;&#xA;&#x9;if(in_listSheetToKeep.Count() &gt; 0)&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;List&lt;string&gt; sheetsToRemove = xlWorkbook.Sheets.Cast&lt;Worksheet&gt;()&#xD;&#xA;&#x9;&#x9;    .Select(sheet =&gt; sheet.Name.ToUpper().Trim())&#xD;&#xA;&#x9;&#x9;    .Except(in_listSheetToKeep.Select(sheet =&gt; sheet.ToUpper().Trim()))&#xD;&#xA;&#x9;&#x9;    .ToList();&#xD;&#xA;&#x9;&#x9;Console.WriteLine($&quot;SheetToRemove: {String.Join(&quot;, &quot;, sheetsToRemove)}&quot;);&#xD;&#xA;&#x9;&#x9;foreach (string sheetToRemove in sheetsToRemove)&#xD;&#xA;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;foreach (Worksheet sheet in xlWorkbook.Sheets)&#xD;&#xA;&#x9;        {&#xD;&#xA;&#x9;            if (sheet.Name.ToUpper().Trim().Contains(sheetToRemove.ToUpper().Trim()))&#xD;&#xA;&#x9;            {&#xD;&#xA;&#x9;                sheet.Delete();&#xD;&#xA;&#x9;                Console.WriteLine($&quot;Remove - Deleted sheet: {sheetToRemove}&quot;);&#xD;&#xA;&#x9;                break; // Exit the inner loop once the sheet is deleted&#xD;&#xA;&#x9;            }&#xD;&#xA;&#x9;        }&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;else if(in_listSheetToRemove.Count() &gt; 0)&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;foreach (string sheetToRemove in in_listSheetToRemove)&#xD;&#xA;&#x9;&#x9;{&#xD;&#xA;&#x9;        foreach (Worksheet sheet in xlWorkbook.Sheets)&#xD;&#xA;&#x9;        {&#xD;&#xA;&#x9;            if (sheet.Name.ToUpper().Trim().Contains(sheetToRemove.ToUpper().Trim()))&#xD;&#xA;&#x9;            {&#xD;&#xA;&#x9;                sheet.Delete();&#xD;&#xA;&#x9;                Console.WriteLine($&quot;Remove - Deleted sheet: {sheetToRemove}&quot;);&#xD;&#xA;&#x9;                break; // Exit the inner loop once the sheet is deleted&#xD;&#xA;&#x9;            }&#xD;&#xA;&#x9;        }&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;xlApp.DisplayAlerts = true;&#xD;&#xA;&#xD;&#xA;&#x9;xlApp.Visible = false;&#xD;&#xA;    &#xD;&#xA;    // Save Workbook&#xD;&#xA;    xlWorkbook.Save();&#xD;&#xA;&#xD;&#xA;    // Close Workbook&#xD;&#xA;    xlWorkbook.Close();&#xD;&#xA;}&#xD;&#xA;catch (Exception ex)&#xD;&#xA;{&#xD;&#xA;    throw ex;&#xD;&#xA;}&#xD;&#xA;finally&#xD;&#xA;{&#xD;&#xA;    // Close Excel Application&#xD;&#xA;    xlApp.Quit();&#xD;&#xA;}" DisplayName="Invoke Code - Delete Sheet" sap:VirtualizedContainerService.HintSize="387.2,240.8" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
-      <ui:InvokeCode.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[in_strFilePath]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">[in_listSheetToKeep]</InArgument>
-        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">[in_listSheetToRemove]</InArgument>
-      </ui:InvokeCode.Arguments>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:InvokeCode>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="433.6,325.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If in_listSheetToKeep.Count &gt; 0, remove all sheets other than in_listSheetToKeep.&#xA;If in_listSheetToRemove.Count &gt; 0, remove all sheets stated .in_listSheetToRemove." Code="Application xlApp = new Application();&#xA;&#xA;try&#xA;{&#xA;    Microsoft.Office.Interop.Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(in_strFilePath);&#xA;&#xA;&#x9;xlApp.DisplayAlerts = false;&#xA;&#xA;&#x9;if(in_listSheetToKeep.Count() &gt; 0)&#xA;&#x9;{&#xA;&#x9;&#x9;List&lt;string&gt; sheetsToRemove = xlWorkbook.Sheets.Cast&lt;Worksheet&gt;()&#xA;&#x9;&#x9;    .Select(sheet =&gt; sheet.Name.ToUpper().Trim())&#xA;&#x9;&#x9;    .Except(in_listSheetToKeep.Select(sheet =&gt; sheet.ToUpper().Trim()))&#xA;&#x9;&#x9;    .ToList();&#xA;&#x9;&#x9;Console.WriteLine($&quot;SheetToRemove: {String.Join(&quot;, &quot;, sheetsToRemove)}&quot;);&#xA;&#x9;&#x9;foreach (string sheetToRemove in sheetsToRemove)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;foreach (Worksheet sheet in xlWorkbook.Sheets)&#xA;&#x9;        {&#xA;&#x9;            if (sheet.Name.ToUpper().Trim().Contains(sheetToRemove.ToUpper().Trim()))&#xA;&#x9;            {&#xA;&#x9;                sheet.Delete();&#xA;&#x9;                Console.WriteLine($&quot;Remove - Deleted sheet: {sheetToRemove}&quot;);&#xA;&#x9;                break; // Exit the inner loop once the sheet is deleted&#xA;&#x9;            }&#xA;&#x9;        }&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;else if(in_listSheetToRemove.Count() &gt; 0)&#xA;&#x9;{&#xA;&#x9;&#x9;foreach (string sheetToRemove in in_listSheetToRemove)&#xA;&#x9;&#x9;{&#xA;&#x9;        foreach (Worksheet sheet in xlWorkbook.Sheets)&#xA;&#x9;        {&#xA;&#x9;            if (sheet.Name.ToUpper().Trim().Contains(sheetToRemove.ToUpper().Trim()))&#xA;&#x9;            {&#xA;&#x9;                sheet.Delete();&#xA;&#x9;                Console.WriteLine($&quot;Remove - Deleted sheet: {sheetToRemove}&quot;);&#xA;&#x9;                break; // Exit the inner loop once the sheet is deleted&#xA;&#x9;            }&#xA;&#x9;        }&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#xA;&#x9;xlApp.DisplayAlerts = true;&#xA;&#xA;&#x9;xlApp.Visible = false;&#xA;    &#xA;    // Save Workbook&#xA;    xlWorkbook.Save();&#xA;&#xA;    // Close Workbook&#xA;    xlWorkbook.Close();&#xA;}&#xA;catch (Exception ex)&#xA;{&#xA;    throw ex;&#xA;}&#xA;finally&#xA;{&#xA;    // Close Excel Application&#xA;    xlApp.Quit();&#xA;}" DisplayName="Invoke Code - Delete Sheet" sap:VirtualizedContainerService.HintSize="333.6,240.8" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+          <ui:InvokeCode.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[in_strFilePath]</InArgument>
+            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">[in_listSheetToKeep]</InArgument>
+            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">[in_listSheetToRemove]</InArgument>
+          </ui:InvokeCode.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeCode>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,160.8" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw Exception="[New Exception(exception.InnerException.ToString)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
   </Sequence>
 </Activity>
