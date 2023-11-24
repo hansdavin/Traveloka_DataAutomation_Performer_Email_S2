@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>788.8,2844</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>565.6,3202.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>uob_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -95,7 +95,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="mdruob" sap:VirtualizedContainerService.HintSize="576,2779.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="mdruob" sap:VirtualizedContainerService.HintSize="576,3137.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -108,6 +108,7 @@
       <Variable x:TypeArguments="x:String" Name="strRawFilePath" />
       <Variable x:TypeArguments="x:String" Name="strFileNamePattern" />
       <Variable x:TypeArguments="x:String" Name="strDateRange" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="listSheetToKeep" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -225,14 +226,14 @@
       </Assign.Value>
     </Assign>
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFileExist]" sap:VirtualizedContainerService.HintSize="513.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[strFilePath]" PathType="File" />
-    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="513.6,1445.6" sap2010:WorkflowViewState.IdRef="If_3">
+    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="513.6,1804" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="480,1048.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="480,1407.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -304,26 +305,37 @@
               <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">[strRawFilePath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add_Queue_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Workflow\Add_Queue_Item.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
-              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-              </InArgument>
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="List&lt;string&gt; monthAbbreviations = new List&lt;string&gt;();&#xD;&#xA;&#xD;&#xA;switch (in_datePeriod.Month)&#xD;&#xA;{&#xD;&#xA;    case 8:&#xD;&#xA;        monthAbbreviations.AddRange(new[] { &quot;Aug&quot;, &quot;Agus&quot;, &quot;Ags&quot; });&#xD;&#xA;        break;&#xD;&#xA;&#xD;&#xA;    case 9:&#xD;&#xA;        monthAbbreviations.AddRange(new[] { &quot;Sep&quot;, &quot;Sept&quot; });&#xD;&#xA;        break;&#xD;&#xA;&#x9;&#xD;&#xA;    case 12:&#xD;&#xA;        monthAbbreviations.AddRange(new[] { &quot;Dec&quot;, &quot;Des&quot; });&#xD;&#xA;        break;&#xD;&#xA;&#xD;&#xA;    default:&#xD;&#xA;        // Default case if the current month doesn't match any condition&#xD;&#xA;        monthAbbreviations.Add(in_datePeriod.ToString(&quot;MMM&quot;));&#xD;&#xA;        break;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;out_listSheetToKeep = monthAbbreviations;" DisplayName="Invoke Code - Create listSheetToKeep" sap:VirtualizedContainerService.HintSize="436.8,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+            <ui:InvokeCode.Arguments>
+              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_listSheetToKeep">
+                <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="listSheetToKeep" />
+              </OutArgument>
               <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">
                 <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
+              </InArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Delete_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom_Workflow\Delete_Sheets.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">
+                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String)" />
+              </InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">
+                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="listSheetToKeep" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
               </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strDateRange">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strDateRange" />
-              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add_Queue_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Workflow\Add_Queue_Item.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePath]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">[strRawFilePathQueue]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strDateRange">[strDateRange]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
