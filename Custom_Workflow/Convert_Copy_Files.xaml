@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1130.4,2030.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>992.6037735849056,1978.8679245283017</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ConvertCopyFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -49,6 +49,7 @@
       <x:String>System.Management.Automation</x:String>
       <x:String>System.Dynamic</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -114,9 +115,11 @@
       <AssemblyReference>System.Management.Automation</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Convert_Copy_Files" sap:VirtualizedContainerService.HintSize="576,1965.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Convert_Copy_Files" sap:VirtualizedContainerService.HintSize="575.0943396226414,1913.6603773584905" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strRawFileExtension" />
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
@@ -128,9 +131,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="513.6,395.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="513.5094339622641,382.18867924528297" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="430.4,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="430.18867924528297,162.1132075471698" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
           <ui:MultipleAssign.AssignOperations>
             <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
               <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -162,7 +165,7 @@
         </ui:MultipleAssign>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="433.6,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="433.811320754717,19.92452830188679" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -173,13 +176,13 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Throw Exception="[new Exception(exception.InnerException.Message)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
+            <Throw Exception="[new Exception(exception.InnerException.Message)]" sap:VirtualizedContainerService.HintSize="334.18867924528297,87.84905660377358" sap2010:WorkflowViewState.IdRef="Throw_2" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists BP Period Directory" Exists="[isFolderPathExists]" sap:VirtualizedContainerService.HintSize="513.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[strFolderPath]" PathType="Folder" />
-    <If Condition="[isFolderPathExists = False]" DisplayName="If - isFolderPathExist = false, create first" sap:VirtualizedContainerService.HintSize="513.6,52.8" sap2010:WorkflowViewState.IdRef="If_3">
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists BP Period Directory" Exists="[isFolderPathExists]" sap:VirtualizedContainerService.HintSize="513.5094339622641,88.75471698113206" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[strFolderPath]" PathType="Folder" />
+    <If Condition="[isFolderPathExists = False]" DisplayName="If - isFolderPathExist = false, create first" sap:VirtualizedContainerService.HintSize="513.5094339622641,50.71698113207547" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -206,7 +209,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[strRawFileExtension = &quot;.xls&quot;]" DisplayName="If - xls, then convert to xlsx" sap:VirtualizedContainerService.HintSize="513.6,1195.2" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[strRawFileExtension.ToLower = &quot;.xls&quot;]" DisplayName="If - xls, then convert to xlsx" sap:VirtualizedContainerService.HintSize="513.5094339622641,1162.8679245283017" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -214,7 +217,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="480,767.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="479.0943396226415,748.0754716981131" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="strConverterPath" />
             <Variable x:TypeArguments="x:String" Name="strCommand" />
@@ -225,7 +228,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign - NewFilePath after converted to xlsx" sap:VirtualizedContainerService.HintSize="436.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign - NewFilePath after converted to xlsx" sap:VirtualizedContainerService.HintSize="438.3396226415094,80.60377358490565" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[strFilePath]</OutArgument>
             </Assign.To>
@@ -233,7 +236,7 @@
               <InArgument x:TypeArguments="x:String">[strFilePath.Replace(Path.GetExtension(strFilePath), ".xlsx")]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:MultipleAssign DisplayName="Multiple Assign - Get converterpath from asset, create command" sap:VirtualizedContainerService.HintSize="436.8,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+          <ui:MultipleAssign DisplayName="Multiple Assign - Get converterpath from asset, create command" sap:VirtualizedContainerService.HintSize="438.3396226415094,131.32075471698113" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -255,16 +258,16 @@
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
-          <TryCatch DisplayName="Try Catch - Convert xls to xlsx using power shell" sap:VirtualizedContainerService.HintSize="436.8,291.2" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+          <TryCatch DisplayName="Try Catch - Convert xls to xlsx using power shell" sap:VirtualizedContainerService.HintSize="438.3396226415094,279.8490566037736" sap2010:WorkflowViewState.IdRef="TryCatch_2">
             <TryCatch.Try>
-              <ui:InvokePowerShell x:TypeArguments="sma:PSObject" ContinueOnError="{x:Null}" CommandText="[strCommand]" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_1" IsScript="True">
+              <ui:InvokePowerShell x:TypeArguments="sma:PSObject" ContinueOnError="{x:Null}" CommandText="[strCommand]" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="334.18867924528297,59.77358490566037" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_1" IsScript="True">
                 <ui:InvokePowerShell.PowerShellVariables>
                   <scg:Dictionary x:TypeArguments="x:String, Argument" />
                 </ui:InvokePowerShell.PowerShellVariables>
               </ui:InvokePowerShell>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.92452830188677,19.92452830188679" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -275,12 +278,12 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Throw Exception="[new Exception(&quot;Converting process error. Please make sure converter path is correct.&quot;)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                  <Throw Exception="[new Exception(&quot;Converting process error. Please make sure converter path is correct.&quot;)]" sap:VirtualizedContainerService.HintSize="334.18867924528297,87.84905660377358" sap2010:WorkflowViewState.IdRef="Throw_3" />
                 </ActivityAction>
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.8,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="438.3396226415094,50.71698113207547" sap2010:WorkflowViewState.IdRef="CommentOut_1">
             <ui:CommentOut.Body>
               <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="545.6,614.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
@@ -335,13 +338,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="376.8,244.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,234.56603773584905" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strFilePath]" DisplayName="Copy File - From raw file path to destination path" sap:VirtualizedContainerService.HintSize="333.6,155.2" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_strRawFilePath]" />
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strFilePath]" DisplayName="Copy File - From raw file path to destination path" sap:VirtualizedContainerService.HintSize="334.18867924528297,148.52830188679243" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_strRawFilePath]" />
         </Sequence>
       </If.Else>
     </If>
