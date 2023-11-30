@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1030.6415094339623,6747.169811320754</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1030.6415094339623,7893.735849056603</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ptmitraglobalholidaytraveloka_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -147,7 +147,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="MG Holiday schedule is biweekly, a single file will contains date ranging from 1-16, and 16-end of month&#xA;Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="ptmitraglobalholidaytraveloka" sap:VirtualizedContainerService.HintSize="1040.6037735849056,6681.962264150943" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="MG Holiday schedule is biweekly, a single file will contains date ranging from 1-16, and 16-end of month&#xA;Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="ptmitraglobalholidaytraveloka" sap:VirtualizedContainerService.HintSize="1040.6037735849056,7828.528301886792" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -167,12 +167,12 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message start of workflow" sap:VirtualizedContainerService.HintSize="979.0188679245282,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} [{1}]&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, Now)]" />
-    <Sequence sap2010:Annotation.AnnotationText="This functioned as a way enable robot to write log correctly in case any unknown exception is thrown" DisplayName="Set date asset" sap:VirtualizedContainerService.HintSize="979.0188679245282,116.83018867924528" sap2010:WorkflowViewState.IdRef="Sequence_110">
+    <Sequence sap2010:Annotation.AnnotationText="This functioned as a way enable robot to write log correctly in case any unknown exception is thrown" DisplayName="Set date asset" sap:VirtualizedContainerService.HintSize="979.0188679245282,1232.6037735849056" sap2010:WorkflowViewState.IdRef="Sequence_110">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:SetAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Reset the asset in case contains any previous value" AssetName="[in_Config(&quot;GlobalVarAsset&quot;).ToString]" DisplayName="Set Asset - Reset global var" sap:VirtualizedContainerService.HintSize="505.3584905660377,216.45283018867923" sap2010:WorkflowViewState.IdRef="SetAsset_1" Value="[&quot;;&quot;]">
@@ -267,7 +267,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="For weekly run the path and file name is different, folder for monthly and weekly &quot;yyyy-MM&quot; and for file name weekly &quot;ddMMMyy-ddMMMyy&quot; for monthly &quot;MMMyy&quot;" DisplayName="Multiple Assign - for path folder" sap:VirtualizedContainerService.HintSize="979.0188679245282,214.64150943396226" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="For weekly run the path and file name is different, folder for monthly and weekly &quot;yyyy-MM&quot; and for file name weekly &quot;ddMMMyy-ddMMMyy&quot; for monthly &quot;MMMyy&quot;" DisplayName="Multiple Assign - for path folder" sap:VirtualizedContainerService.HintSize="979.0188679245282,245.43396226415092" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -292,6 +292,14 @@
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
               <InArgument x:TypeArguments="x:String">[Path.Combine(in_dicPath("strRawFolderPath"), in_TransactionItem.SpecificContent("Key").ToString(), in_datePeriod.Year.ToString, in_datePeriod.ToString("yyyy-MM"))]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[strDateRange]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[$"{dtDateStart}; {dtDateEnd}"]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -572,7 +580,7 @@
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <If sap2010:Annotation.AnnotationText="If not matched then skip to next email or break if already last email" Condition="[System.Text.RegularExpressions.Regex.IsMatch(attachment.Name, strFileNamePattern, RegexOptions.IgnoreCase) AndAlso &#xD;&#xA;(&#xD;&#xA;&#x9;attachment.Name.Contains(dtDateStart.ToString(&quot;ddMMMyyyy&quot;, New CultureInfo(&quot;id-ID&quot;))) Or &#xD;&#xA;&#x9;attachment.Name.Contains(dtDateEnd.ToString(&quot;ddMMMyyyy&quot;, New CultureInfo(&quot;id-ID&quot;))) Or&#xD;&#xA;&#x9;attachment.Name.Contains(dtDateStart.ToString(&quot;ddMMMyyyy&quot;)) Or&#xD;&#xA;&#x9;attachment.Name.Contains(dtDateEnd.ToString(&quot;ddMMMyyyy&quot;))&#xD;&#xA;)]" DisplayName="If - File attachment name matches with regex pattern created from config" sap:VirtualizedContainerService.HintSize="509.88679245283015,442.86792452830184" sap2010:WorkflowViewState.IdRef="If_14">
+                                    <If sap2010:Annotation.AnnotationText="If not matched then skip to next email or break if already last email" Condition="[System.Text.RegularExpressions.Regex.IsMatch(attachment.Name, strFileNamePattern, RegexOptions.IgnoreCase) AndAlso &#xA;(&#xA;&#x9;attachment.Name.Contains(dtDateStart.ToString(&quot;ddMMMyyyy&quot;, New CultureInfo(&quot;id-ID&quot;))) Or &#xA;&#x9;attachment.Name.Contains(dtDateEnd.ToString(&quot;ddMMMyyyy&quot;, New CultureInfo(&quot;id-ID&quot;))) Or&#xA;&#x9;attachment.Name.Contains(dtDateStart.ToString(&quot;ddMMMyyyy&quot;)) Or&#xA;&#x9;attachment.Name.Contains(dtDateEnd.ToString(&quot;ddMMMyyyy&quot;))&#xA;)]" DisplayName="If - File attachment name matches with regex pattern created from config" sap:VirtualizedContainerService.HintSize="509.88679245283015,442.86792452830184" sap2010:WorkflowViewState.IdRef="If_14">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
