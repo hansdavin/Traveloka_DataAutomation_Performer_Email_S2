@@ -272,24 +272,12 @@
               <TryCatch.Try>
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Write_Log_Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="369.50943396226415,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Custom_Workflow\Write_Log_Report.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_PID">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_strPathLog">
-                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PathLog&quot;).ToString" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_strStatus">
-                      <Literal x:TypeArguments="x:String">Success</Literal>
-                    </InArgument>
-                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">
-                      <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateStartPeriod" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">
-                      <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEndPeriod" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange">
-                      <VisualBasicValue x:TypeArguments="scg:List(s:DateTime)" ExpressionText="listStartEndRange" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_PID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_strPathLog">[in_TransactionItem.SpecificContent("PathLog").ToString]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_strStatus">Success</InArgument>
+                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[dateStartPeriod]</InArgument>
+                    <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">[dateEndPeriod]</InArgument>
+                    <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange">[listStartEndRange]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
               </TryCatch.Try>
@@ -389,7 +377,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">330.07547169811323,640.5031446540877 330.07547169811323,670.5031446540877 210.0754716981132,670.5031446540877 210.0754716981132,715.6</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a BussinessRuleException is thrown during the process, the transaction item's status is updated as Failed (Exception Type: Business).&#xA;" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="200.1509433962264,171.16981132075472" sap2010:WorkflowViewState.IdRef="Sequence_14">
+              <Sequence sap2010:Annotation.AnnotationText="If a BussinessRuleException is thrown during the process, the transaction item's status is updated as Failed (Exception Type: Business).&#xA;" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="576.9056603773585,3637.132075471698" sap2010:WorkflowViewState.IdRef="Sequence_14">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="scg:List(s:DateTime)" Name="listStartEndRange" />
                   <Variable x:TypeArguments="s:DateTime" Name="dateEndPeriod" />
@@ -470,7 +458,7 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <Sequence DisplayName="Catch Set Transaction Status (Business Exception)" sap:VirtualizedContainerService.HintSize="450.1132075471698,266.2641509433962" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                  <Sequence DisplayName="Catch Set Transaction Status (Business Exception)" sap:VirtualizedContainerService.HintSize="450.1132075471698,264.45283018867923" sap2010:WorkflowViewState.IdRef="Sequence_24">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -494,7 +482,7 @@
                     <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_26" />
                   </If.Else>
                 </If>
-                <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="515.3207547169811,508.9811320754717" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="515.3207547169811,507.16981132075466" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -512,7 +500,7 @@
                     </ui:AddLogFields.Fields>
                   </ui:AddLogFields>
                   <ui:LogMessage DisplayName="Log Message (Business Exception)" sap:VirtualizedContainerService.HintSize="388.5283018867924,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[in_Config(&quot;LogMessage_BusinessRuleException&quot;).ToString + in_BusinessException.Message]" />
-                  <ui:RemoveLogFields DisplayName="Remove transaction log fields (Business Exception)" sap:VirtualizedContainerService.HintSize="387.2,89.6" sap2010:WorkflowViewState.IdRef="RemoveLogFields_5">
+                  <ui:RemoveLogFields DisplayName="Remove transaction log fields (Business Exception)" sap:VirtualizedContainerService.HintSize="388.5283018867924,87.84905660377358" sap2010:WorkflowViewState.IdRef="RemoveLogFields_5">
                     <ui:RemoveLogFields.Fields>
                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="8">
                         <InArgument x:TypeArguments="x:String">logF_TransactionStatus</InArgument>
@@ -524,9 +512,9 @@
                     </ui:RemoveLogFields.Fields>
                   </ui:RemoveLogFields>
                 </Sequence>
-                <TryCatch DisplayName="Try Catch Get EmailDate Asset" sap:VirtualizedContainerService.HintSize="512,344.8" sap2010:WorkflowViewState.IdRef="TryCatch_15">
+                <TryCatch DisplayName="Try Catch Get EmailDate Asset" sap:VirtualizedContainerService.HintSize="515.3207547169811,331.47169811320754" sap2010:WorkflowViewState.IdRef="TryCatch_15">
                   <TryCatch.Try>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Custom_Workflow\Get_EmailDate_Asset.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379.47169811320754,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Custom_Workflow\Get_EmailDate_Asset.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_strAssetName">[in_Config("GlobalVarAsset").ToString]</InArgument>
                         <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dateStartPeriod">[dateStartPeriod]</OutArgument>
@@ -536,7 +524,7 @@
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_15">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.92452830188677,19.92452830188679" sap2010:WorkflowViewState.IdRef="Catch`1_15">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -547,7 +535,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                         </ActivityAction.Argument>
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;{0} - GetGlobalVariable business exception error - {1}&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, exception)]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.18867924528297,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;{0} - GetGlobalVariable business exception error - {1}&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, exception)]" />
                       </ActivityAction>
                     </Catch>
                   </TryCatch.Catches>
@@ -562,24 +550,12 @@
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Write_Log_Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="369.50943396226415,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Custom_Workflow\Write_Log_Report.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_PID">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_strPathLog">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PathLog&quot;).ToString" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_strStatus">
-                          <Literal x:TypeArguments="x:String">Not Found</Literal>
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">
-                          <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateStartPeriod" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">
-                          <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEndPeriod" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange">
-                          <VisualBasicValue x:TypeArguments="scg:List(s:DateTime)" ExpressionText="listStartEndRange" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_PID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strPathLog">[in_TransactionItem.SpecificContent("PathLog").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strStatus">Not Found</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[dateStartPeriod]</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">[dateEndPeriod]</InArgument>
+                        <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange">[listStartEndRange]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
@@ -615,24 +591,60 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Mail_BusinessError.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388.5283018867924,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Custom_Workflow\Mail_BusinessError.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">[Path.Combine(in_Config("PathMailTemplate").ToString, "Email_BusinessError.html")]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strProcessName">[in_Config("logF_BusinessProcessName").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strSource">[in_BusinessException.Source]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strMessage">[in_BusinessException.Message]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_mailTo">[in_TransactionItem.SpecificContent("Email User To").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_mailCc">[in_TransactionItem.SpecificContent("Email User CC").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_credMail">[in_Config("Gmail_Credentials").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_pathSs">[ScreenshotPath]</InArgument>
-                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">[CDate(in_TransactionItem.SpecificContent("Period").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">[in_Config("logF_BusinessProcessName").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_PID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_pathLog">[in_TransactionItem.SpecificContent("PathLog").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strBPName">[in_TransactionItem.SpecificContent("Business Partner").ToString]</InArgument>
-                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[dateStartPeriod]</InArgument>
-                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">[dateEndPeriod]</InArgument>
-                          <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange">[listStartEndRange]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">[in_Config("SenderName").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strEmailTemplate">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(in_Config(&quot;PathMailTemplate&quot;).ToString, &quot;Email_BusinessError.html&quot;)" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strProcessName">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;logF_BusinessProcessName&quot;).ToString" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strSource">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_BusinessException.Source" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strMessage">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_BusinessException.Message" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_mailTo">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;Email User To&quot;).ToString" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_mailCc">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;Email User CC&quot;).ToString" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_credMail">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Gmail_Credentials&quot;).ToString" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_pathSs">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="ScreenshotPath" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_Period">
+                            <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="CDate(in_TransactionItem.SpecificContent(&quot;Period&quot;).ToString)" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;logF_BusinessProcessName&quot;).ToString" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_PID">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_pathLog">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PathLog&quot;).ToString" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strBPName">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;Business Partner&quot;).ToString" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">
+                            <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateStartPeriod" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">
+                            <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEndPeriod" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange">
+                            <VisualBasicValue x:TypeArguments="scg:List(s:DateTime)" ExpressionText="listStartEndRange" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_strSenderName">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SenderName&quot;).ToString" />
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </Sequence>
@@ -706,7 +718,7 @@
                   <av:Size x:Key="ShapeSize">200.1509433962264,157.58490566037736</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="672,4262.037735849056" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="200.1509433962264,157.58490566037736" sap2010:WorkflowViewState.IdRef="Sequence_17">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="QueueRetry" />
                   <Variable x:TypeArguments="x:String" Name="ScreenshotPath" />
@@ -909,24 +921,12 @@
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Write_Log_Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="369.50943396226415,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Custom_Workflow\Write_Log_Report.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_PID">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_strPathLog">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PathLog&quot;).ToString" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_strStatus">
-                          <Literal x:TypeArguments="x:String">Failed</Literal>
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">
-                          <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateStartPeriod" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">
-                          <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEndPeriod" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange">
-                          <VisualBasicValue x:TypeArguments="scg:List(s:DateTime)" ExpressionText="listStartEndRange" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_PID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strPathLog">[in_TransactionItem.SpecificContent("PathLog").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strStatus">Failed</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[dateStartPeriod]</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">[dateEndPeriod]</InArgument>
+                        <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange">[listStartEndRange]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
