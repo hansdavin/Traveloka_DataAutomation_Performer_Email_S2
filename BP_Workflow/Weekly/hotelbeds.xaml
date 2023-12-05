@@ -527,7 +527,7 @@
                           </scg:List>
                         </ui:MultipleAssign.AssignOperations>
                       </ui:MultipleAssign>
-                      <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove unnecessary words from subject: Fwd, Fw, etc.&#xA;Remove date from subject to prevent it from being calculated with fuzzy" Code="out_strCapturedDate = Regex.Match(io_strEmailSubject, @&quot;\b\d{1,2}-\d{1,2} [a-zA-Z]+ \d{4}\b&quot;).Value;&#xD;&#xA;out_strCapturedDate = string.IsNullOrEmpty(out_strCapturedDate) ? &quot;&quot; : out_strCapturedDate;&#xD;&#xA;foreach (string pattern in in_arrPattern)&#xD;&#xA;{&#xD;&#xA;&#x9;io_strEmailSubject = System.Text.RegularExpressions.Regex.Replace(io_strEmailSubject, pattern, string.Empty, RegexOptions.IgnoreCase);&#xD;&#xA;&#x9;io_strEmailSubjectConfig = System.Text.RegularExpressions.Regex.Replace(io_strEmailSubjectConfig, pattern, string.Empty, RegexOptions.IgnoreCase);&#xD;&#xA;}&#xD;&#xA;Console.WriteLine($&quot;strCapturedDate: {out_strCapturedDate}&quot;);&#xD;&#xA;Console.WriteLine($&quot;Email Subject: {io_strEmailSubject} \nEmail Subject Config: {io_strEmailSubjectConfig}&quot;);" DisplayName="Invoke Code - Capture and remove date from email subject and email subject config" sap:VirtualizedContainerService.HintSize="433.6,224.8" sap2010:WorkflowViewState.IdRef="InvokeCode_10" Language="CSharp">
+                      <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove unnecessary words from subject: Fwd, Fw, etc.&#xA;Remove date from subject to prevent it from being calculated with fuzzy" Code="out_strCapturedDate = Regex.Match(io_strEmailSubject, in_arrPattern[0]).Value;&#xD;&#xA;out_strCapturedDate = string.IsNullOrEmpty(out_strCapturedDate) ? &quot;&quot; : out_strCapturedDate;&#xD;&#xA;foreach (string pattern in in_arrPattern)&#xD;&#xA;{&#xD;&#xA;&#x9;io_strEmailSubject = System.Text.RegularExpressions.Regex.Replace(io_strEmailSubject, pattern, string.Empty, RegexOptions.IgnoreCase);&#xD;&#xA;&#x9;io_strEmailSubjectConfig = System.Text.RegularExpressions.Regex.Replace(io_strEmailSubjectConfig, pattern, string.Empty, RegexOptions.IgnoreCase);&#xD;&#xA;}&#xD;&#xA;Console.WriteLine($&quot;strCapturedDate: {out_strCapturedDate}&quot;);&#xD;&#xA;Console.WriteLine($&quot;Email Subject: {io_strEmailSubject} \nEmail Subject Config: {io_strEmailSubjectConfig}&quot;);" DisplayName="Invoke Code - Capture and remove date from email subject and email subject config" sap:VirtualizedContainerService.HintSize="433.6,224.8" sap2010:WorkflowViewState.IdRef="InvokeCode_10" Language="CSharp">
                         <ui:InvokeCode.Arguments>
                           <InArgument x:TypeArguments="s:String[]" x:Key="in_arrPattern">[arrPattern]</InArgument>
                           <InOutArgument x:TypeArguments="x:String" x:Key="io_strEmailSubjectConfig">[strEmailSubjectConfig]</InOutArgument>
@@ -759,15 +759,9 @@
                     <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strFilePath]" DisplayName="Copy File - From raw file path to destination path" sap:VirtualizedContainerService.HintSize="411.2,155.2" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[attachment]" />
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Delete_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="411.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Custom_Workflow\Delete_Sheets.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">
-                          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String)" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">
-                          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String)" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">[New List(of String)]</InArgument>
+                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">[New List(of String)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePath]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add_Queue_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="411.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Custom_Workflow\Add_Queue_Item.xaml">
