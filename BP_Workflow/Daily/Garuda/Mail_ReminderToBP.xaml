@@ -11,7 +11,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992.6037735849056,780.6792452830189</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>954.566037735849,780.6792452830189</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Mail_BusinessError_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -112,7 +112,7 @@
     <ui:LogMessage DisplayName="Log Message Mail Reminder" sap:VirtualizedContainerService.HintSize="388.5283018867924,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[in_PID + &quot; - &quot; +&quot;STEP : Mail Reminder To BP&quot;]" />
     <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Gmail_Credentials&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential Email" sap:VirtualizedContainerService.HintSize="388.5283018867924,136.75471698113208" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[pwd]" Username="[usrname]" />
     <ui:ReadTextFile File="{x:Null}" Content="[htmlBody]" DisplayName="Read Text File Email Template" FileName="BP_Workflow\Daily\Garuda\DailyEmailReminder.html" sap:VirtualizedContainerService.HintSize="388.5283018867924,78.79245283018868" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="real address care@doku.com" Body="[htmlBody.Replace(&quot;{0}&quot;, in_datePeriod.ToString(&quot;dd MMM yyyy&quot;))]" DisplayName="Send email reminder (SMTP)" Email="[usrname]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="388.5283018867924,181.1320754716981" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="True" Name="[in_strSenderName]" Port="465" SecureConnection="Auto" SecurePassword="[pwd]" Server="smtp.gmail.com" Subject="[String.Format(&quot;Report GA SA3AKKC - {0}&quot;, in_datePeriod.ToString(&quot;dd-MMM-yyyy&quot;))]" To="hans.davin@kalyana.co.id">
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="real address care@doku.com" Body="[htmlBody.Replace(&quot;{0}&quot;, in_datePeriod.ToString(&quot;dd MMM yyyy&quot;))]" DisplayName="Send email reminder (SMTP)" Email="[usrname]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="388.5283018867924,181.1320754716981" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="True" Name="[in_strSenderName]" Port="465" SecureConnection="Auto" SecurePassword="[pwd]" Server="smtp.gmail.com" Subject="[String.Format(&quot;Report GA SA3AKKC - {0}&quot;, in_datePeriod.ToString(&quot;dd-MMM-yyyy&quot;))]" To="ct.rpa1@traveloka.com">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
       </ui:SendMail.Files>
