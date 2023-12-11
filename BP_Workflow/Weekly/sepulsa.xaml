@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1403,7076</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845.6,7098.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>sepulsa_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -147,7 +147,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Sepulsa schedule is weekly. Report will be sent each Thursday.&#xA;a. Sepulsa Pulsa - 1 November 2023&#xA;b. Sepulsa Pulsa - 2 - 8 November 2023&#xA;c. Sepulsa Pulsa - 9 - 15 November 2023&#xA;d. Sepulsa Pulsa - 16 - 22 November 2023&#xA;e. Sepulsa Pulsa - 23 - 29 November 2023&#xA;f. Sepulsa Pulsa - 30 November 2023&#xA;&#xA;Main takeaways:&#xA;1. In weekly BP, set the date according to the end date of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="sepulsa" sap:VirtualizedContainerService.HintSize="848,7011" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sepulsa schedule is weekly. Report will be sent each Thursday.&#xA;a. Sepulsa Pulsa - 1 November 2023&#xA;b. Sepulsa Pulsa - 2 - 8 November 2023&#xA;c. Sepulsa Pulsa - 9 - 15 November 2023&#xA;d. Sepulsa Pulsa - 16 - 22 November 2023&#xA;e. Sepulsa Pulsa - 23 - 29 November 2023&#xA;f. Sepulsa Pulsa - 30 November 2023&#xA;&#xA;Main takeaways:&#xA;1. In weekly BP, set the date according to the end date of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="sepulsa" sap:VirtualizedContainerService.HintSize="848,7033.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -182,8 +182,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message start of workflow" sap:VirtualizedContainerService.HintSize="786,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} [{1}]&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, Now)]" />
-    <Sequence sap2010:Annotation.AnnotationText="This function as a way enable robot to write log correctly in case any unknown exception is thrown" DisplayName="Set date asset" sap:VirtualizedContainerService.HintSize="786,2143" sap2010:WorkflowViewState.IdRef="Sequence_110">
+    <ui:LogMessage DisplayName="Log Message start of workflow" sap:VirtualizedContainerService.HintSize="785.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} [{1}]&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, Now)]" />
+    <Sequence sap2010:Annotation.AnnotationText="This function as a way enable robot to write log correctly in case any unknown exception is thrown" DisplayName="Set date asset" sap:VirtualizedContainerService.HintSize="785.6,2150.4" sap2010:WorkflowViewState.IdRef="Sequence_110">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -191,7 +191,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:SetAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Reset the asset in case contains any previous value" AssetName="[in_Config(&quot;GlobalVarAsset&quot;).ToString]" DisplayName="Set Asset - Reset global var" sap:VirtualizedContainerService.HintSize="514,223" sap2010:WorkflowViewState.IdRef="SetAsset_1" Value="[&quot;;&quot;]">
+      <ui:SetAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Reset the asset in case contains any previous value" AssetName="[in_Config(&quot;GlobalVarAsset&quot;).ToString]" DisplayName="Set Asset - Reset global var" sap:VirtualizedContainerService.HintSize="513.6,225.6" sap2010:WorkflowViewState.IdRef="SetAsset_1" Value="[&quot;;&quot;]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -200,7 +200,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:SetAsset>
-      <Assign DisplayName="Assign - Set end date" sap:VirtualizedContainerService.HintSize="514,82" sap2010:WorkflowViewState.IdRef="Assign_37">
+      <Assign DisplayName="Assign - Set end date" sap:VirtualizedContainerService.HintSize="513.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_37">
         <Assign.To>
           <OutArgument x:TypeArguments="s:DateTime">[dtDateEnd]</OutArgument>
         </Assign.To>
@@ -208,13 +208,13 @@
           <InArgument x:TypeArguments="s:DateTime">[in_datePeriod]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:InvokeCode ContinueOnError="{x:Null}" Code="out_dtDateStart = in_dtDateEnd;&#xA;while (out_dtDateStart.DayOfWeek != DayOfWeek.Thursday)&#xA;{&#xA;&#x9;out_dtDateStart = out_dtDateStart.AddDays(-1);&#xA;}&#xA;if(out_dtDateStart.Month &lt; in_dtDateEnd.Month) out_dtDateStart = new DateTime(in_dtDateEnd.Year, in_dtDateEnd.Month, 1);&#xA;" DisplayName="Invoke Code - Set start date" sap:VirtualizedContainerService.HintSize="514,165" sap2010:WorkflowViewState.IdRef="InvokeCode_13" Language="CSharp">
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="out_dtDateStart = in_dtDateEnd;&#xA;while (out_dtDateStart.DayOfWeek != DayOfWeek.Thursday)&#xA;{&#xA;&#x9;out_dtDateStart = out_dtDateStart.AddDays(-1);&#xA;}&#xA;if(out_dtDateStart.Month &lt; in_dtDateEnd.Month) out_dtDateStart = new DateTime(in_dtDateEnd.Year, in_dtDateEnd.Month, 1);&#xA;" DisplayName="Invoke Code - Set start date" sap:VirtualizedContainerService.HintSize="513.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_13" Language="CSharp">
         <ui:InvokeCode.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateEnd">[dtDateEnd]</InArgument>
           <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtDateStart">[dtDateStart]</OutArgument>
         </ui:InvokeCode.Arguments>
       </ui:InvokeCode>
-      <Assign DisplayName="Assign - Determine whether the date isMultiple or not" sap:VirtualizedContainerService.HintSize="514,82" sap2010:WorkflowViewState.IdRef="Assign_38">
+      <Assign DisplayName="Assign - Determine whether the date isMultiple or not" sap:VirtualizedContainerService.HintSize="513.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_38">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Boolean">[isMultiple]</OutArgument>
         </Assign.To>
@@ -222,7 +222,7 @@
           <InArgument x:TypeArguments="x:Boolean">[dtDateStart &lt; dtDateEnd]</InArgument>
         </Assign.Value>
       </Assign>
-      <If sap2010:Annotation.AnnotationText="Normal run pattern: (Kamis-1)-6 until (Kamis-1)&#xA;Set start date, end date, start date postpone, end date postpone, postpone duration.&#xA;Set bool isMultiple to false if subject contains single date&#xA;" Condition="[Not in_isRerun]" DisplayName="If normal run, use Bp's specific schedule" sap:VirtualizedContainerService.HintSize="514,982" sap2010:WorkflowViewState.IdRef="If_36">
+      <If sap2010:Annotation.AnnotationText="Normal run pattern: (Kamis-1)-6 until (Kamis-1)&#xA;Set start date, end date, start date postpone, end date postpone, postpone duration.&#xA;Set bool isMultiple to false if subject contains single date&#xA;" Condition="[Not in_isRerun]" DisplayName="If normal run, use Bp's specific schedule" sap:VirtualizedContainerService.HintSize="513.6,987.2" sap2010:WorkflowViewState.IdRef="If_36">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -245,7 +245,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <TryCatch.Try>
-                <ui:InvokeCode ContinueOnError="{x:Null}" Code="DateTime today = in_datePeriod;&#xA;DateTime dateStart = io_dtDateStart;&#xA;DateTime dateEnd = io_dtDateEnd;&#xA;DateTime dateStartPostpone = DateTime.MinValue;&#xA;DateTime dateEndPostpone = DateTime.MinValue;&#xA;bool isValid = true;&#xA;bool isCreateQueue = false;&#xA;bool isMultiple = false;&#xA;int intTotalHours = 0;&#xA;List&lt;DateTime&gt; listDateStartEndPostpone = new List&lt;DateTime&gt;();&#xA;&#xA;Console.WriteLine($&quot;today: {in_datePeriod}&quot;);&#xA;&#xA;// Find Thursday&#xA;while(dateEnd.DayOfWeek != DayOfWeek.Thursday)&#xA;{&#xA;    dateEnd = dateEnd.AddDays(-1);&#xA;&#x9;if(dateEnd.Month &lt; today.Month || dateEnd.Year &lt; today.Year) &#xA;&#x9;{&#xA;&#x9;&#x9;isValid = false;&#xA;&#x9;&#x9;break;&#xA;&#x9;}&#xA;}&#xA;&#xA;if(!isValid) throw new Exception(&quot;It looks like the robot was running before the report delivery period.&quot;);&#xA;&#xA;//Substract one more day&#xA;dateEnd = dateEnd.AddDays(-1);&#xA;//Calculate start date&#xA;dateStart = dateEnd.AddDays(-6);&#xA;if(dateStart.Month &lt; dateEnd.Month)&#xA;{&#xA;    dateStart = new DateTime(dateEnd.Year, dateEnd.Month, 1);&#xA;}&#xA;&#xA;Console.WriteLine($&quot;dateStart: {dateStart}&quot;);&#xA;Console.WriteLine($&quot;dateEnd: {dateEnd}&quot;);&#xA;&#xA;//Check date for next Thursday, whether it is still in the same Month/Year&#xA;if(dateEnd.AddDays(7).Month &gt; dateEnd.Month || dateEnd.AddDays(7).Year &gt; dateEnd.Year)&#xA;{&#xA;    isCreateQueue = true;&#xA;&#x9;if(dateStart &lt; dateEnd) isMultiple = true;&#xA;    DateTime dateLastDayInMonth = new DateTime(dateEnd.Year, dateEnd.Month, DateTime.DaysInMonth(dateEnd.Year, dateEnd.Month));&#xA;    // Calculate duration in hours (postpone)&#xA;    TimeSpan tsDuration = dateLastDayInMonth - dateEnd;&#xA;    intTotalHours = (int)tsDuration.TotalHours;&#xA;    dateStartPostpone = dateEnd.AddDays(1);&#xA;    dateEndPostpone = dateLastDayInMonth;&#xA;    listDateStartEndPostpone.Add(dateStartPostpone);&#xA;    listDateStartEndPostpone.Add(dateEndPostpone);&#xA;    Console.WriteLine($&quot;Create queue with postpone in hours: {intTotalHours}&quot;);&#xA;    Console.WriteLine($&quot;dateStartPostpone: {dateStartPostpone}&quot;);&#xA;    Console.WriteLine($&quot;dateEndPostpone: {dateEndPostpone}&quot;);&#xA;}&#xA;out_listDateStartEndPostpone = listDateStartEndPostpone;&#xA;out_intPostponeHours = intTotalHours;&#xA;io_dtDateStart = dateStart;&#xA;io_dtDateEnd = dateEnd;&#xA;if(io_dtDateStart != io_dtDateEnd) isMultiple = true;&#xA;out_isMultiple = isMultiple;&#xA;out_isCreateQueue = isCreateQueue;&#xA;Console.WriteLine($&quot;isCreateQueue: {isCreateQueue}&quot;);" DisplayName="Invoke Code - Set dateStart &amp; dateEnd" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_6" Language="CSharp">
+                <ui:InvokeCode ContinueOnError="{x:Null}" Code="DateTime today = in_datePeriod;&#xD;&#xA;DateTime dateStart = io_dtDateStart;&#xD;&#xA;DateTime dateEnd = io_dtDateEnd;&#xD;&#xA;DateTime dateStartPostpone = DateTime.MinValue;&#xD;&#xA;DateTime dateEndPostpone = DateTime.MinValue;&#xD;&#xA;bool isValid = true;&#xD;&#xA;bool isCreateQueue = false;&#xD;&#xA;bool isMultiple = false;&#xD;&#xA;int intTotalHours = 0;&#xD;&#xA;List&lt;DateTime&gt; listDateStartEndPostpone = new List&lt;DateTime&gt;();&#xD;&#xA;&#xD;&#xA;Console.WriteLine($&quot;today: {in_datePeriod}&quot;);&#xD;&#xA;&#xD;&#xA;// Find Thursday&#xD;&#xA;while(dateEnd.DayOfWeek != DayOfWeek.Thursday)&#xD;&#xA;{&#xD;&#xA;    dateEnd = dateEnd.AddDays(-1);&#xD;&#xA;&#x9;if(dateEnd.Month &lt; today.Month || dateEnd.Year &lt; today.Year) &#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;isValid = false;&#xD;&#xA;&#x9;&#x9;break;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if(!isValid) throw new Exception(&quot;It looks like the robot was running before the report delivery period.&quot;);&#xD;&#xA;&#xD;&#xA;//Substract one more day&#xD;&#xA;dateEnd = dateEnd.AddDays(-1);&#xD;&#xA;//Calculate start date&#xD;&#xA;dateStart = dateEnd.AddDays(-6);&#xD;&#xA;if(dateStart.Month &lt; dateEnd.Month)&#xD;&#xA;{&#xD;&#xA;    dateStart = new DateTime(dateEnd.Year, dateEnd.Month, 1);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;Console.WriteLine($&quot;dateStart: {dateStart}&quot;);&#xD;&#xA;Console.WriteLine($&quot;dateEnd: {dateEnd}&quot;);&#xD;&#xA;&#xD;&#xA;//Check date for next Thursday, whether it is still in the same Month/Year&#xD;&#xA;if(dateEnd.AddDays(7).Month &gt; dateEnd.Month || dateEnd.AddDays(7).Year &gt; dateEnd.Year)&#xD;&#xA;{&#xD;&#xA;    isCreateQueue = true;&#xD;&#xA;&#x9;if(dateStart &lt; dateEnd) isMultiple = true;&#xD;&#xA;    DateTime dateLastDayInMonth = new DateTime(dateEnd.Year, dateEnd.Month, DateTime.DaysInMonth(dateEnd.Year, dateEnd.Month));&#xD;&#xA;    // Calculate duration in hours (postpone)&#xD;&#xA;    TimeSpan tsDuration = dateLastDayInMonth - dateEnd;&#xD;&#xA;    intTotalHours = (int)tsDuration.TotalHours;&#xD;&#xA;    dateStartPostpone = dateEnd.AddDays(1);&#xD;&#xA;    dateEndPostpone = dateLastDayInMonth;&#xD;&#xA;    listDateStartEndPostpone.Add(dateStartPostpone);&#xD;&#xA;    listDateStartEndPostpone.Add(dateEndPostpone);&#xD;&#xA;    Console.WriteLine($&quot;Create queue with postpone in hours: {intTotalHours}&quot;);&#xD;&#xA;    Console.WriteLine($&quot;dateStartPostpone: {dateStartPostpone}&quot;);&#xD;&#xA;    Console.WriteLine($&quot;dateEndPostpone: {dateEndPostpone}&quot;);&#xD;&#xA;}&#xD;&#xA;out_listDateStartEndPostpone = listDateStartEndPostpone;&#xD;&#xA;out_intPostponeHours = intTotalHours;&#xD;&#xA;io_dtDateStart = dateStart;&#xD;&#xA;io_dtDateEnd = dateEnd;&#xD;&#xA;if(io_dtDateStart != io_dtDateEnd) isMultiple = true;&#xD;&#xA;out_isMultiple = isMultiple;&#xD;&#xA;out_isCreateQueue = isCreateQueue;&#xD;&#xA;Console.WriteLine($&quot;isCreateQueue: {isCreateQueue}&quot;);" DisplayName="Invoke Code - Set dateStart &amp; dateEnd" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_6" Language="CSharp">
                   <ui:InvokeCode.Arguments>
                     <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
                     <InOutArgument x:TypeArguments="s:DateTime" x:Key="io_dtDateStart">[dtDateStart]</InOutArgument>
@@ -795,7 +795,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[String.Format(&quot;{0} - Creating Queue Postpone&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString)]" />
-                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" DeferDate="[Now.AddHours(intPostponeHours)]" DisplayName="Add Queue Item For Current BP" sap:VirtualizedContainerService.HintSize="334.4,224.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[String.Format(&quot;{0}-{1}&quot;, in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString, dtDateEnd.ToString(&quot;dd-MM-yyyy&quot;))]">
+                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" DeferDate="[Now.AddHours(intPostponeHours)]" DisplayName="Add Queue Item For Current BP" sap:VirtualizedContainerService.HintSize="334.4,224.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[String.Format(&quot;{0}-{1}&quot;, in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString, listDateStartEndPostpone(1).ToString(&quot;dd-MM-yyyy&quot;))]">
                     <ui:AddQueueItem.ItemInformation>
                       <InArgument x:TypeArguments="x:String" x:Key="BPID">[in_TransactionItem.SpecificContent("BPID").ToString]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="Key">[in_TransactionItem.SpecificContent("Key").ToString]</InArgument>
