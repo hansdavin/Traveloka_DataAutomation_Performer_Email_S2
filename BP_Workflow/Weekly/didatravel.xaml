@@ -243,7 +243,7 @@
                       <OutArgument x:TypeArguments="s:DateTime">[dtDateEnd]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="s:DateTime">[If(Convert.ToInt32(in_datePeriod.Day)&gt;15, New Date(in_datePeriod.Year, in_datePeriod.Month, 15), New Date(in_datePeriod.Year, in_datePeriod.Month, Date.DaysInMonth(in_datePeriod.Year, in_datePeriod.Month)))]</InArgument>
+                      <InArgument x:TypeArguments="s:DateTime">[If(Convert.ToInt32(in_datePeriod.Day)&gt;15, New Date(in_datePeriod.Year, in_datePeriod.Month, 15), New Date(in_datePeriod.AddMonths(-1).Year, in_datePeriod.AddMonths(-1).Month, Date.DaysInMonth(in_datePeriod.AddMonths(-1).Year, in_datePeriod.AddMonths(-1).Month)))]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
