@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992.6037735849056,9447.849056603773</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>992.6037735849056,9969.509433962263</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>webbeds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -146,7 +146,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="WEBBEDS schedule is monthly, within 1 excel file, will have 2BPs' data (DOTW and WEBBEDS)&#xA;Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="webbeds" sap:VirtualizedContainerService.HintSize="979.0188679245282,9382.64150943396" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="WEBBEDS schedule is monthly, within 1 excel file, will have 2BPs' data (DOTW and WEBBEDS)&#xA;Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="webbeds" sap:VirtualizedContainerService.HintSize="979.0188679245282,9904.301886792453" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -297,7 +297,7 @@
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists for final file" Exists="[isFileExist]" sap:VirtualizedContainerService.HintSize="917.4339622641509,88.75471698113206" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[strFilePath]" PathType="File" />
-    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="917.4339622641509,7620.226415094339" sap2010:WorkflowViewState.IdRef="If_3">
+    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="917.4339622641509,8141.8867924528295" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -306,7 +306,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="883.0188679245282,7233.509433962264" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="883.0188679245282,7755.169811320754" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -649,7 +649,7 @@
             </ui:ForEach>
           </Sequence>
           <ui:LogMessage DisplayName="End of filtering emails" sap:VirtualizedContainerService.HintSize="842.2641509433962,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot;: Filtering email done&quot;]" />
-          <Sequence DisplayName="Processing attachment" sap:VirtualizedContainerService.HintSize="842.2641509433962,2015.0943396226414" sap2010:WorkflowViewState.IdRef="Sequence_101">
+          <Sequence DisplayName="Processing attachment" sap:VirtualizedContainerService.HintSize="842.2641509433962,2536.754716981132" sap2010:WorkflowViewState.IdRef="Sequence_101">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="ienAttachment" />
             </Sequence.Variables>
@@ -658,21 +658,24 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Start processing email" sap:VirtualizedContainerService.HintSize="724.5283018867924,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot;: Downloading attachment...&quot;]" />
-            <ui:SaveMailAttachments Attachments="[ienAttachment]" DisplayName="Save Attachments with correct extension" ExcludeInlineAttachments="False" Filter="[Path.GetExtension(in_TransactionItem.SpecificContent(&quot;File Name Attachment&quot;).ToString)]" FolderPath="[strRawFolderPath]" sap:VirtualizedContainerService.HintSize="724.5283018867924,87.84905660377358" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_3" Message="[correctEmailFound]" OverwriteExisting="True" />
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each attachment downloaded" sap:VirtualizedContainerService.HintSize="724.5283018867924,1648.3018867924527" sap2010:WorkflowViewState.IdRef="ForEach`1_38" Values="[ienAttachment]">
+            <ui:LogMessage DisplayName="Start processing email" sap:VirtualizedContainerService.HintSize="700.9811320754717,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString + &quot;: Downloading attachment...&quot;]" />
+            <ui:SaveMailAttachments Attachments="[ienAttachment]" DisplayName="Save Attachments with correct extension" ExcludeInlineAttachments="False" Filter="[Path.GetExtension(in_TransactionItem.SpecificContent(&quot;File Name Attachment&quot;).ToString)]" FolderPath="[strRawFolderPath]" sap:VirtualizedContainerService.HintSize="700.9811320754717,87.84905660377358" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_3" Message="[correctEmailFound]" OverwriteExisting="True" />
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each attachment downloaded" sap:VirtualizedContainerService.HintSize="700.9811320754717,2169.962264150943" sap2010:WorkflowViewState.IdRef="ForEach`1_38" Values="[ienAttachment]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="attachment" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body of for each file downloaded" sap:VirtualizedContainerService.HintSize="688.3018867924528,1526.0377358490564" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                  <Sequence DisplayName="Body of for each file downloaded" sap:VirtualizedContainerService.HintSize="664.754716981132,2047.698113207547" sap2010:WorkflowViewState.IdRef="Sequence_94">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Boolean" Name="FolderPathExists" />
+                    </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If sap2010:Annotation.AnnotationText="This to handle incase there's another file that has the same file extension, but not needed in the same email" Condition="[Not System.Text.RegularExpressions.Regex.IsMatch(Path.GetFileName(attachment), strFileNamePattern, RegexOptions.IgnoreCase)]" DisplayName="Check if the filename downloaded is correct" sap:VirtualizedContainerService.HintSize="626.7169811320754,116.83018867924528" sap2010:WorkflowViewState.IdRef="If_29">
+                    <If sap2010:Annotation.AnnotationText="This to handle incase there's another file that has the same file extension, but not needed in the same email" Condition="[Not System.Text.RegularExpressions.Regex.IsMatch(Path.GetFileName(attachment), strFileNamePattern, RegexOptions.IgnoreCase)]" DisplayName="Check if the filename downloaded is correct" sap:VirtualizedContainerService.HintSize="603.1698113207547,116.83018867924528" sap2010:WorkflowViewState.IdRef="If_29">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -695,13 +698,35 @@
                         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_90" />
                       </If.Else>
                     </If>
-                    <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Specific for DOTW and WEBBEDS, single excel file contains multiple sheet which contain data for each BP" DisplayName="Excel Application Scope - to split the excel file based on BP name" sap:VirtualizedContainerService.HintSize="626.7169811320754,957.2830188679245" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[attachment]">
+                    <ui:FolderExistsX DisplayName="Check if folder destination is exist" Exists="[FolderPathExists]" sap:VirtualizedContainerService.HintSize="603.1698113207547,130.41509433962264" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[strFolderPath]" />
+                    <If Condition="[Not FolderPathExists]" DisplayName="If folder path not exists" sap:VirtualizedContainerService.HintSize="603.1698113207547,50.71698113207547" sap2010:WorkflowViewState.IdRef="If_34">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,164.83018867924528" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder for FolderPath" sap:VirtualizedContainerService.HintSize="334.18867924528297,78.79245283018868" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[strFolderPath]" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_107" />
+                      </If.Else>
+                    </If>
+                    <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Specific for DOTW and WEBBEDS, single excel file contains multiple sheet which contain data for each BP" DisplayName="Excel Application Scope - to split the excel file based on BP name" sap:VirtualizedContainerService.HintSize="603.1698113207547,1218.1132075471696" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[attachment]">
                       <ui:ExcelApplicationScope.Body>
                         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Do excel process scope" sap:VirtualizedContainerService.HintSize="568.754716981132,816.9056603773585" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                          <Sequence DisplayName="Do excel process scope" sap:VirtualizedContainerService.HintSize="568.754716981132,1077.7358490566037" sap2010:WorkflowViewState.IdRef="Sequence_87">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="scg:List(x:String)" Name="sheetsName" />
                             </Sequence.Variables>
@@ -711,13 +736,16 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="507.16981132075466,25.358490566037734" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_3" Sheets="[sheetsName]" />
-                            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each sheet in the excel file" sap:VirtualizedContainerService.HintSize="507.16981132075466,642.1132075471697" sap2010:WorkflowViewState.IdRef="ForEach`1_35" Values="[sheetsName]">
+                            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each sheet in the excel file" sap:VirtualizedContainerService.HintSize="507.16981132075466,902.9433962264151" sap2010:WorkflowViewState.IdRef="ForEach`1_35" Values="[sheetsName]">
                               <ui:ForEach.Body>
                                 <ActivityAction x:TypeArguments="x:String">
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="x:String" Name="sheetName" />
                                   </ActivityAction.Argument>
-                                  <Sequence DisplayName="Body of for each sheet" sap:VirtualizedContainerService.HintSize="470.9433962264151,519.8490566037735" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                                  <Sequence DisplayName="Body of for each sheet" sap:VirtualizedContainerService.HintSize="470.9433962264151,780.6792452830189" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:Boolean" Name="ExcelFileExists" />
+                                    </Sequence.Variables>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -744,6 +772,28 @@
                                         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_103" />
                                       </If.Else>
                                     </If>
+                                    <ui:FileExistsX DisplayName="Check if excel already exists" Exists="[ExcelFileExists]" sap:VirtualizedContainerService.HintSize="409.3584905660377,130.41509433962264" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[strFilePath]" />
+                                    <If Condition="[ExcelFileExists]" DisplayName="If excel file already exists, delete" sap:VirtualizedContainerService.HintSize="409.3584905660377,50.71698113207547" sap2010:WorkflowViewState.IdRef="If_35">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,164.83018867924528" sap2010:WorkflowViewState.IdRef="Sequence_108">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:DeleteFileX DisplayName="Delete Existed Excel File" sap:VirtualizedContainerService.HintSize="334.18867924528297,78.79245283018868" sap2010:WorkflowViewState.IdRef="DeleteFileX_4" Path="[strFilePath]" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_109" />
+                                      </If.Else>
+                                    </If>
                                     <ui:ExcelCopySheet DestinationFilePath="[strFilePath]" DestinationSheetName="[sheetName]" DisplayName="Copy Sheet to a new workbook" sap:VirtualizedContainerService.HintSize="409.3584905660377,78.79245283018868" sap2010:WorkflowViewState.IdRef="ExcelCopySheet_1" SheetName="[sheetName]" />
                                   </Sequence>
                                 </ActivityAction>
@@ -760,14 +810,14 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:ExcelApplicationScope>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Delete_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="626.7169811320754,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Custom_Workflow\Delete_Sheets.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Delete_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="603.1698113207547,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Custom_Workflow\Delete_Sheets.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">[New List(of String) From {"Sheet1"}]</InArgument>
                         <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">[New List(of String)]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePath]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add_Queue_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="626.7169811320754,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Custom_Workflow\Add_Queue_Item.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add_Queue_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="603.1698113207547,111.39622641509433" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Custom_Workflow\Add_Queue_Item.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
