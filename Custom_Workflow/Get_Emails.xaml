@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992.6037735849056,1634.7169811320753</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1073.2075471698113,1505.2075471698113</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetEmails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -103,7 +103,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetEmails" sap:VirtualizedContainerService.HintSize="571.4716981132075,1569.509433962264" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetEmails" sap:VirtualizedContainerService.HintSize="571.4716981132075,1440" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strEmailFilter" />
       <Variable x:TypeArguments="x:String" Name="strSenderDomain" />
@@ -177,7 +177,6 @@
     </Assign>
     <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;Gmail_Credentials&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential for Gmail" sap:VirtualizedContainerService.HintSize="509.88679245283015,136.75471698113208" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strSecPassword]" Username="[strUsername]" />
     <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" Top="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[strUsername]" EnableSSL="True" FilterExpression="[strEmailFilter]" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="509.88679245283015,25.358490566037734" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_3" IgnoreCRL="False" MailFolder="Inbox" MarkAsRead="False" Messages="[out_listMailMessages]" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[strSecPassword]" Server="imap.gmail.com" TimeoutMS="180000" />
-    <ui:LogMessage DisplayName="Log Message - Workflow done" sap:VirtualizedContainerService.HintSize="509.88679245283015,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;GetEmails done - {0} emails...&quot;, out_listMailMessages.Count)]" />
-    <ui:LogMessage DisplayName="Log Message - Common email filter exec time" sap:VirtualizedContainerService.HintSize="509.88679245283015,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[String.Format(&quot;{0} - Common email filter execution time : {1:N3} s&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, System.DateTime.Now.TimeOfDay.Subtract(startTime).TotalSeconds)]" />
+    <ui:LogMessage DisplayName="Done get emails log" sap:VirtualizedContainerService.HintSize="509.88679245283015,89.66037735849056" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[String.Format(&quot;{0} - Get {2} email(s) done in execution time : {1:N3} s&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, System.DateTime.Now.TimeOfDay.Subtract(startTime).TotalSeconds, out_listMailMessages.Count)]" />
   </Sequence>
 </Activity>
