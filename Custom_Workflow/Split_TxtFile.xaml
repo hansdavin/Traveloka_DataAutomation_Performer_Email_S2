@@ -16,7 +16,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>869.6,3740.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845.6,3740.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SplitTxtFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -114,7 +114,6 @@
       <Variable x:TypeArguments="x:String" Name="strRawTxtFile" />
       <Variable x:TypeArguments="s:String[]" Name="arrLines" />
       <Variable x:TypeArguments="x:String" Name="strFilename" />
-      <Variable x:TypeArguments="x:Int32" Name="counter" />
       <Variable x:TypeArguments="x:String" Name="strHeader" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(of String)]" Name="listFilePath" />
       <Variable x:TypeArguments="x:String" Name="strFilePath" />

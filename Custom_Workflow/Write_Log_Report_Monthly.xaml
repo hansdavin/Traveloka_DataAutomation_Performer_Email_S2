@@ -20,7 +20,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>869.6,2626.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845.6,2626.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>WriteLogReport_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="60">
@@ -116,12 +116,6 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="sheetName" />
       <Variable x:TypeArguments="x:String" Name="rowDate" />
-      <Variable x:TypeArguments="x:String" Name="strAssetValue" />
-      <Variable x:TypeArguments="s:String[]" Name="arrDate" />
-      <Variable x:TypeArguments="x:String" Name="strDateStartPeriod" />
-      <Variable x:TypeArguments="x:String" Name="strDateEndPeriod" />
-      <Variable x:TypeArguments="x:String" Name="strListStartEndRange" />
-      <Variable x:TypeArguments="s:String[]" Name="arrListStartEndRange" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">

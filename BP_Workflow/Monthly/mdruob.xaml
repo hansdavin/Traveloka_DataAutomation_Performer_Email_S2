@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>565.6,3202.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845.6,3202.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>uob_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -100,8 +100,6 @@
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
       <Variable x:TypeArguments="x:String" Name="strFolderPath" />
-      <Variable x:TypeArguments="x:Boolean" Name="isFileNotRerunExist" />
-      <Variable x:TypeArguments="x:Boolean" Name="isFolderNotRerunExist" />
       <Variable x:TypeArguments="x:String" Name="strRawFolderPath" />
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="listMailMessages" />
       <Variable x:TypeArguments="x:String" Name="strRawFilePathQueue" />
@@ -305,27 +303,17 @@
               <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">[strRawFilePath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeCode ContinueOnError="{x:Null}" Code="List&lt;string&gt; monthAbbreviations = new List&lt;string&gt;();&#xD;&#xA;&#xD;&#xA;switch (in_datePeriod.Month)&#xD;&#xA;{&#xD;&#xA;    case 8:&#xD;&#xA;        monthAbbreviations.AddRange(new[] { &quot;Aug&quot;, &quot;Agus&quot;, &quot;Ags&quot; });&#xD;&#xA;        break;&#xD;&#xA;&#xD;&#xA;    case 9:&#xD;&#xA;        monthAbbreviations.AddRange(new[] { &quot;Sep&quot;, &quot;Sept&quot; });&#xD;&#xA;        break;&#xD;&#xA;&#x9;&#xD;&#xA;    case 12:&#xD;&#xA;        monthAbbreviations.AddRange(new[] { &quot;Dec&quot;, &quot;Des&quot; });&#xD;&#xA;        break;&#xD;&#xA;&#xD;&#xA;    default:&#xD;&#xA;        // Default case if the current month doesn't match any condition&#xD;&#xA;        monthAbbreviations.Add(in_datePeriod.ToString(&quot;MMM&quot;));&#xD;&#xA;        break;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;out_listSheetToKeep = monthAbbreviations;" DisplayName="Invoke Code - Create listSheetToKeep" sap:VirtualizedContainerService.HintSize="436.8,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="List&lt;string&gt; monthAbbreviations = new List&lt;string&gt;();&#xA;&#xA;switch (in_datePeriod.Month)&#xA;{&#xA;    case 8:&#xA;        monthAbbreviations.AddRange(new[] { &quot;Aug&quot;, &quot;Agus&quot;, &quot;Ags&quot; });&#xA;        break;&#xA;&#xA;    case 9:&#xA;        monthAbbreviations.AddRange(new[] { &quot;Sep&quot;, &quot;Sept&quot; });&#xA;        break;&#xA;&#x9;&#xA;    case 12:&#xA;        monthAbbreviations.AddRange(new[] { &quot;Dec&quot;, &quot;Des&quot; });&#xA;        break;&#xA;&#xA;    default:&#xA;        // Default case if the current month doesn't match any condition&#xA;        monthAbbreviations.Add(in_datePeriod.ToString(&quot;MMM&quot;));&#xA;        break;&#xA;}&#xA;&#xA;out_listSheetToKeep = monthAbbreviations;" DisplayName="Invoke Code - Create listSheetToKeep" sap:VirtualizedContainerService.HintSize="436.8,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
             <ui:InvokeCode.Arguments>
-              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_listSheetToKeep">
-                <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="listSheetToKeep" />
-              </OutArgument>
-              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">
-                <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="in_datePeriod" />
-              </InArgument>
+              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_listSheetToKeep">[listSheetToKeep]</OutArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
             </ui:InvokeCode.Arguments>
           </ui:InvokeCode>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Delete_Sheets.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Custom_Workflow\Delete_Sheets.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">
-                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String)" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">
-                <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="listSheetToKeep" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
-              </InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToRemove">[New List(of String)]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_listSheetToKeep">[listSheetToKeep]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add_Queue_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Custom_Workflow\Add_Queue_Item.xaml">

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="expedia_creditlimit" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="expedia_creditlimit" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_dicPath" Type="InArgument(scg:Dictionary(x:String, x:String))" />
     <x:Property Name="in_datePeriod" Type="InArgument(s:DateTime)" />
@@ -153,8 +153,6 @@
       <Variable x:TypeArguments="x:String" Name="strFolderPath" />
       <Variable x:TypeArguments="x:String" Name="strRawFolderPath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
-      <Variable x:TypeArguments="x:Boolean" Name="isFolderNotRerunExist" />
-      <Variable x:TypeArguments="x:Boolean" Name="isFileNotRerunExist" />
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="listMailMessages" />
       <Variable x:TypeArguments="x:Boolean" Name="isEmailFound" />
       <Variable x:TypeArguments="x:String" Name="strAttachmentId" />
@@ -164,14 +162,7 @@
       <Variable x:TypeArguments="x:String" Name="strFileNamePattern" />
       <Variable x:TypeArguments="x:String" Name="strRawFilePathQueue" />
       <Variable x:TypeArguments="x:String" Name="strRawFilePath" />
-      <Variable x:TypeArguments="x:String" Name="strSubjectDateFormat" />
-      <Variable x:TypeArguments="x:String" Name="strAttachmentDateFormat" />
-      <Variable x:TypeArguments="str:MatchCollection" Name="mcolDateMatch" />
-      <Variable x:TypeArguments="scg:List(s:DateTime)" Name="listDateRange" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="listFilePath" />
       <Variable x:TypeArguments="x:String" Name="strFileRegex" />
-      <Variable x:TypeArguments="x:String" Name="strSubjectDateRegex" />
-      <Variable x:TypeArguments="scg:Dictionary(x:Int32, x:String)" Name="dictSplit" />
       <Variable x:TypeArguments="s:DateTime" Name="dateEnd" />
       <Variable x:TypeArguments="s:DateTime" Name="dateStart" />
     </Sequence.Variables>
@@ -318,10 +309,6 @@
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="651.2,3556" sap2010:WorkflowViewState.IdRef="Sequence_145">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="x:Int32" Name="intFilePathIndex" />
-            <Variable x:TypeArguments="x:String" Default="dd/MM/yyyy" Name="reportDatePattern" />
-          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

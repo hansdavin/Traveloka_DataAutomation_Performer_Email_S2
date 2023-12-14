@@ -21,7 +21,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1073.2075471698113,4868.830188679245</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845.6,4892</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFileAttachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="82">
@@ -162,14 +162,13 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow is functioned to download file attachment from email, and process it. &#xA;1. If it's an archive file, then extract&#xA;2. If it's an protected excel file then unprotect&#xA;3. Convert file if the extension is invalid&#xA;4. Copy the raw files to the destination folder" DisplayName="Download_File_Attachment" sap:VirtualizedContainerService.HintSize="669.2830188679245,4803.622641509433" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow is functioned to download file attachment from email, and process it. &#xA;1. If it's an archive file, then extract&#xA;2. If it's an protected excel file then unprotect&#xA;3. Convert file if the extension is invalid&#xA;4. Copy the raw files to the destination folder" DisplayName="Download_File_Attachment" sap:VirtualizedContainerService.HintSize="669.6,4827.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="ienAttachment" />
       <Variable x:TypeArguments="x:String" Name="strRawFilePath" />
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:String" Name="strRawFolderPath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFolderPathExists" />
-      <Variable x:TypeArguments="s:DateTime" Name="dateEndPeriodLocal" />
       <Variable x:TypeArguments="x:String" Name="strRawFilePathQueue" />
       <Variable x:TypeArguments="ss:SecureString" Name="secStrZipPassword" />
     </Sequence.Variables>
@@ -179,13 +178,13 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEach x:TypeArguments="snm:Attachment" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="607.6981132075472,4614.339622641509" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_mailMessage.Attachments]">
+    <ui:ForEach x:TypeArguments="snm:Attachment" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="607.2,4623.2" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_mailMessage.Attachments]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:Attachment">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:Attachment" Name="attachment" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="571.4716981132075,4490.264150943396" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,4497.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="strFolderPath" />
               <Variable x:TypeArguments="x:String" Name="strEmailFilter" />
@@ -195,7 +194,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Not attachment.ContentId = in_strAttachmentId]" sap:VirtualizedContainerService.HintSize="509.88679245283015,421.1320754716981" sap2010:WorkflowViewState.IdRef="If_5">
+            <If Condition="[Not attachment.ContentId = in_strAttachmentId]" sap:VirtualizedContainerService.HintSize="509.6,424" sap2010:WorkflowViewState.IdRef="If_5">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="374.9433962264151,240.9056603773585" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
