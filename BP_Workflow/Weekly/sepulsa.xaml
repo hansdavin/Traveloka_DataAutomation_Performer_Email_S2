@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>845.6,7098.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845.6,7606.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>sepulsa_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -147,7 +147,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Sepulsa schedule is weekly. Report will be sent each Thursday.&#xA;a. Sepulsa Pulsa - 1 November 2023&#xA;b. Sepulsa Pulsa - 2 - 8 November 2023&#xA;c. Sepulsa Pulsa - 9 - 15 November 2023&#xA;d. Sepulsa Pulsa - 16 - 22 November 2023&#xA;e. Sepulsa Pulsa - 23 - 29 November 2023&#xA;f. Sepulsa Pulsa - 30 November 2023&#xA;&#xA;Main takeaways:&#xA;1. In weekly BP, set the date according to the end date of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="sepulsa" sap:VirtualizedContainerService.HintSize="848,7033.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sepulsa schedule is weekly. Report will be sent each Thursday.&#xA;a. Sepulsa Pulsa - 1 November 2023&#xA;b. Sepulsa Pulsa - 2 - 8 November 2023&#xA;c. Sepulsa Pulsa - 9 - 15 November 2023&#xA;d. Sepulsa Pulsa - 16 - 22 November 2023&#xA;e. Sepulsa Pulsa - 23 - 29 November 2023&#xA;f. Sepulsa Pulsa - 30 November 2023&#xA;&#xA;Main takeaways:&#xA;1. In weekly BP, set the date according to the end date of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="sepulsa" sap:VirtualizedContainerService.HintSize="848,7541.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -339,7 +339,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists for final file" Exists="[isFileExist]" sap:VirtualizedContainerService.HintSize="785.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[strFilePath]" PathType="File" />
-    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="785.6,3984" sap2010:WorkflowViewState.IdRef="If_3">
+    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="785.6,4492" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -348,7 +348,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="752,3587.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="752,4095.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -384,7 +384,7 @@
               <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10" />
             </If.Else>
           </If>
-          <Sequence DisplayName="Filtering emails" sap:VirtualizedContainerService.HintSize="708.8,2440" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Filtering emails" sap:VirtualizedContainerService.HintSize="708.8,2948" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="intListMailIndex" />
             </Sequence.Variables>
@@ -394,13 +394,13 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="[intListMailIndex]" DisplayName="For Each email" sap:VirtualizedContainerService.HintSize="646.4,2328" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[listMailMessages]">
+            <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="[intListMailIndex]" DisplayName="For Each email" sap:VirtualizedContainerService.HintSize="646.4,2836" sap2010:WorkflowViewState.IdRef="ForEach`1_10" Values="[listMailMessages]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="snm:MailMessage">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="email" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body of for each email" sap:VirtualizedContainerService.HintSize="611.2,2203.2" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                  <Sequence DisplayName="Body of for each email" sap:VirtualizedContainerService.HintSize="611.2,2711.2" sap2010:WorkflowViewState.IdRef="Sequence_44">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -564,7 +564,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:InvokeCode>
-                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Mapping of month abbreviations to full month names&#xA;Dictionary&lt;string, string&gt; monthAbbreviationMapping = new Dictionary&lt;string, string&gt;&#xA;{&#xA;&#x9;{&quot;Januari&quot;, &quot;January&quot;},&#xA;    {&quot;Februari&quot;, &quot;February&quot;},&#xA;    {&quot;Maret&quot;, &quot;March&quot;},&#xA;&#x9;{&quot;April&quot;, &quot;April&quot;},&#xA;    {&quot;May&quot;, &quot;May&quot;},&#xA;    {&quot;Juni&quot;, &quot;June&quot;},&#xA;    {&quot;Juli&quot;, &quot;July&quot;},&#xA;    {&quot;Agustus&quot;, &quot;August&quot;},&#xA;&#x9;{&quot;September&quot;, &quot;September&quot;},&#xA;    {&quot;Oktober&quot;, &quot;October&quot;},&#xA;&#x9;{&quot;November&quot;, &quot;November&quot;},&#xA;    {&quot;Desember&quot;, &quot;December&quot;},&#xA;    {&quot;Jan&quot;, &quot;January&quot;},&#xA;    {&quot;Feb&quot;, &quot;February&quot;},&#xA;    {&quot;Mar&quot;, &quot;March&quot;},&#xA;    {&quot;Apr&quot;, &quot;April&quot;},&#xA;    {&quot;Jun&quot;, &quot;June&quot;},&#xA;    {&quot;Jul&quot;, &quot;July&quot;},&#xA;    {&quot;Aug&quot;, &quot;August&quot;},&#xA;    {&quot;Agu&quot;, &quot;August&quot;}, // Example: August with inconsistent abbreviation&#xA;    {&quot;Sep&quot;, &quot;September&quot;},&#xA;    {&quot;Sept&quot;, &quot;September&quot;}, // Example: September with inconsistent abbreviation&#xA;&#x9; {&quot;Okt&quot;, &quot;October&quot;},&#xA;    {&quot;Nov&quot;, &quot;November&quot;},&#xA;    {&quot;Des&quot;, &quot;December&quot;}&#xA;};&#xA;// Remove whitespaces&#xA;string dayWithoutSpace = Regex.Match(in_strCapturedDate, @&quot;\b(\d{1,2}\s?-\s?\d{1,2})\b&quot;).Value;&#xA;dayWithoutSpace = dayWithoutSpace.Replace(&quot; &quot;, &quot;&quot;);&#xA;if(!string.IsNullOrEmpty(dayWithoutSpace)) in_strCapturedDate = Regex.Replace(in_strCapturedDate, @&quot;\b(\d{1,2}\s?-\s?\d{1,2})\b&quot;, dayWithoutSpace, RegexOptions.IgnoreCase);&#xA;Console.WriteLine($&quot;in_strCapturedDate: {in_strCapturedDate}&quot;);&#xA;// Parse the captured string to extract start and end dates&#xA;string[] dateParts = in_strCapturedDate.Split(' ');&#xA;&#xA;if(in_isMultiple)&#xA;{&#xA;&#x9;if (dateParts.Length == 3)&#xA;&#x9;{&#xA;&#x9;&#x9;Console.WriteLine(string.Join(&quot;,&quot;, dateParts));&#xA;&#x9;    if (int.TryParse(dateParts[0].Split('-')[0], out int startDay) &amp;&amp;&#xA;&#x9;        int.TryParse(dateParts[0].Split('-')[1], out int endDay) &amp;&amp;&#xA;&#x9;        monthAbbreviationMapping.TryGetValue(dateParts[1], out string fullMonthName) &amp;&amp;&#xA;&#x9;        DateTime.TryParse($&quot;{startDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateStart) &amp;&amp;&#xA;&#x9;        DateTime.TryParse($&quot;{endDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateEnd))&#xA;&#x9;    {&#xA;&#x9;        // Check if the extracted dates are within the given period&#xA;&#x9;        io_isDatePeriodValid = dtDateStart &gt;= in_dtDateStart &amp;&amp; dtDateEnd &lt;= in_dtDateEnd;&#xA;&#x9;&#xA;&#x9;        // Output the result&#xA;&#x9;        Console.WriteLine($&quot;Captured string {(io_isDatePeriodValid ? &quot;matches&quot; : &quot;does not match&quot;)} with the given period.&quot;);&#xA;&#x9;    }&#xA;&#x9;    else&#xA;&#x9;    {&#xA;&#x9;        Console.WriteLine($&quot;Invalid format in the captured string ({in_strCapturedDate}).&quot;);&#xA;&#x9;    }&#xA;&#x9;}&#xA;&#x9;else&#xA;&#x9;{&#xA;&#x9;    Console.WriteLine($&quot;Invalid format in the captured string {in_strCapturedDate}.&quot;);&#xA;&#x9;}&#xA;}&#xA;else //Single date&#xA;{&#xA;&#x9;Console.WriteLine(&quot;Single date&quot;);&#xA;&#x9;if(int.TryParse(dateParts[0], out int endDay) &amp;&amp;&#xA;       monthAbbreviationMapping.TryGetValue(dateParts[1], out string fullMonthName) &amp;&amp;&#xA;       DateTime.TryParse($&quot;{endDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateEnd))&#xA;&#x9;{&#xA;&#x9;&#x9;Console.WriteLine($&quot;dtDateEnd: {dtDateEnd}&quot;);&#xA;&#x9;&#x9;io_isDatePeriodValid = dtDateEnd == in_dtDateEnd;&#xA;&#x9;}&#xA;}&#xA;" DisplayName="Invoke Code - Check whether the date captured from email subject corresponding with correct period" sap:VirtualizedContainerService.HintSize="387.2,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_11" Language="CSharp">
+                            <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Mapping of month abbreviations to full month names&#xD;&#xA;Dictionary&lt;string, string&gt; monthAbbreviationMapping = new Dictionary&lt;string, string&gt;&#xD;&#xA;{&#xD;&#xA;&#x9;{&quot;Januari&quot;, &quot;January&quot;},&#xD;&#xA;    {&quot;Februari&quot;, &quot;February&quot;},&#xD;&#xA;    {&quot;Maret&quot;, &quot;March&quot;},&#xD;&#xA;&#x9;{&quot;April&quot;, &quot;April&quot;},&#xD;&#xA;    {&quot;May&quot;, &quot;May&quot;},&#xD;&#xA;    {&quot;Juni&quot;, &quot;June&quot;},&#xD;&#xA;    {&quot;Juli&quot;, &quot;July&quot;},&#xD;&#xA;    {&quot;Agustus&quot;, &quot;August&quot;},&#xD;&#xA;&#x9;{&quot;September&quot;, &quot;September&quot;},&#xD;&#xA;    {&quot;Oktober&quot;, &quot;October&quot;},&#xD;&#xA;&#x9;{&quot;November&quot;, &quot;November&quot;},&#xD;&#xA;    {&quot;Desember&quot;, &quot;December&quot;},&#xD;&#xA;    {&quot;Jan&quot;, &quot;January&quot;},&#xD;&#xA;    {&quot;Feb&quot;, &quot;February&quot;},&#xD;&#xA;    {&quot;Mar&quot;, &quot;March&quot;},&#xD;&#xA;    {&quot;Apr&quot;, &quot;April&quot;},&#xD;&#xA;    {&quot;Jun&quot;, &quot;June&quot;},&#xD;&#xA;    {&quot;Jul&quot;, &quot;July&quot;},&#xD;&#xA;    {&quot;Aug&quot;, &quot;August&quot;},&#xD;&#xA;    {&quot;Agu&quot;, &quot;August&quot;}, // Example: August with inconsistent abbreviation&#xD;&#xA;    {&quot;Sep&quot;, &quot;September&quot;},&#xD;&#xA;    {&quot;Sept&quot;, &quot;September&quot;}, // Example: September with inconsistent abbreviation&#xD;&#xA;&#x9; {&quot;Okt&quot;, &quot;October&quot;},&#xD;&#xA;    {&quot;Nov&quot;, &quot;November&quot;},&#xD;&#xA;    {&quot;Des&quot;, &quot;December&quot;}&#xD;&#xA;};&#xD;&#xA;// Remove whitespaces&#xD;&#xA;string dayWithoutSpace = Regex.Match(in_strCapturedDate, @&quot;\b(\d{1,2}\s?-\s?\d{1,2})\b&quot;).Value;&#xD;&#xA;dayWithoutSpace = dayWithoutSpace.Replace(&quot; &quot;, &quot;&quot;);&#xD;&#xA;if(!string.IsNullOrEmpty(dayWithoutSpace)) in_strCapturedDate = Regex.Replace(in_strCapturedDate, @&quot;\b(\d{1,2}\s?-\s?\d{1,2})\b&quot;, dayWithoutSpace, RegexOptions.IgnoreCase);&#xD;&#xA;Console.WriteLine($&quot;in_strCapturedDate: {in_strCapturedDate}&quot;);&#xD;&#xA;// Parse the captured string to extract start and end dates&#xD;&#xA;string[] dateParts = in_strCapturedDate.Split(' ');&#xD;&#xA;&#xD;&#xA;if(in_isMultiple)&#xD;&#xA;{&#xD;&#xA;&#x9;if (dateParts.Length == 3)&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;Console.WriteLine(string.Join(&quot;,&quot;, dateParts));&#xD;&#xA;&#x9;    if (int.TryParse(dateParts[0].Split('-')[0], out int startDay) &amp;&amp;&#xD;&#xA;&#x9;        int.TryParse(dateParts[0].Split('-')[1], out int endDay) &amp;&amp;&#xD;&#xA;&#x9;        monthAbbreviationMapping.TryGetValue(dateParts[1], out string fullMonthName) &amp;&amp;&#xD;&#xA;&#x9;        DateTime.TryParse($&quot;{startDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateStart) &amp;&amp;&#xD;&#xA;&#x9;        DateTime.TryParse($&quot;{endDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateEnd))&#xD;&#xA;&#x9;    {&#xD;&#xA;&#x9;        // Check if the extracted dates are within the given period&#xD;&#xA;&#x9;        io_isDatePeriodValid = dtDateStart.Date &gt;= in_dtDateStart.Date &amp;&amp; dtDateEnd.Date &lt;= in_dtDateEnd.Date;&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;        // Output the result&#xD;&#xA;&#x9;        Console.WriteLine($&quot;Captured string {(io_isDatePeriodValid ? &quot;matches&quot; : &quot;does not match&quot;)} with the given period.&quot;);&#xD;&#xA;&#x9;    }&#xD;&#xA;&#x9;    else&#xD;&#xA;&#x9;    {&#xD;&#xA;&#x9;        Console.WriteLine($&quot;Invalid format in the captured string ({in_strCapturedDate}).&quot;);&#xD;&#xA;&#x9;    }&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;else&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;    Console.WriteLine($&quot;Invalid format in the captured string {in_strCapturedDate}.&quot;);&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;else //Single date&#xD;&#xA;{&#xD;&#xA;&#x9;Console.WriteLine(&quot;Single date&quot;);&#xD;&#xA;&#x9;if(int.TryParse(dateParts[0], out int endDay) &amp;&amp;&#xD;&#xA;       monthAbbreviationMapping.TryGetValue(dateParts[1], out string fullMonthName) &amp;&amp;&#xD;&#xA;       DateTime.TryParse($&quot;{endDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateEnd))&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;Console.WriteLine($&quot;dtDateEnd: {dtDateEnd}&quot;);&#xD;&#xA;&#x9;&#x9;io_isDatePeriodValid = dtDateEnd == in_dtDateEnd;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;" DisplayName="Invoke Code - Check whether the date captured from email subject corresponding with correct period" sap:VirtualizedContainerService.HintSize="387.2,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_11" Language="CSharp">
                               <ui:InvokeCode.Arguments>
                                 <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateStart">[dtDateStart]</InArgument>
                                 <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateEnd">[dtDateEnd]</InArgument>
@@ -593,7 +593,7 @@
                         </TryCatch.Catches>
                       </TryCatch>
                     </Sequence>
-                    <If Condition="[isSubjectValid AndAlso isDatePeriodValid]" DisplayName="If attachment and subject is correct" sap:VirtualizedContainerService.HintSize="548.8,52.8" sap2010:WorkflowViewState.IdRef="If_31">
+                    <If Condition="[isSubjectValid AndAlso isDatePeriodValid]" DisplayName="If attachment and subject is correct" sap:VirtualizedContainerService.HintSize="510.4,560.8" sap2010:WorkflowViewState.IdRef="If_31">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -625,7 +625,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <If Condition="[intListMailIndex = (listMailMessages.Count - 1)]" DisplayName="If - Last index throw" sap:VirtualizedContainerService.HintSize="256.8,52.8" sap2010:WorkflowViewState.IdRef="If_37">
+                          <If Condition="[intListMailIndex = (listMailMessages.Count - 1)]" DisplayName="If - Last index throw" sap:VirtualizedContainerService.HintSize="411.2,363.2" sap2010:WorkflowViewState.IdRef="If_37">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
