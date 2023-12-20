@@ -180,7 +180,7 @@
         <OutArgument x:TypeArguments="x:String">[strBpKey]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Key").ToString.Replace("(", " ").Replace(")", "")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("Key").ToString.Replace("(", " ").Replace(")", " ")]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_11">
