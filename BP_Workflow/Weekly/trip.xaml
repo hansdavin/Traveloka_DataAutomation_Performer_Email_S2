@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,11079</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,11472</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>trip_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -140,6 +140,7 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Traveloka_DataAutomation_Performer_Email_S2.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -147,7 +148,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Trip.com, Trip.com B2B, Ctrip, Ctrip B2B scheduled weekly. &#xA;The content range will be shown in attachment file name (Monday - Sunday).&#xA;The email will be sent every sunday or monday.&#xA;&#xA;Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="trip" sap:VirtualizedContainerService.HintSize="1136,11014" sap2010:WorkflowViewState.IdRef="Sequence_147">
+  <Sequence sap2010:Annotation.AnnotationText="Trip.com, Trip.com B2B, Ctrip, Ctrip B2B scheduled weekly. &#xA;The content range will be shown in attachment file name (Monday - Sunday).&#xA;The email will be sent every sunday or monday.&#xA;&#xA;Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="trip" sap:VirtualizedContainerService.HintSize="1136,11407" sap2010:WorkflowViewState.IdRef="Sequence_147">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:String" Name="strFolderPath" />
@@ -212,71 +213,141 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:SetAsset>
-    <If Condition="[Not in_isRerun]" DisplayName="If normal run, adddays(-1)" sap:VirtualizedContainerService.HintSize="1074,394" sap2010:WorkflowViewState.IdRef="If_35">
+    <If sap2010:Annotation.AnnotationText="Period Monday" Condition="[Not in_isRerun]" DisplayName="If normal run, use Bp's specific schedule" sap:VirtualizedContainerService.HintSize="1074,781" sap2010:WorkflowViewState.IdRef="If_50">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="476,212" sap2010:WorkflowViewState.IdRef="Sequence_118">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,284" sap2010:WorkflowViewState.IdRef="Sequence_156">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap2010:Annotation.AnnotationText="EndPeriod will always be Sunday" DisplayName="Assign date Period end (Sunday)" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_31">
-            <Assign.To>
-              <OutArgument x:TypeArguments="s:DateTime">[in_datePeriod]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="s:DateTime">[in_datePeriod.AddDays((in_datePeriod.DayOfWeek)*-1).Date]</InArgument>
-            </Assign.Value>
+          <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If normal run, find Saturday by looping AddDays(-1)" Code="out_dtDateEnd = in_datePeriod;&#xD;&#xA;while (out_dtDateEnd.DayOfWeek != DayOfWeek.Sunday)&#xD;&#xA;{&#xD;&#xA;&#x9;out_dtDateEnd = out_dtDateEnd.AddDays(-1);&#xD;&#xA;}&#xD;&#xA;out_dtDateStart = out_dtDateEnd.AddDays(-6);&#xD;&#xA;" DisplayName="Invoke Code - Set start date, end date" sap:VirtualizedContainerService.HintSize="334,196" sap2010:WorkflowViewState.IdRef="InvokeCode_9" Language="CSharp">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
+              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtDateStart">[dateStart]</OutArgument>
+              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtDateEnd">[dateEnd]</OutArgument>
+            </ui:InvokeCode.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </Assign>
+          </ui:InvokeCode>
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="300,82.4" sap2010:WorkflowViewState.IdRef="Sequence_119">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,284" sap2010:WorkflowViewState.IdRef="Sequence_157">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If rerun, find Saturday by looping AddDays(+1)" Code="out_dtDateEnd = in_datePeriod;&#xD;&#xA;while (out_dtDateEnd.DayOfWeek != DayOfWeek.Sunday)&#xD;&#xA;{&#xD;&#xA;&#x9;out_dtDateEnd = out_dtDateEnd.AddDays(+1);&#xD;&#xA;}&#xD;&#xA;out_dtDateStart = out_dtDateEnd.AddDays(-6);&#xD;&#xA;" DisplayName="Invoke Code - Set start date, end date" sap:VirtualizedContainerService.HintSize="334,196" sap2010:WorkflowViewState.IdRef="InvokeCode_10" Language="CSharp">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
+              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtDateStart">[dateStart]</OutArgument>
+              <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtDateEnd">[dateEnd]</OutArgument>
+            </ui:InvokeCode.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeCode>
         </Sequence>
       </If.Else>
     </If>
-    <Assign sap2010:Annotation.AnnotationText="StartPeriod will always be Monday" DisplayName="Assign date Period start (Monday)" sap:VirtualizedContainerService.HintSize="1074,113" sap2010:WorkflowViewState.IdRef="Assign_44">
-      <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[dateStart]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="s:DateTime">[in_datePeriod.AddDays(-6)]</InArgument>
-      </Assign.Value>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </Assign>
-    <Assign sap2010:Annotation.AnnotationText="EndPeriod will always be Sunday" DisplayName="Assign date Period end (Sunday)" sap:VirtualizedContainerService.HintSize="1074,112" sap2010:WorkflowViewState.IdRef="Assign_45">
-      <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[dateEnd]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="s:DateTime">[in_datePeriod]</InArgument>
-      </Assign.Value>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </Assign>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1074,271" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,192" sap2010:WorkflowViewState.IdRef="Sequence_159">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_158">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[Not in_isRerun]" DisplayName="If normal run, adddays(-1)" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="If_35">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,201" sap2010:WorkflowViewState.IdRef="Sequence_118">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap2010:Annotation.AnnotationText="EndPeriod will always be Sunday" DisplayName="Assign date Period end (Sunday)" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_31">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="s:DateTime">[in_datePeriod]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="s:DateTime">[in_datePeriod.AddDays((in_datePeriod.DayOfWeek)*-1).Date]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="300,82.4" sap2010:WorkflowViewState.IdRef="Sequence_119">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign sap2010:Annotation.AnnotationText="StartPeriod will always be Monday" DisplayName="Assign date Period start (Monday)" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_44">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[dateStart]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime">[in_datePeriod.AddDays(-6)]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <Assign sap2010:Annotation.AnnotationText="EndPeriod will always be Sunday" DisplayName="Assign date Period end (Sunday)" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_45">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[dateEnd]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime">[in_datePeriod]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1074,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[dateStart]</InArgument>
