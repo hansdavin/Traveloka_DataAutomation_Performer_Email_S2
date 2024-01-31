@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410.4,12112</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1410.4,13191.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>trip_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -148,7 +148,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Trip.com, Trip.com B2B, Ctrip, Ctrip B2B scheduled weekly. &#xA;The content range will be shown in attachment file name (Monday - Sunday).&#xA;The email will be sent every sunday or monday.&#xA;&#xA;Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="trip" sap:VirtualizedContainerService.HintSize="1158.4,12047.2" sap2010:WorkflowViewState.IdRef="Sequence_147">
+  <Sequence sap2010:Annotation.AnnotationText="Trip.com, Trip.com B2B, Ctrip, Ctrip B2B scheduled weekly. &#xA;The content range will be shown in attachment file name (Monday - Sunday).&#xA;The email will be sent every sunday or monday.&#xA;&#xA;Main takeaways:&#xA;1. In monthly BP, set the date range according to the month of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="trip" sap:VirtualizedContainerService.HintSize="1158.4,13126.4" sap2010:WorkflowViewState.IdRef="Sequence_147">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:String" Name="strFolderPath" />
@@ -203,7 +203,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Assign sap2010:Annotation.AnnotationText="{}{&quot;ctrip&quot;, &quot;HT0074&quot;},&#xD;&#xA;{&quot;ctripb2b&quot;, &quot;HT0075&quot;},&#xD;&#xA;{&quot;tripcom&quot;, &quot;HT0076&quot;},&#xD;&#xA;{&quot;tripcomb2b&quot;, &quot;HT0077&quot;}" DisplayName="Assign BPID Compensation Details" sap:VirtualizedContainerService.HintSize="1096,159.2" sap2010:WorkflowViewState.IdRef="Assign_55">
+    <Assign sap2010:Annotation.AnnotationText="{}{&quot;ctrip&quot;, &quot;HT0074&quot;},&#xA;{&quot;ctripb2b&quot;, &quot;HT0075&quot;},&#xA;{&quot;tripcom&quot;, &quot;HT0076&quot;},&#xA;{&quot;tripcomb2b&quot;, &quot;HT0077&quot;}" DisplayName="Assign BPID Compensation Details" sap:VirtualizedContainerService.HintSize="1096,159.2" sap2010:WorkflowViewState.IdRef="Assign_55">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dicCompensationDetails]</OutArgument>
       </Assign.To>
@@ -222,7 +222,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Assign sap2010:Annotation.AnnotationText="{}{&quot;ctrip&quot;, &quot;HT0307&quot;},&#xD;&#xA;{&quot;ctripb2b&quot;, &quot;HT0308&quot;},&#xD;&#xA;{&quot;tripcom&quot;, &quot;HT0309&quot;},&#xD;&#xA;{&quot;tripcomb2b&quot;, &quot;HT0310&quot;}" DisplayName="Assign BPID Prepaid Order Details" sap:VirtualizedContainerService.HintSize="1096,159.2" sap2010:WorkflowViewState.IdRef="Assign_56">
+    <Assign sap2010:Annotation.AnnotationText="{}{&quot;ctrip&quot;, &quot;HT0307&quot;},&#xA;{&quot;ctripb2b&quot;, &quot;HT0308&quot;},&#xA;{&quot;tripcom&quot;, &quot;HT0309&quot;},&#xA;{&quot;tripcomb2b&quot;, &quot;HT0310&quot;}" DisplayName="Assign BPID Prepaid Order Details" sap:VirtualizedContainerService.HintSize="1096,159.2" sap2010:WorkflowViewState.IdRef="Assign_56">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dicPrepaidOrderDetails]</OutArgument>
       </Assign.To>
@@ -476,7 +476,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[isFileExist]" sap:VirtualizedContainerService.HintSize="1096,90.4" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[strFilePath]" PathType="File" />
-    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="1096,9549.6" sap2010:WorkflowViewState.IdRef="If_46">
+    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="1096,10628.8" sap2010:WorkflowViewState.IdRef="If_46">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -485,10 +485,11 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="1062.4,9152.8" sap2010:WorkflowViewState.IdRef="Sequence_145">
+        <Sequence sap:VirtualizedContainerService.HintSize="1062.4,10232" sap2010:WorkflowViewState.IdRef="Sequence_145">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="strFilePathCompensationDetails" />
             <Variable x:TypeArguments="x:String" Name="strFilePathPrepaidOrderDetails" />
+            <Variable x:TypeArguments="x:String" Name="strPathLogNew" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1100,40 +1101,20 @@
           </ui:MultipleAssign>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Custom_Workflow\Split_TripReport.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1019.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="Custom_Workflow\Split_TripReport.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_template">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(&quot;Data&quot;, &quot;Template&quot;)" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_pathCompensationDetails">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePathCompensationDetails" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_pathPrepaidOrderDetails">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePathPrepaidOrderDetails" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_mergedFile">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePath" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_template">[Path.Combine("Data", "Template")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_pathCompensationDetails">[strFilePathCompensationDetails]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_pathPrepaidOrderDetails">[strFilePathPrepaidOrderDetails]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_mergedFile">[strFilePath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Add Queue Bucket Compensation Details" DisplayName="Add_Queue_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1019.2,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Custom_Workflow\Add_Queue_Item.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
-              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-              </InArgument>
-              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">
-                <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEnd" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePathCompensationDetails" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strDateRange">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;{0};{1}&quot;, dateStart.ToString, dateEnd.ToString)" />
-              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[dateEnd]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePathCompensationDetails]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">[strRawFilePathQueue]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strDateRange">[String.Format("{0};{1}", dateStart.ToString, dateEnd.ToString)]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1141,9 +1122,42 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
-          <ui:MultipleAssign DisplayName="Reassign Bucket BPID Prepaid Order Details Report" sap:VirtualizedContainerService.HintSize="1019.2,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Write log compensation details" DisplayName="Write_Log_Report.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1019.2,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Custom_Workflow\Write_Log_Report.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PID">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strPathLog">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;PathLog&quot;).ToString" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strStatus">
+                <Literal x:TypeArguments="x:String">Success</Literal>
+              </InArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">
+                <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateStart" />
+              </InArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">
+                <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEnd" />
+              </InArgument>
+              <InArgument x:TypeArguments="scg:List(s:DateTime)" x:Key="in_listStartEndRange" />
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <ui:MultipleAssign DisplayName="Reassign Bucket BPID Prepaid Order Details Report" sap:VirtualizedContainerService.HintSize="1019.2,194.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
             <ui:MultipleAssign.AssignOperations>
-              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[strPathLogNew]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("PathLog").ToString.Replace("Log", $"Log Prepaid Order Details")]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
                   <ui:AssignOperation.To>
                     <OutArgument x:TypeArguments="x:Object">[in_TransactionItem.SpecificContent("BPID")]</OutArgument>
@@ -1160,9 +1174,51 @@
                     <InArgument x:TypeArguments="x:Object">[$"{strCurrentKey}_prepaidorderdetails"]</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:Object">[in_TransactionItem.SpecificContent("Business Partner")]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[$"{in_TransactionItem.SpecificContent("Business Partner").ToString} Prepaid Order Details"]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
+          <Sequence sap:VirtualizedContainerService.HintSize="1019.2,792" sap2010:WorkflowViewState.IdRef="Sequence_164">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="pathLogNewExist" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists Path Prepaid Order Details" Exists="[pathLogNewExist]" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_6" Path="[strPathLogNew]" PathType="File" />
+            <If Condition="[Not pathLogNewExist]" DisplayName="If Prepaid Order Details Not Exist" sap:VirtualizedContainerService.HintSize="433.6,428" sap2010:WorkflowViewState.IdRef="If_51">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376.8,244.8" sap2010:WorkflowViewState.IdRef="Sequence_165">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strPathLogNew]" DisplayName="Copy File New Log" sap:VirtualizedContainerService.HintSize="333.6,155.2" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_TransactionItem.SpecificContent(&quot;PathLog&quot;).ToString]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_166" />
+              </If.Else>
+            </If>
+            <Assign DisplayName="Assign New Path Log Prepaid Order Details" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_61">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[in_TransactionItem.SpecificContent("PathLog")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[strPathLogNew]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
           <Assign DisplayName="Reassign Bucket BPID Prepaid Order Details Report" sap:VirtualizedContainerService.HintSize="1019.2,81.6" sap2010:WorkflowViewState.IdRef="Assign_60">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Object">[in_TransactionItem.SpecificContent("BPID")]</OutArgument>
@@ -1173,24 +1229,12 @@
           </Assign>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Add Queue Bucket Prepaid Order Details" DisplayName="Add_Queue_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1019.2,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Custom_Workflow\Add_Queue_Item.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
-              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-              </InArgument>
-              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">
-                <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dateEnd" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strFilePathPrepaidOrderDetails" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strRawFilePathQueue" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_strDateRange">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;{0};{1}&quot;, dateStart.ToString, dateEnd.ToString)" />
-              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+              <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[dateEnd]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strFilePath">[strFilePathPrepaidOrderDetails]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strRawFilePath">[strRawFilePathQueue]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_strDateRange">[String.Format("{0};{1}", dateStart.ToString, dateEnd.ToString)]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
