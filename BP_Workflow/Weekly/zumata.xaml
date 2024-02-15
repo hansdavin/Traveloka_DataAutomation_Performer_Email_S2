@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>845.6,4765.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>868,5297.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>zumata_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -148,7 +148,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Zumata schedule is weekly (Sunday - Saturday). Report will be sent each Sunday-Wednesday.&#xA;&#xA;Main takeaways:&#xA;1. In weekly BP, set the date according to the end date of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="zumata" sap:VirtualizedContainerService.HintSize="851.2,4700.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Zumata schedule is weekly (Sunday - Saturday). Report will be sent each Sunday-Wednesday.&#xA;&#xA;Main takeaways:&#xA;1. In weekly BP, set the date according to the end date of email's subject&#xA;2. Set global datetime in orchestrator asset to default (;)&#xA;3. Set global date end period in orchestrator&#xA;4. Check local folder path if file already exists or not" DisplayName="zumata" sap:VirtualizedContainerService.HintSize="851.2,5232.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="isFileExist" />
@@ -166,11 +166,7 @@
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="isSubjectValid" />
       <Variable x:TypeArguments="x:String" Name="strCapturedDate" />
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="isDatePeriodValid" />
-      <Variable x:TypeArguments="scg:List(s:DateTime)" Name="listDateStartEndPostpone" />
-      <Variable x:TypeArguments="x:Int32" Name="intPostponeHours" />
       <Variable x:TypeArguments="x:Boolean" Name="isMultiple" />
-      <Variable x:TypeArguments="x:String" Name="strDatePattern" />
-      <Variable x:TypeArguments="x:Boolean" Default="False" Name="isCreateQueue" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -179,15 +175,15 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message start of workflow" sap:VirtualizedContainerService.HintSize="788.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0} [{1}]&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString, Now)]" />
-    <Sequence sap2010:Annotation.AnnotationText="This function as a way enable robot to write log correctly in case any unknown exception is thrown" DisplayName="Set date asset" sap:VirtualizedContainerService.HintSize="788.8,127.2" sap2010:WorkflowViewState.IdRef="Sequence_110">
+    <Sequence sap2010:Annotation.AnnotationText="This function as a way enable robot to write log correctly in case any unknown exception is thrown" DisplayName="Set date asset" sap:VirtualizedContainerService.HintSize="788.8,812" sap2010:WorkflowViewState.IdRef="Sequence_110">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:SetAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Reset the asset in case contains any previous value" AssetName="[in_Config(&quot;GlobalVarAsset&quot;).ToString]" DisplayName="Set Asset - Reset global var" sap:VirtualizedContainerService.HintSize="434,223" sap2010:WorkflowViewState.IdRef="SetAsset_1" Value="[&quot;;&quot;]">
+      <ui:SetAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Reset the asset in case contains any previous value" AssetName="[in_Config(&quot;GlobalVarAsset&quot;).ToString]" DisplayName="Set Asset - Reset global var" sap:VirtualizedContainerService.HintSize="433.6,225.6" sap2010:WorkflowViewState.IdRef="SetAsset_1" Value="[&quot;;&quot;]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -196,7 +192,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:SetAsset>
-      <If sap2010:Annotation.AnnotationText="" Condition="[Not in_isRerun]" DisplayName="If normal run, use Bp's specific schedule" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="If_40">
+      <If sap2010:Annotation.AnnotationText="" Condition="[Not in_isRerun]" DisplayName="If normal run, use Bp's specific schedule" sap:VirtualizedContainerService.HintSize="433.6,84" sap2010:WorkflowViewState.IdRef="If_40">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -205,13 +201,13 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="376,284" sap2010:WorkflowViewState.IdRef="Sequence_129">
+          <Sequence sap:VirtualizedContainerService.HintSize="376.8,285.6" sap2010:WorkflowViewState.IdRef="Sequence_129">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If normal run, find Saturday by looping AddDays(-1)" Code="out_dtDateEnd = in_datePeriod;&#xA;while (out_dtDateEnd.DayOfWeek != DayOfWeek.Saturday)&#xA;{&#xA;&#x9;out_dtDateEnd = out_dtDateEnd.AddDays(-1);&#xA;}&#xA;out_dtDateStart = out_dtDateEnd.AddDays(-6);&#xA;" DisplayName="Invoke Code - Set start date, end date" sap:VirtualizedContainerService.HintSize="334,196" sap2010:WorkflowViewState.IdRef="InvokeCode_15" Language="CSharp">
+            <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If normal run, find Saturday by looping AddDays(-1)" Code="out_dtDateEnd = in_datePeriod;&#xA;while (out_dtDateEnd.DayOfWeek != DayOfWeek.Saturday)&#xA;{&#xA;&#x9;out_dtDateEnd = out_dtDateEnd.AddDays(-1);&#xA;}&#xA;out_dtDateStart = out_dtDateEnd.AddDays(-6);&#xA;" DisplayName="Invoke Code - Set start date, end date" sap:VirtualizedContainerService.HintSize="333.6,196" sap2010:WorkflowViewState.IdRef="InvokeCode_15" Language="CSharp">
               <ui:InvokeCode.Arguments>
                 <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
                 <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtDateStart">[dtDateStart]</OutArgument>
@@ -226,13 +222,13 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="376,284" sap2010:WorkflowViewState.IdRef="Sequence_130">
+          <Sequence sap:VirtualizedContainerService.HintSize="376.8,285.6" sap2010:WorkflowViewState.IdRef="Sequence_130">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If rerun, find Saturday by looping AddDays(+1)" Code="out_dtDateEnd = in_datePeriod;&#xA;while (out_dtDateEnd.DayOfWeek != DayOfWeek.Saturday)&#xA;{&#xA;&#x9;out_dtDateEnd = out_dtDateEnd.AddDays(+1);&#xA;}&#xA;out_dtDateStart = out_dtDateEnd.AddDays(-6);&#xA;" DisplayName="Invoke Code - Set start date, end date" sap:VirtualizedContainerService.HintSize="334,196" sap2010:WorkflowViewState.IdRef="InvokeCode_16" Language="CSharp">
+            <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If rerun, find Saturday by looping AddDays(+1)" Code="out_dtDateEnd = in_datePeriod;&#xA;while (out_dtDateEnd.DayOfWeek != DayOfWeek.Saturday)&#xA;{&#xA;&#x9;out_dtDateEnd = out_dtDateEnd.AddDays(+1);&#xA;}&#xA;out_dtDateStart = out_dtDateEnd.AddDays(-6);&#xA;" DisplayName="Invoke Code - Set start date, end date" sap:VirtualizedContainerService.HintSize="333.6,196" sap2010:WorkflowViewState.IdRef="InvokeCode_16" Language="CSharp">
               <ui:InvokeCode.Arguments>
                 <InArgument x:TypeArguments="s:DateTime" x:Key="in_datePeriod">[in_datePeriod]</InArgument>
                 <OutArgument x:TypeArguments="s:DateTime" x:Key="out_dtDateStart">[dtDateStart]</OutArgument>
@@ -247,7 +243,7 @@
           </Sequence>
         </If.Else>
       </If>
-      <Assign DisplayName="Assign - Set date range that will be used in upload bucket" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_34">
+      <Assign DisplayName="Assign - Set date range that will be used in upload bucket" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_34">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strDateRange]</OutArgument>
         </Assign.To>
@@ -255,7 +251,7 @@
           <InArgument x:TypeArguments="x:String">[$"{dtDateStart}; {dtDateEnd}"]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Set the adjusted date to the asset" DisplayName="Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Set the adjusted date to the asset" DisplayName="Set_EmailDate_Asset.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Custom_Workflow\Set_EmailDate_Asset.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateStartPeriod">[dtDateStart]</InArgument>
           <InArgument x:TypeArguments="s:DateTime" x:Key="in_dateEndPeriod">[dtDateEnd]</InArgument>
@@ -305,7 +301,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
     <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists for final file" Exists="[isFileExist]" sap:VirtualizedContainerService.HintSize="788.8,90.4" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[strFilePath]" PathType="File" />
-    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="788.8,3770.4" sap2010:WorkflowViewState.IdRef="If_3">
+    <If sap2010:Annotation.AnnotationText="If file doesn't exists in local folder or rerun in config sheet is set to true" Condition="[Not isFileExist Or in_isRerun]" DisplayName="If - File does not exist or rerun" sap:VirtualizedContainerService.HintSize="788.8,3617.6" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -314,7 +310,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="755.2,3373.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="755.2,3220.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -337,13 +333,13 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_9">
+              <Sequence sap:VirtualizedContainerService.HintSize="377.6,180" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Throw DisplayName="Business exception - email not found" Exception="[new BusinessRuleException(String.Format(&quot;Report for current period: {0} - {1} not found. Please check manually in email inbox.&quot;, dtDateStart.ToString(&quot;dd-MMM-yyyy&quot;), dtDateEnd.ToString(&quot;dd-MMM-yyyy&quot;)))]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                <Throw DisplayName="Business exception - email not found" Exception="[new BusinessRuleException(String.Format(&quot;Report for current period: {0} - {1} not found. Please check manually in email inbox.&quot;, dtDateStart.ToString(&quot;dd-MMM-yyyy&quot;), dtDateEnd.ToString(&quot;dd-MMM-yyyy&quot;)))]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
               </Sequence>
             </If.Then>
             <If.Else>
@@ -439,26 +435,14 @@
                           </scg:List>
                         </ui:MultipleAssign.AssignOperations>
                       </ui:MultipleAssign>
-                      <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove unnecessary words from subject: Fwd, Fw, etc.&#xA;Remove date from subject to prevent it from being calculated with fuzzy" Code="string strRegex = &quot;&quot;;&#xD;&#xA;bool isCrossMonth = in_dtDateEnd.Month != in_dtDateStart.Month ? true : false;&#xD;&#xA;if(isCrossMonth)&#xD;&#xA;&#x9;out_strCapturedDate = Regex.Match(io_strEmailSubject, in_arrPattern[1]).Value;&#xD;&#xA;else&#xD;&#xA;&#x9;out_strCapturedDate = Regex.Match(io_strEmailSubject, in_arrPattern[0]).Value;&#xD;&#xA;out_strCapturedDate = string.IsNullOrEmpty(out_strCapturedDate) ? &quot;&quot; : out_strCapturedDate;&#xD;&#xA;foreach (string pattern in in_arrPattern)&#xD;&#xA;{&#xD;&#xA;&#x9;io_strEmailSubject = System.Text.RegularExpressions.Regex.Replace(io_strEmailSubject, pattern, string.Empty, RegexOptions.IgnoreCase);&#xD;&#xA;&#x9;io_strEmailSubjectConfig = System.Text.RegularExpressions.Regex.Replace(io_strEmailSubjectConfig, pattern, string.Empty, RegexOptions.IgnoreCase);&#xD;&#xA;}&#xD;&#xA;Console.WriteLine($&quot;Email Subject: {io_strEmailSubject} \nEmail Subject Config: {io_strEmailSubjectConfig}&quot;);" DisplayName="Invoke Code - Remove date from email subject and email subject config" sap:VirtualizedContainerService.HintSize="489.6,224.8" sap2010:WorkflowViewState.IdRef="InvokeCode_10" Language="CSharp">
+                      <ui:InvokeCode ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Remove unnecessary words from subject: Fwd, Fw, etc.&#xA;Remove date from subject to prevent it from being calculated with fuzzy" Code="string strRegex = &quot;&quot;;&#xA;bool isCrossMonth = in_dtDateEnd.Month != in_dtDateStart.Month ? true : false;&#xA;if(isCrossMonth)&#xA;&#x9;out_strCapturedDate = Regex.Match(io_strEmailSubject, in_arrPattern[1]).Value;&#xA;else&#xA;&#x9;out_strCapturedDate = Regex.Match(io_strEmailSubject, in_arrPattern[0]).Value;&#xA;out_strCapturedDate = string.IsNullOrEmpty(out_strCapturedDate) ? &quot;&quot; : out_strCapturedDate;&#xA;foreach (string pattern in in_arrPattern)&#xA;{&#xA;&#x9;io_strEmailSubject = System.Text.RegularExpressions.Regex.Replace(io_strEmailSubject, pattern, string.Empty, RegexOptions.IgnoreCase);&#xA;&#x9;io_strEmailSubjectConfig = System.Text.RegularExpressions.Regex.Replace(io_strEmailSubjectConfig, pattern, string.Empty, RegexOptions.IgnoreCase);&#xA;}&#xA;Console.WriteLine($&quot;Email Subject: {io_strEmailSubject} \nEmail Subject Config: {io_strEmailSubjectConfig}&quot;);" DisplayName="Invoke Code - Remove date from email subject and email subject config" sap:VirtualizedContainerService.HintSize="489.6,224.8" sap2010:WorkflowViewState.IdRef="InvokeCode_10" Language="CSharp">
                         <ui:InvokeCode.Arguments>
-                          <InArgument x:TypeArguments="s:String[]" x:Key="in_arrPattern">
-                            <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="arrPattern" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strEmailSubjectConfig">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strEmailSubjectConfig" />
-                          </InOutArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strEmailSubject">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strEmailSubject" />
-                          </InOutArgument>
-                          <OutArgument x:TypeArguments="x:String" x:Key="out_strCapturedDate">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strCapturedDate" />
-                          </OutArgument>
-                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateStart">
-                            <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dtDateStart" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateEnd">
-                            <VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="dtDateEnd" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="s:String[]" x:Key="in_arrPattern">[arrPattern]</InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strEmailSubjectConfig">[strEmailSubjectConfig]</InOutArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_strEmailSubject">[strEmailSubject]</InOutArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_strCapturedDate">[strCapturedDate]</OutArgument>
+                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateStart">[dtDateStart]</InArgument>
+                          <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateEnd">[dtDateEnd]</InArgument>
                         </ui:InvokeCode.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -524,7 +508,7 @@
                       </TryCatch>
                       <TryCatch DisplayName="Try Catch - Check date period" sap:VirtualizedContainerService.HintSize="489.6,817.6" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                         <TryCatch.Try>
-                          <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Mapping of month abbreviations to full month names&#xD;&#xA;Dictionary&lt;string, string&gt; monthAbbreviationMapping = new Dictionary&lt;string, string&gt;&#xD;&#xA;{&#xD;&#xA;&#x9;{&quot;Januari&quot;, &quot;January&quot;},&#xD;&#xA;    {&quot;Februari&quot;, &quot;February&quot;},&#xD;&#xA;    {&quot;Maret&quot;, &quot;March&quot;},&#xD;&#xA;&#x9;{&quot;April&quot;, &quot;April&quot;},&#xD;&#xA;    {&quot;May&quot;, &quot;May&quot;},&#xD;&#xA;    {&quot;Juni&quot;, &quot;June&quot;},&#xD;&#xA;    {&quot;Juli&quot;, &quot;July&quot;},&#xD;&#xA;    {&quot;Agustus&quot;, &quot;August&quot;},&#xD;&#xA;&#x9;{&quot;September&quot;, &quot;September&quot;},&#xD;&#xA;    {&quot;Oktober&quot;, &quot;October&quot;},&#xD;&#xA;&#x9;{&quot;November&quot;, &quot;November&quot;},&#xD;&#xA;    {&quot;Desember&quot;, &quot;December&quot;},&#xD;&#xA;    {&quot;Jan&quot;, &quot;January&quot;},&#xD;&#xA;    {&quot;Feb&quot;, &quot;February&quot;},&#xD;&#xA;    {&quot;Mar&quot;, &quot;March&quot;},&#xD;&#xA;    {&quot;Apr&quot;, &quot;April&quot;},&#xD;&#xA;    {&quot;Jun&quot;, &quot;June&quot;},&#xD;&#xA;    {&quot;Jul&quot;, &quot;July&quot;},&#xD;&#xA;    {&quot;Aug&quot;, &quot;August&quot;},&#xD;&#xA;    {&quot;Agu&quot;, &quot;August&quot;}, // Example: August with inconsistent abbreviation&#xD;&#xA;    {&quot;Sep&quot;, &quot;September&quot;},&#xD;&#xA;    {&quot;Sept&quot;, &quot;September&quot;}, // Example: September with inconsistent abbreviation&#xD;&#xA;&#x9;{&quot;Oct&quot;, &quot;October&quot;},&#xD;&#xA;&#x9;{&quot;Okt&quot;, &quot;October&quot;},&#xD;&#xA;    {&quot;Nov&quot;, &quot;November&quot;},&#xD;&#xA;&#x9;{&quot;Dec&quot;, &quot;December&quot;},&#xD;&#xA;    {&quot;Des&quot;, &quot;December&quot;}&#xD;&#xA;};&#xD;&#xA;bool isCrossMonth = in_dtDateEnd.Month != in_dtDateStart.Month ? true : false;&#xD;&#xA;Console.WriteLine($&quot;isCrossMonth: {isCrossMonth}&quot;);&#xD;&#xA;string dayWithoutSpace = &quot;&quot;;&#xD;&#xA;// Remove whitespaces&#xD;&#xA;if(isCrossMonth)&#xD;&#xA;&#x9;dayWithoutSpace = Regex.Match(in_strCapturedDate, @&quot;\b\d{1,2}\s*[a-zA-Z]+\s*-\s*\d{1,2}\s*[a-zA-Z]+\b&quot;).Value;&#xD;&#xA;else&#xD;&#xA;&#x9;dayWithoutSpace = Regex.Match(in_strCapturedDate, @&quot;\b(\d{1,2}\s?-\s?\d{1,2})\b&quot;).Value;&#xD;&#xA;dayWithoutSpace = dayWithoutSpace.Replace(&quot; &quot;, &quot;&quot;);&#xD;&#xA;if(!string.IsNullOrEmpty(dayWithoutSpace))&#xD;&#xA;{&#xD;&#xA;&#x9;in_strCapturedDate = Regex.Replace(in_strCapturedDate, @&quot;\b(\d{1,2}\s?-\s?\d{1,2})\b&quot;, dayWithoutSpace, RegexOptions.IgnoreCase);&#xD;&#xA;&#x9;in_strCapturedDate = Regex.Replace(in_strCapturedDate, @&quot;\b\d{1,2}\s*[a-zA-Z]+\s*-\s*\d{1,2}\s*[a-zA-Z]+\b&quot;, dayWithoutSpace, RegexOptions.IgnoreCase);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;Console.WriteLine($&quot;in_strCapturedDate: {in_strCapturedDate}&quot;);&#xD;&#xA;// Parse the captured string to extract start and end dates&#xD;&#xA;string[] dateParts = in_strCapturedDate.Split(' ');&#xD;&#xA;Console.WriteLine(String.Join(&quot; &quot;, dateParts));&#xD;&#xA;&#xD;&#xA;if (dateParts.Length == 3)&#xD;&#xA;{&#xD;&#xA;    if (int.TryParse(dateParts[0].Split('-')[0], out int startDay) &amp;&amp;&#xD;&#xA;        int.TryParse(dateParts[0].Split('-')[1], out int endDay) &amp;&amp;&#xD;&#xA;        monthAbbreviationMapping.TryGetValue(dateParts[1], out string fullMonthName) &amp;&amp;&#xD;&#xA;        DateTime.TryParse($&quot;{startDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateStart) &amp;&amp;&#xD;&#xA;        DateTime.TryParse($&quot;{endDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateEnd))&#xD;&#xA;    {&#xD;&#xA;        // Check if the extracted dates are within the given period&#xD;&#xA;        io_isDatePeriodValid = dtDateStart.Date &gt;= in_dtDateStart.Date &amp;&amp; dtDateEnd.Date &lt;= in_dtDateEnd.Date;&#xD;&#xA;&#xD;&#xA;        // Output the result&#xD;&#xA;        Console.WriteLine($&quot;Captured string {(io_isDatePeriodValid ? &quot;matches&quot; : &quot;does not match&quot;)} with the given period.&quot;);&#xD;&#xA;    }&#xD;&#xA;    else&#xD;&#xA;    {&#xD;&#xA;        Console.WriteLine($&quot;Invalid format in the captured string ({in_strCapturedDate}).&quot;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;else if(dateParts.Length == 2)&#xD;&#xA;{&#xD;&#xA;    string[] dateRangeParts = dateParts[0].Split('-');&#xD;&#xA;    string startDay = Regex.Match(dateRangeParts[0], @&quot;\d+&quot;).Value;&#xD;&#xA;    string startMonth = Regex.Match(dateRangeParts[0], @&quot;\D+&quot;).Value;&#xD;&#xA;    string endDay = Regex.Match(dateRangeParts[1], @&quot;\d+&quot;).Value;&#xD;&#xA;    string endMonth = Regex.Match(dateRangeParts[1], @&quot;\D+&quot;).Value;&#xD;&#xA;    string year = dateParts[1];&#xD;&#xA;&#xD;&#xA;    if (monthAbbreviationMapping.TryGetValue(startMonth, out string fullStartMonthName) &amp;&amp;&#xD;&#xA;        monthAbbreviationMapping.TryGetValue(endMonth, out string fullEndMonthName) &amp;&amp;&#xD;&#xA;        int.TryParse(startDay, out int parsedStartDay) &amp;&amp;&#xD;&#xA;        int.TryParse(endDay, out int parsedEndDay) &amp;&amp;&#xD;&#xA;        int.TryParse(year, out int parsedYear) &amp;&amp;&#xD;&#xA;        DateTime.TryParse($&quot;{parsedStartDay} {fullStartMonthName} {parsedYear}&quot;, out DateTime dtDateStart) &amp;&amp;&#xD;&#xA;        DateTime.TryParse($&quot;{parsedEndDay} {fullEndMonthName} {parsedYear}&quot;, out DateTime dtDateEnd))&#xD;&#xA;    {&#xD;&#xA;        // Check if the extracted dates are within the given period&#xD;&#xA;        io_isDatePeriodValid = dtDateStart.Date &gt;= in_dtDateStart.Date &amp;&amp; dtDateEnd.Date &lt;= in_dtDateEnd.Date;&#xD;&#xA;&#xD;&#xA;        // Output the result&#xD;&#xA;        Console.WriteLine($&quot;Captured string {(io_isDatePeriodValid ? &quot;matches&quot; : &quot;does not match&quot;)} with the given period.&quot;);&#xD;&#xA;    }&#xD;&#xA;    else&#xD;&#xA;    {&#xD;&#xA;        Console.WriteLine($&quot;Invalid format in the captured string ({in_strCapturedDate}).&quot;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;    Console.WriteLine($&quot;Invalid format in the captured string {in_strCapturedDate}.&quot;);&#xD;&#xA;}" DisplayName="Invoke Code - Check whether the date captured from email subject corresponding with correct period" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_11" Language="CSharp">
+                          <ui:InvokeCode ContinueOnError="{x:Null}" Code="// Mapping of month abbreviations to full month names&#xA;Dictionary&lt;string, string&gt; monthAbbreviationMapping = new Dictionary&lt;string, string&gt;&#xA;{&#xA;&#x9;{&quot;Januari&quot;, &quot;January&quot;},&#xA;    {&quot;Februari&quot;, &quot;February&quot;},&#xA;    {&quot;Maret&quot;, &quot;March&quot;},&#xA;&#x9;{&quot;April&quot;, &quot;April&quot;},&#xA;    {&quot;May&quot;, &quot;May&quot;},&#xA;    {&quot;Juni&quot;, &quot;June&quot;},&#xA;    {&quot;Juli&quot;, &quot;July&quot;},&#xA;    {&quot;Agustus&quot;, &quot;August&quot;},&#xA;&#x9;{&quot;September&quot;, &quot;September&quot;},&#xA;    {&quot;Oktober&quot;, &quot;October&quot;},&#xA;&#x9;{&quot;November&quot;, &quot;November&quot;},&#xA;    {&quot;Desember&quot;, &quot;December&quot;},&#xA;    {&quot;Jan&quot;, &quot;January&quot;},&#xA;    {&quot;Feb&quot;, &quot;February&quot;},&#xA;    {&quot;Mar&quot;, &quot;March&quot;},&#xA;    {&quot;Apr&quot;, &quot;April&quot;},&#xA;    {&quot;Jun&quot;, &quot;June&quot;},&#xA;    {&quot;Jul&quot;, &quot;July&quot;},&#xA;    {&quot;Aug&quot;, &quot;August&quot;},&#xA;    {&quot;Agu&quot;, &quot;August&quot;}, // Example: August with inconsistent abbreviation&#xA;    {&quot;Sep&quot;, &quot;September&quot;},&#xA;    {&quot;Sept&quot;, &quot;September&quot;}, // Example: September with inconsistent abbreviation&#xA;&#x9;{&quot;Oct&quot;, &quot;October&quot;},&#xA;&#x9;{&quot;Okt&quot;, &quot;October&quot;},&#xA;    {&quot;Nov&quot;, &quot;November&quot;},&#xA;&#x9;{&quot;Dec&quot;, &quot;December&quot;},&#xA;    {&quot;Des&quot;, &quot;December&quot;}&#xA;};&#xA;bool isCrossMonth = in_dtDateEnd.Month != in_dtDateStart.Month ? true : false;&#xA;Console.WriteLine($&quot;isCrossMonth: {isCrossMonth}&quot;);&#xA;string dayWithoutSpace = &quot;&quot;;&#xA;// Remove whitespaces&#xA;if(isCrossMonth)&#xA;&#x9;dayWithoutSpace = Regex.Match(in_strCapturedDate, @&quot;\b\d{1,2}\s*[a-zA-Z]+\s*-\s*\d{1,2}\s*[a-zA-Z]+\b&quot;).Value;&#xA;else&#xA;&#x9;dayWithoutSpace = Regex.Match(in_strCapturedDate, @&quot;\b(\d{1,2}\s?-\s?\d{1,2})\b&quot;).Value;&#xA;dayWithoutSpace = dayWithoutSpace.Replace(&quot; &quot;, &quot;&quot;);&#xA;if(!string.IsNullOrEmpty(dayWithoutSpace))&#xA;{&#xA;&#x9;in_strCapturedDate = Regex.Replace(in_strCapturedDate, @&quot;\b(\d{1,2}\s?-\s?\d{1,2})\b&quot;, dayWithoutSpace, RegexOptions.IgnoreCase);&#xA;&#x9;in_strCapturedDate = Regex.Replace(in_strCapturedDate, @&quot;\b\d{1,2}\s*[a-zA-Z]+\s*-\s*\d{1,2}\s*[a-zA-Z]+\b&quot;, dayWithoutSpace, RegexOptions.IgnoreCase);&#xA;}&#xA;&#xA;Console.WriteLine($&quot;in_strCapturedDate: {in_strCapturedDate}&quot;);&#xA;// Parse the captured string to extract start and end dates&#xA;string[] dateParts = in_strCapturedDate.Split(' ');&#xA;Console.WriteLine(String.Join(&quot; &quot;, dateParts));&#xA;&#xA;if (dateParts.Length == 3)&#xA;{&#xA;    if (int.TryParse(dateParts[0].Split('-')[0], out int startDay) &amp;&amp;&#xA;        int.TryParse(dateParts[0].Split('-')[1], out int endDay) &amp;&amp;&#xA;        monthAbbreviationMapping.TryGetValue(dateParts[1], out string fullMonthName) &amp;&amp;&#xA;        DateTime.TryParse($&quot;{startDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateStart) &amp;&amp;&#xA;        DateTime.TryParse($&quot;{endDay} {fullMonthName} {dateParts[2]}&quot;, out DateTime dtDateEnd))&#xA;    {&#xA;        // Check if the extracted dates are within the given period&#xA;        io_isDatePeriodValid = dtDateStart.Date &gt;= in_dtDateStart.Date &amp;&amp; dtDateEnd.Date &lt;= in_dtDateEnd.Date;&#xA;&#xA;        // Output the result&#xA;        Console.WriteLine($&quot;Captured string {(io_isDatePeriodValid ? &quot;matches&quot; : &quot;does not match&quot;)} with the given period.&quot;);&#xA;    }&#xA;    else&#xA;    {&#xA;        Console.WriteLine($&quot;Invalid format in the captured string ({in_strCapturedDate}).&quot;);&#xA;    }&#xA;}&#xA;else if(dateParts.Length == 2)&#xA;{&#xA;    string[] dateRangeParts = dateParts[0].Split('-');&#xA;    string startDay = Regex.Match(dateRangeParts[0], @&quot;\d+&quot;).Value;&#xA;    string startMonth = Regex.Match(dateRangeParts[0], @&quot;\D+&quot;).Value;&#xA;    string endDay = Regex.Match(dateRangeParts[1], @&quot;\d+&quot;).Value;&#xA;    string endMonth = Regex.Match(dateRangeParts[1], @&quot;\D+&quot;).Value;&#xA;    string year = dateParts[1];&#xA;&#xA;    if (monthAbbreviationMapping.TryGetValue(startMonth, out string fullStartMonthName) &amp;&amp;&#xA;        monthAbbreviationMapping.TryGetValue(endMonth, out string fullEndMonthName) &amp;&amp;&#xA;        int.TryParse(startDay, out int parsedStartDay) &amp;&amp;&#xA;        int.TryParse(endDay, out int parsedEndDay) &amp;&amp;&#xA;        int.TryParse(year, out int parsedYear) &amp;&amp;&#xA;        DateTime.TryParse($&quot;{parsedStartDay} {fullStartMonthName} {parsedYear}&quot;, out DateTime dtDateStart) &amp;&amp;&#xA;        DateTime.TryParse($&quot;{parsedEndDay} {fullEndMonthName} {parsedYear}&quot;, out DateTime dtDateEnd))&#xA;    {&#xA;        // Check if the extracted dates are within the given period&#xA;        io_isDatePeriodValid = dtDateStart.Date &gt;= in_dtDateStart.Date &amp;&amp; dtDateEnd.Date &lt;= in_dtDateEnd.Date;&#xA;&#xA;        // Output the result&#xA;        Console.WriteLine($&quot;Captured string {(io_isDatePeriodValid ? &quot;matches&quot; : &quot;does not match&quot;)} with the given period.&quot;);&#xA;    }&#xA;    else&#xA;    {&#xA;        Console.WriteLine($&quot;Invalid format in the captured string ({in_strCapturedDate}).&quot;);&#xA;    }&#xA;}&#xA;else&#xA;{&#xA;    Console.WriteLine($&quot;Invalid format in the captured string {in_strCapturedDate}.&quot;);&#xA;}" DisplayName="Invoke Code - Check whether the date captured from email subject corresponding with correct period" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_11" Language="CSharp">
                             <ui:InvokeCode.Arguments>
                               <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateStart">[dtDateStart]</InArgument>
                               <InArgument x:TypeArguments="s:DateTime" x:Key="in_dtDateEnd">[dtDateEnd]</InArgument>
@@ -538,7 +522,7 @@
                           <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="456,340" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
@@ -568,13 +552,13 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,235.2" sap2010:WorkflowViewState.IdRef="Sequence_97">
+                        <Sequence sap:VirtualizedContainerService.HintSize="476.8,236" sap2010:WorkflowViewState.IdRef="Sequence_97">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Assign email to a variable" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_29">
+                          <Assign DisplayName="Assign email to a variable" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_29">
                             <Assign.To>
                               <OutArgument x:TypeArguments="snm:MailMessage">[correctEmailFound]</OutArgument>
                             </Assign.To>
@@ -641,7 +625,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <Sequence DisplayName="Processing attachment" sap:VirtualizedContainerService.HintSize="712,578.4" sap2010:WorkflowViewState.IdRef="Sequence_101">
+          <Sequence DisplayName="Processing attachment" sap:VirtualizedContainerService.HintSize="712,425.6" sap2010:WorkflowViewState.IdRef="Sequence_101">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="ienAttachment" />
             </Sequence.Variables>
@@ -741,58 +725,6 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
-            <If sap2010:Annotation.AnnotationText="If there is report remaining for current month that doesnt contain 7 days of content." Condition="[isCreateQueue]" DisplayName="If - Normal run at the end of month" sap:VirtualizedContainerService.HintSize="387.2,112.8" sap2010:WorkflowViewState.IdRef="If_39">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="377.6,447.2" sap2010:WorkflowViewState.IdRef="Sequence_127">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[String.Format(&quot;{0} - Creating Queue Postpone&quot;, in_TransactionItem.SpecificContent(&quot;PID&quot;).ToString)]" />
-                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="" DeferDate="[Now.AddHours(intPostponeHours)]" DisplayName="Add Queue Item For Current BP" sap:VirtualizedContainerService.HintSize="334.4,224.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[String.Format(&quot;{0}-{1}&quot;, in_TransactionItem.SpecificContent(&quot;Key&quot;).ToString, listDateStartEndPostpone(1).ToString(&quot;dd-MM-yyyy&quot;))]">
-                    <ui:AddQueueItem.ItemInformation>
-                      <InArgument x:TypeArguments="x:String" x:Key="BPID">[in_TransactionItem.SpecificContent("BPID").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Key">[in_TransactionItem.SpecificContent("Key").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Business Partner">[in_TransactionItem.SpecificContent("Business Partner").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Email User To">[in_TransactionItem.SpecificContent("Email User To").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Email Technical To">[in_TransactionItem.SpecificContent("Email Technical To").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Subject Email">[in_TransactionItem.SpecificContent("Subject Email").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Sender Domain">[in_TransactionItem.SpecificContent("Sender Domain").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Sender Domain Rerun">[in_TransactionItem.SpecificContent("Sender Domain Rerun").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="File Name Attachment">[in_TransactionItem.SpecificContent("File Name Attachment").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="File Type">[in_TransactionItem.SpecificContent("File Type").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Period">[listDateStartEndPostpone(1).ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="PathMasterFolder">[in_TransactionItem.SpecificContent("PathMasterFolder").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="PathLog">[in_TransactionItem.SpecificContent("PathLog").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Boolean" x:Key="Rerun">[CBool("True")]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="PID">[in_TransactionItem.SpecificContent("PID").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Email User CC">[in_TransactionItem.SpecificContent("Email User CC").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Email Technical CC">[in_TransactionItem.SpecificContent("Email Technical CC").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Credential">[in_TransactionItem.SpecificContent("Credential").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Schedule">[in_TransactionItem.SpecificContent("Schedule").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Credential File">[in_TransactionItem.SpecificContent("Credential File").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="Credential Zip">[in_TransactionItem.SpecificContent("Credential Zip").ToString]</InArgument>
-                    </ui:AddQueueItem.ItemInformation>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:AddQueueItem>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_128" />
-              </If.Else>
-            </If>
           </Sequence>
         </Sequence>
       </If.Then>
